@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forward Africa Foundation — Cameroon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --terracotta: #c0522a; --terracotta-dark: #943e1f; --terracotta-light: #e0784e;
+      --gold: #d4a029; --gold-light: #f0c040;
+      --forest: #2b5e3f; --forest-mid: #3a7a53;
+      --cream: #faf7f0; --parchment: #f0ead8; --ink: #1c160c;
+      --warm-mid: #6b6050; --pale: #e8e0cc;
+      --cam-green: #007a5e; --cam-red: #c8102e; --cam-yellow: #fcd116;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+    /* LANGUAGE STRIP */
+    .lang-strip { background: var(--ink); display: flex; align-items: center; justify-content: flex-end; padding: 7px 5%; gap: 6px; }
+    .lang-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 4px; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.6); font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+    .lang-btn.active { background: var(--terracotta); color: white; border-color: var(--terracotta); }
+    .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.1); color: white; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 900; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 68px; background: rgba(250,247,240,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(192,82,42,0.12); transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 4px 32px rgba(28,22,12,0.1); }
+    .nav-logo { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-emblem { width: 40px; height: 40px; background: var(--ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .nav-logo-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+    .nav-logo-sub { font-size: 0.62rem; color: var(--warm-mid); letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 500; color: var(--ink); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--terracotta); }
+    .nav-donate { background: var(--terracotta) !important; color: white !important; padding: 9px 22px; border-radius: 30px; font-weight: 600 !important; }
+    .nav-donate:hover { background: var(--terracotta-dark) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { width: 22px; height: 2px; background: var(--ink); display: block; }
+
+    /* HERO */
+    .hero { position: relative; min-height: calc(100vh - 105px); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+    .flag-stripe { height: 4px; display: flex; position: absolute; top: 0; left: 0; right: 0; z-index: 10; }
+    .flag-stripe span:nth-child(1) { flex: 1; background: var(--cam-green); }
+    .flag-stripe span:nth-child(2) { flex: 1; background: var(--cam-red); }
+    .flag-stripe span:nth-child(3) { flex: 1; background: var(--cam-yellow); }
+    .hero-left { background: var(--ink); display: flex; flex-direction: column; justify-content: center; padding: 80px 7% 80px 8%; position: relative; z-index: 2; }
+    .hero-left::after { content: ''; position: absolute; top: 0; right: -55px; width: 110px; height: 100%; background: var(--ink); clip-path: polygon(0 0, 50% 0, 100% 100%, 0 100%); z-index: 3; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,160,41,0.15); border: 1px solid rgba(212,160,41,0.4); color: var(--gold-light); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 6px 16px; border-radius: 30px; margin-bottom: 28px; width: fit-content; animation: fadeUp 1s ease both 0.1s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 700; color: white; line-height: 1.1; margin-bottom: 24px; animation: fadeUp 1s ease both 0.25s; }
+    h1 em { color: var(--gold); font-style: italic; }
+    .hero-desc { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.75; margin-bottom: 36px; animation: fadeUp 1s ease both 0.4s; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 1s ease both 0.55s; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--terracotta); color: white; padding: 13px 28px; border-radius: 50px; font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,82,42,0.35); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.8); padding: 13px 28px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.3); font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.25s; }
+    .btn-outline:hover { border-color: white; color: white; background: rgba(255,255,255,0.08); }
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-right-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(28,22,12,0.3) 0%, transparent 60%); }
+    .hero-stat-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(28,22,12,0.82); backdrop-filter: blur(12px); display: flex; }
+    .hero-stat-item { flex: 1; padding: 18px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
+    .hero-stat-item:last-child { border-right: none; }
+    .hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold); }
+    .hero-stat-label { font-size: 0.66rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; line-height: 1.4; }
+
+    /* TICKER */
+    .ticker { background: var(--terracotta); overflow: hidden; padding: 11px 0; }
+    .ticker-track { display: flex; gap: 0; animation: ticker 28s linear infinite; white-space: nowrap; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-item { display: inline-flex; align-items: center; padding: 0 28px; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+    .ticker-item::after { content: '✦'; margin-left: 28px; opacity: 0.5; font-size: 0.5rem; }
+
+    /* CONTEXT BANNER */
+    .context-banner { display: grid; grid-template-columns: 220px 1fr; gap: 60px; padding: 80px 8%; background: var(--parchment); }
+    .context-map { text-align: center; }
+    .cam-flag-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; margin: 16px auto; max-width: 120px; }
+    .cam-flag-bar span:nth-child(1) { flex: 1; background: var(--cam-green); }
+    .cam-flag-bar span:nth-child(2) { flex: 1; background: var(--cam-red); }
+    .cam-flag-bar span:nth-child(3) { flex: 1; background: var(--cam-yellow); }
+    .cam-map-label { font-size: 0.78rem; font-weight: 700; color: var(--warm-mid); letter-spacing: 0.1em; text-transform: uppercase; }
+    .section-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 14px; }
+    .section-tag::before { content: ''; width: 24px; height: 2px; background: var(--terracotta); }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--ink); line-height: 1.15; margin-bottom: 20px; }
+    .section-title em { color: var(--terracotta); font-style: italic; }
+    .section-body { font-size: 0.95rem; color: var(--warm-mid); line-height: 1.8; margin-bottom: 32px; }
+    .context-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+    .ctx-stat { background: white; border-radius: 14px; padding: 18px 16px; border: 1px solid var(--pale); }
+    .ctx-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--terracotta); }
+    .ctx-label { font-size: 0.78rem; color: var(--ink); line-height: 1.5; margin: 4px 0; font-weight: 500; }
+    .ctx-source { font-size: 0.68rem; color: var(--warm-mid); }
+
+    /* MISSION */
+    .mission { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 100px 8%; align-items: center; }
+    .mission-visual { position: relative; }
+    .mission-img { width: 100%; border-radius: 20px; display: block; }
+    .mission-badge { position: absolute; bottom: -24px; right: -24px; background: var(--terracotta); color: white; border-radius: 18px; padding: 22px 26px; text-align: center; box-shadow: 0 12px 32px rgba(192,82,42,0.35); }
+    .mission-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 700; }
+    .mission-badge-text { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; opacity: 0.9; }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+    .pillar { background: var(--cream); border: 1px solid var(--pale); border-radius: 14px; padding: 20px; }
+    .pillar-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .pillar h4 { font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+    .pillar p { font-size: 0.8rem; color: var(--warm-mid); line-height: 1.6; }
+
+    /* IMPACT */
+    .impact { background: var(--ink); padding: 100px 8%; }
+    .impact-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .impact .section-tag { color: var(--gold); justify-content: center; }
+    .impact .section-tag::before { background: var(--gold); }
+    .impact .section-title { color: white; }
+    .impact .section-body { color: rgba(255,255,255,0.6); }
+    .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 48px; background: rgba(255,255,255,0.06); border-radius: 20px; overflow: hidden; }
+    .impact-card { padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.03); transition: background 0.3s; }
+    .impact-card:hover { background: rgba(255,255,255,0.07); }
+    .impact-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--gold); margin-bottom: 10px; }
+    .impact-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .impact-source { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 32px; }
+
+    /* PROGRAMS */
+    .programs { padding: 100px 8%; background: var(--cream); }
+    .progs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }
+    .progs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .prog-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid var(--pale); transition: transform 0.3s, box-shadow 0.3s; }
+    .prog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(28,22,12,0.1); }
+    .prog-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .prog-body { padding: 24px; }
+    .prog-tag { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .prog-tag.edu { background: rgba(43,94,63,0.1); color: var(--forest); }
+    .prog-tag.care { background: rgba(192,82,42,0.1); color: var(--terracotta); }
+    .prog-tag.comm { background: rgba(212,160,41,0.1); color: #8a6600; }
+    .prog-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+    .prog-body p { font-size: 0.84rem; color: var(--warm-mid); line-height: 1.75; margin-bottom: 18px; }
+    .prog-link { color: var(--terracotta); font-size: 0.84rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .prog-link:hover { gap: 10px; }
+
+    /* GALLERY */
+    .gallery-section { background: white; }
+    .gallery-public { padding: 80px 8%; }
+    .gallery-header-wrap { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; flex-wrap: wrap; gap: 16px; }
+    .admin-access-btn { display: flex; align-items: center; gap: 6px; background: var(--parchment); border: 1px solid var(--pale); color: var(--warm-mid); padding: 8px 16px; border-radius: 20px; font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; align-self: flex-start; margin-top: 8px; }
+    .admin-access-btn:hover { background: var(--ink); color: white; border-color: var(--ink); }
+    .gallery-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .gal-filter { padding: 7px 18px; border-radius: 30px; border: 1.5px solid var(--pale); background: white; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--warm-mid); cursor: pointer; transition: all 0.2s; }
+    .gal-filter.active, .gal-filter:hover { border-color: var(--terracotta); background: rgba(192,82,42,0.07); color: var(--terracotta); }
+    .gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .gal-card { border-radius: 16px; overflow: hidden; background: var(--cream); border: 1px solid var(--pale); cursor: pointer; transition: transform 0.25s, box-shadow 0.25s; animation: cardIn 0.4s ease both; }
+    @keyframes cardIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+    .gal-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(28,22,12,0.12); }
+    .gal-card-img-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+    .gal-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+    .gal-card:hover .gal-card-img-wrap img { transform: scale(1.06); }
+    .gal-card-tag { position: absolute; top: 10px; left: 10px; background: rgba(28,22,12,0.75); backdrop-filter: blur(6px); color: white; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+    .gal-card-tag.education { background: rgba(43,94,63,0.9); }
+    .gal-card-tag.orphanage { background: rgba(192,82,42,0.9); }
+    .gal-card-tag.community { background: rgba(212,160,41,0.9); color: var(--ink); }
+    .gal-card-tag.events { background: rgba(28,22,12,0.85); }
+    .gal-card-body { padding: 14px 16px; }
+    .gal-card-caption { font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.4; }
+    .gal-card-meta { display: flex; gap: 10px; font-size: 0.72rem; color: var(--warm-mid); flex-wrap: wrap; }
+    .gal-empty { text-align: center; padding: 80px 20px; }
+    .gal-empty-icon { font-size: 3.5rem; margin-bottom: 14px; }
+    .gal-empty p { font-size: 1rem; color: var(--warm-mid); line-height: 1.7; }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(20,14,6,0.94); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+    .lightbox.open { display: flex; }
+    .lb-close { position: absolute; top: 20px; right: 24px; background: rgba(255,255,255,0.1); border: none; color: white; font-size: 24px; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; transition: background 0.2s; z-index: 2; }
+    .lb-close:hover { background: var(--terracotta); }
+    .lb-prev, .lb-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: white; font-size: 32px; width: 52px; height: 52px; border-radius: 50%; cursor: pointer; transition: background 0.2s; z-index: 2; }
+    .lb-prev { left: 20px; } .lb-next { right: 20px; }
+    .lb-prev:hover, .lb-next:hover { background: var(--terracotta); }
+    .lb-inner { max-width: 880px; width: 90%; animation: lbIn 0.25s ease; }
+    @keyframes lbIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+    .lb-inner img { width: 100%; max-height: 65vh; object-fit: contain; border-radius: 12px; display: block; }
+    .lb-info { padding: 16px 4px 0; }
+    .lb-caption { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: white; font-weight: 600; margin-bottom: 8px; }
+    .lb-meta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .lb-tag { font-size: 0.72rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; background: var(--terracotta); color: white; text-transform: uppercase; letter-spacing: 0.08em; }
+    .lb-date, .lb-location { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+    /* ADMIN */
+    .admin-login-overlay { display: none; position: fixed; inset: 0; background: rgba(28,22,12,0.8); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
+    .admin-login-overlay.open { display: flex; }
+    .admin-login-box { background: white; border-radius: 22px; padding: 40px 36px; max-width: 420px; width: 90%; position: relative; animation: modalIn 0.28s ease; }
+    @keyframes modalIn { from { opacity:0; transform: scale(0.94) translateY(10px); } to { opacity:1; transform: scale(1) translateY(0); } }
+    .admin-login-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; text-align: center; }
+    .admin-login-sub { font-size: 0.85rem; color: var(--warm-mid); text-align: center; margin-bottom: 4px; }
+    .admin-login-err { color: #c0182a; font-size: 0.8rem; text-align: center; margin-top: 4px; display: none; }
+    .admin-hint { font-size: 0.75rem; color: var(--warm-mid); text-align: center; margin-top: 14px; line-height: 1.6; }
+    .admin-panel { background: #f5f0e8; min-height: 100vh; border-top: 3px solid var(--terracotta); display: none; }
+    .admin-topbar { background: var(--ink); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 58px; flex-wrap: wrap; gap: 8px; }
+    .admin-topbar-left { display: flex; align-items: center; gap: 12px; }
+    .admin-topbar-right { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .admin-logo { color: white; font-size: 0.95rem; }
+    .admin-badge { background: var(--terracotta); color: white; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+    .admin-nav-btn { padding: 6px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: rgba(255,255,255,0.65); font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .admin-nav-btn.active-tab { background: white; color: var(--ink); border-color: white; }
+    .admin-nav-btn:hover:not(.active-tab) { background: rgba(255,255,255,0.12); color: white; }
+    .admin-logout-btn { padding: 6px 14px; border-radius: 8px; border: 1px solid rgba(192,82,42,0.5); background: rgba(192,82,42,0.15); color: var(--terracotta-light); font-family: 'Outfit', sans-serif; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .admin-logout-btn:hover { background: var(--terracotta); color: white; }
+    .admin-tab-content { padding: 40px 5%; max-width: 1000px; }
+    .admin-section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .admin-section-sub { font-size: 0.88rem; color: var(--warm-mid); line-height: 1.7; margin-bottom: 28px; max-width: 600px; }
+    .upload-dropzone { border: 2.5px dashed var(--pale); border-radius: 18px; padding: 56px 24px; text-align: center; cursor: pointer; transition: all 0.2s; background: white; }
+    .upload-dropzone:hover, .upload-dropzone.drag-over { border-color: var(--terracotta); background: rgba(192,82,42,0.04); }
+    .dz-icon { font-size: 3rem; margin-bottom: 12px; }
+    .dz-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .dz-sub { font-size: 0.8rem; color: var(--warm-mid); }
+    .upload-queue { margin-top: 24px; }
+    .uq-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .uq-title { font-size: 0.9rem; font-weight: 700; color: var(--ink); flex: 1; }
+    .uq-clear { background: none; border: 1px solid var(--pale); border-radius: 8px; padding: 5px 12px; font-family: 'Outfit', sans-serif; font-size: 0.76rem; color: var(--warm-mid); cursor: pointer; }
+    .uq-clear:hover { border-color: var(--cam-red); color: var(--cam-red); }
+    .uq-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+    .uq-item { display: grid; grid-template-columns: 80px 1fr 1fr 160px auto; gap: 12px; align-items: start; background: white; border-radius: 14px; padding: 14px; border: 1px solid var(--pale); }
+    .uq-thumb { width: 80px; height: 64px; object-fit: cover; border-radius: 8px; display: block; }
+    .uq-remove { background: none; border: none; color: var(--warm-mid); font-size: 18px; cursor: pointer; padding: 4px; align-self: center; }
+    .uq-remove:hover { color: var(--cam-red); }
+    .upload-save-btn { width: 100%; padding: 15px; background: var(--forest); color: white; border: none; border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .upload-save-btn:hover { background: var(--forest-mid); }
+    .upload-progress { margin-top: 12px; background: var(--pale); border-radius: 8px; height: 6px; overflow: hidden; }
+    .upload-progress-bar { height: 100%; background: var(--forest); border-radius: 8px; transition: width 0.3s; width: 0; }
+    .manage-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .manage-count { font-size: 0.8rem; color: var(--warm-mid); }
+    .manage-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .manage-card { background: white; border-radius: 14px; overflow: hidden; border: 1px solid var(--pale); transition: box-shadow 0.2s; }
+    .manage-card:hover { box-shadow: 0 8px 24px rgba(28,22,12,0.1); }
+    .manage-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .manage-card-info { padding: 10px 12px; }
+    .manage-card-cap { font-size: 0.8rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .manage-card-meta { font-size: 0.7rem; color: var(--warm-mid); margin-bottom: 8px; }
+    .manage-card-actions { display: flex; gap: 6px; }
+    .manage-btn { flex: 1; padding: 6px; border-radius: 8px; border: 1px solid var(--pale); background: white; font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .manage-btn.edit { color: var(--forest); }
+    .manage-btn.edit:hover { background: rgba(43,94,63,0.1); border-color: var(--forest); }
+    .manage-btn.del { color: var(--cam-red); }
+    .manage-btn.del:hover { background: rgba(200,16,46,0.07); border-color: var(--cam-red); }
+    .manage-empty { text-align: center; padding: 48px; color: var(--warm-mid); font-size: 0.9rem; }
+    .settings-card { background: white; border-radius: 16px; padding: 28px; border: 1px solid var(--pale); max-width: 640px; }
+    .settings-card h4 { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .settings-card p { font-size: 0.85rem; color: var(--warm-mid); line-height: 1.7; }
+    .btn-danger { display: inline-flex; align-items: center; gap: 8px; background: rgba(200,16,46,0.08); color: var(--cam-red); border: 1.5px solid rgba(200,16,46,0.3); padding: 10px 22px; border-radius: 10px; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-danger:hover { background: var(--cam-red); color: white; border-color: var(--cam-red); }
+
+    /* DONATE */
+    .donate { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 100px 8%; background: var(--parchment); align-items: start; }
+    .donate-reasons { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .donate-reason { display: flex; align-items: center; gap: 12px; font-size: 0.86rem; color: var(--ink); padding: 10px 16px; background: white; border-radius: 10px; border: 1px solid var(--pale); }
+    .donate-reason::before { content: '✓'; color: var(--forest); font-weight: 700; flex-shrink: 0; }
+    .form-wrap { background: white; border-radius: 24px; padding: 36px; box-shadow: 0 12px 48px rgba(28,22,12,0.08); }
+    .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+    .form-sub { font-size: 0.82rem; color: var(--warm-mid); margin-bottom: 20px; }
+    .freq-tabs { display: flex; background: var(--cream); border-radius: 10px; padding: 4px; margin-bottom: 20px; }
+    .freq-tab { flex: 1; padding: 8px; border-radius: 8px; border: none; background: transparent; font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--warm-mid); cursor: pointer; transition: all 0.2s; }
+    .freq-tab.active { background: white; color: var(--ink); box-shadow: 0 2px 8px rgba(28,22,12,0.08); }
+    .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+    .amount-btn { padding: 10px; border-radius: 10px; border: 1.5px solid var(--pale); background: white; font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--ink); cursor: pointer; transition: all 0.2s; }
+    .amount-btn.active, .amount-btn:hover { border-color: var(--terracotta); background: rgba(192,82,42,0.07); color: var(--terracotta); }
+    .form-group { margin-bottom: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .form-input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--pale); border-radius: 10px; font-family: 'Outfit', sans-serif; font-size: 0.88rem; color: var(--ink); background: var(--cream); transition: border-color 0.2s; }
+    .form-input:focus { outline: none; border-color: var(--terracotta); background: white; }
+    .form-textarea { width: 100%; padding: 11px 14px; border: 1.5px solid var(--pale); border-radius: 10px; font-family: 'Outfit', sans-serif; font-size: 0.88rem; color: var(--ink); background: var(--cream); min-height: 110px; resize: vertical; transition: border-color 0.2s; }
+    .form-textarea:focus { outline: none; border-color: var(--terracotta); background: white; }
+    .donate-submit { width: 100%; padding: 15px; background: var(--terracotta); color: white; border: none; border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.25s; margin-top: 4px; }
+    .donate-submit:hover { background: var(--terracotta-dark); }
+    .secure-note { text-align: center; font-size: 0.72rem; color: var(--warm-mid); margin-top: 12px; }
+
+    /* STORIES */
+    .stories { padding: 100px 8%; background: white; }
+    .stories-header { text-align: center; margin-bottom: 56px; }
+    .stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .story-card { background: var(--cream); border-radius: 20px; padding: 32px; border: 1px solid var(--pale); position: relative; overflow: hidden; }
+    .story-qmark { font-family: 'Cormorant Garamond', serif; font-size: 6rem; color: var(--terracotta); opacity: 0.12; position: absolute; top: -10px; left: 20px; line-height: 1; }
+    .story-text { font-size: 0.9rem; color: var(--ink); line-height: 1.8; margin-bottom: 24px; position: relative; z-index: 1; }
+    .story-author { display: flex; align-items: center; gap: 14px; }
+    .story-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .story-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); }
+    .story-role { font-size: 0.76rem; color: var(--warm-mid); margin-top: 2px; }
+
+    /* CONTACT */
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 100px 8%; background: var(--parchment); align-items: start; }
+    .contact-cards { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .contact-card { display: flex; align-items: flex-start; gap: 16px; background: white; border-radius: 14px; padding: 18px; border: 1px solid var(--pale); }
+    .contact-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .contact-label { font-size: 0.72rem; font-weight: 700; color: var(--warm-mid); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+    .contact-value { font-size: 0.88rem; color: var(--ink); font-weight: 500; }
+    .contact-value a { color: var(--terracotta); text-decoration: none; }
+    .contact-form-box { background: white; border-radius: 24px; padding: 36px; box-shadow: 0 12px 48px rgba(28,22,12,0.08); }
+    .contact-submit { width: 100%; padding: 15px; background: var(--ink); color: white; border: none; border-radius: 12px; font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.25s; }
+    .contact-submit:hover { background: var(--forest); }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: white; padding: 80px 8% 40px; }
+    .footer-flag { display: flex; height: 3px; margin-bottom: 60px; }
+    .footer-flag span:nth-child(1) { flex: 1; background: var(--cam-green); }
+    .footer-flag span:nth-child(2) { flex: 1; background: var(--cam-red); }
+    .footer-flag span:nth-child(3) { flex: 1; background: var(--cam-yellow); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+    .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 700; margin: 12px 0 10px; }
+    .footer-brand p { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.8; max-width: 280px; }
+    .footer-socials { display: flex; gap: 10px; margin-top: 20px; }
+    .social-link { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.82rem; transition: all 0.2s; }
+    .social-link:hover { background: var(--terracotta); border-color: var(--terracotta); color: white; }
+    .footer-col-head { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.86rem; transition: color 0.2s; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; }
+    .footer-bottom p { font-size: 0.76rem; color: rgba(255,255,255,0.3); margin-bottom: 6px; }
+
+    /* MODALS */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(28,22,12,0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+    .modal-overlay.open { display: flex; }
+    .modal { background: white; border-radius: 24px; padding: 48px 40px; max-width: 480px; width: 90%; text-align: center; position: relative; animation: modalIn 0.28s ease; }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: var(--cream); border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 14px; color: var(--warm-mid); }
+    .modal-icon { font-size: 3rem; margin-bottom: 16px; }
+    .modal h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+    .modal p { font-size: 0.9rem; color: var(--warm-mid); line-height: 1.7; }
+
+    /* ============================================================
+       HAMBURGER — animated to X
+    ============================================================ */
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; width: 40px; height: 40px; flex-shrink: 0; }
+    .hamburger span { width: 22px; height: 2px; background: var(--ink); display: block; transform-origin: center; transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============================================================
+       MOBILE MENU DRAWER
+    ============================================================ */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 850;
+      background: rgba(28,22,12,0.55);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-menu.open { opacity: 1; }
+    .mobile-menu-drawer {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: min(80vw, 320px);
+      background: var(--cream);
+      padding: 0;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column;
+      overflow-y: auto;
+    }
+    .mobile-menu.open .mobile-menu-drawer { transform: translateX(0); }
+    .mobile-menu-head {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid var(--pale);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mobile-menu-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .mobile-menu-close {
+      background: none; border: none; cursor: pointer;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--parchment); font-size: 16px; color: var(--warm-mid);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mobile-menu-links { list-style: none; padding: 16px 0; flex: 1; }
+    .mobile-menu-links li { border-bottom: 1px solid var(--pale); }
+    .mobile-menu-links a {
+      display: block; padding: 16px 24px;
+      font-size: 1rem; font-weight: 600; color: var(--ink);
+      text-decoration: none; transition: background 0.15s, color 0.15s;
+    }
+    .mobile-menu-links a:hover { background: var(--parchment); color: var(--terracotta); }
+    .mobile-menu-links .mob-donate {
+      margin: 16px 24px 8px;
+      background: var(--terracotta); color: white !important;
+      border-radius: 12px; text-align: center;
+      padding: 14px 24px; display: block;
+    }
+    .mobile-menu-links .mob-donate:hover { background: var(--terracotta-dark); }
+    .mobile-menu-lang {
+      padding: 16px 24px 24px;
+      border-top: 1px solid var(--pale);
+      display: flex; gap: 10px;
+    }
+    .mob-lang-btn {
+      flex: 1; padding: 10px; border-radius: 10px;
+      border: 1.5px solid var(--pale); background: white;
+      font-family: 'Outfit', sans-serif; font-size: 0.85rem; font-weight: 600;
+      color: var(--warm-mid); cursor: pointer; transition: all 0.2s; text-align: center;
+    }
+    .mob-lang-btn.active { border-color: var(--terracotta); background: rgba(192,82,42,0.08); color: var(--terracotta); }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+    /* ============================================================
+       TABLET  ≤ 960px
+    ============================================================ */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 60px 6%; }
+      .hero-left::after { display: none; }
+      .hero-right { height: 280px; }
+      .context-banner { grid-template-columns: 1fr; padding: 60px 6%; gap: 40px; }
+      .context-map { display: none; }
+      .mission { grid-template-columns: 1fr; padding: 60px 6%; gap: 40px; }
+      .mission-visual { display: none; }
+      .impact-grid { grid-template-columns: repeat(2,1fr); }
+      .progs-grid { grid-template-columns: 1fr; }
+      .donate { grid-template-columns: 1fr; gap: 40px; padding: 60px 6%; }
+      .stories-grid { grid-template-columns: 1fr; }
+      .contact { grid-template-columns: 1fr; gap: 40px; padding: 60px 6%; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-brand { grid-column: span 2; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================================
+       MOBILE  ≤ 600px
+    ============================================================ */
+    @media (max-width: 600px) {
+      /* Typography scale-down */
+      h1 { font-size: 2.4rem !important; }
+      .section-title { font-size: 1.8rem !important; }
+      .impact-num { font-size: 2.2rem !important; }
+
+      /* Spacing */
+      .hero-left { padding: 48px 5%; }
+      section, .donate, .contact, .mission, .context-banner { padding: 52px 5% !important; }
+      .gallery-public { padding: 52px 5%; }
+      footer { padding: 52px 5% 32px; }
+      .stories { padding: 52px 5% !important; }
+      .programs { padding: 52px 5% !important; }
+      .impact { padding: 52px 5% !important; }
+
+      /* Hero */
+      .hero-right { height: 220px; }
+      .hero-stat-bar { position: relative; display: grid; grid-template-columns: 1fr 1fr; }
+      .hero-stat-item { padding: 14px 10px; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .hero-stat-item:nth-child(2n) { border-right: none; }
+      .hero-stat-num { font-size: 1.4rem; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas a { text-align: center; justify-content: center; }
+
+      /* Context stats */
+      .context-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .ctx-num { font-size: 1.6rem; }
+
+      /* Mission pillars */
+      .pillars { grid-template-columns: 1fr; }
+
+      /* Impact */
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .impact-card { padding: 24px 14px; }
+
+      /* Programs */
+      .progs-header { gap: 12px; }
+
+      /* Gallery */
+      .gal-grid { grid-template-columns: 1fr; }
+      .gallery-filters { gap: 6px; }
+      .gal-filter { padding: 6px 14px; font-size: 0.78rem; }
+
+      /* Forms */
+      .form-row { grid-template-columns: 1fr; }
+      .form-wrap, .contact-form-box { padding: 24px 20px; }
+      .amount-grid { grid-template-columns: repeat(3, 1fr); }
+
+      /* Stories */
+      .stories-header { margin-bottom: 32px; }
+      .story-card { padding: 24px 20px; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-brand { grid-column: span 1; }
+      .footer-flag { margin-bottom: 36px; }
+
+      /* Upload queue on mobile */
+      .uq-item { grid-template-columns: 70px 1fr; grid-template-rows: auto auto auto auto; gap: 10px; }
+      .uq-remove { grid-column: 2; }
+
+      /* Admin topbar */
+      .admin-topbar { height: auto; padding: 12px 5%; flex-direction: column; align-items: flex-start; gap: 10px; }
+      .admin-topbar-right { flex-wrap: wrap; gap: 4px; }
+      .admin-nav-btn { font-size: 0.72rem; padding: 6px 10px; }
+
+      /* Lang strip */
+      .lang-strip { padding: 6px 5%; }
+      .lang-label { display: none; }
+    }
+
+    /* ============================================================
+       TINY  ≤ 380px
+    ============================================================ */
+    @media (max-width: 380px) {
+      h1 { font-size: 2rem !important; }
+      .hero-left { padding: 36px 5%; }
+      .hero-stat-bar { grid-template-columns: 1fr 1fr; }
+      .nav-logo-name { font-size: 0.9rem; }
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       PAGE ROUTER — sub-pages for Impact & Gallery
+    ============================================================ */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* Sub-page hero banner */
+    .subpage-hero {
+      background: var(--ink);
+      padding: 72px 8% 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .subpage-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(192,82,42,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .subpage-flag { height: 3px; display: flex; position: absolute; top: 0; left: 0; right: 0; }
+    .subpage-flag span:nth-child(1) { flex: 1; background: var(--cam-green); }
+    .subpage-flag span:nth-child(2) { flex: 1; background: var(--cam-red); }
+    .subpage-flag span:nth-child(3) { flex: 1; background: var(--cam-yellow); }
+    .subpage-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.55); font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+      padding: 7px 16px; border-radius: 30px; cursor: pointer;
+      transition: all 0.2s; margin-bottom: 28px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .subpage-back:hover { background: rgba(255,255,255,0.15); color: white; }
+    .subpage-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,160,41,0.15); border: 1px solid rgba(212,160,41,0.35);
+      color: var(--gold-light); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 30px; margin-bottom: 18px;
+    }
+    .subpage-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700; color: white; line-height: 1.1;
+      margin-bottom: 14px; animation: none;
+    }
+    .subpage-hero h1 em { color: var(--gold); font-style: italic; }
+    .subpage-hero p {
+      font-size: 1rem; color: rgba(255,255,255,0.65);
+      line-height: 1.75; max-width: 560px;
+    }
+    .subpage-body { background: var(--cream); min-height: 60vh; }
+
+    /* Impact sub-page specifics */
+    .subpage-stats-bar {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      background: rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 40px;
+    }
+    .subpage-stat {
+      padding: 24px 20px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .subpage-stat:last-child { border-right: none; }
+    .subpage-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 700; color: var(--gold);
+    }
+    .subpage-stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); line-height: 1.5; margin-top: 4px; }
+
+    /* Impact content panels */
+    .impact-page-body { padding: 80px 8%; }
+    .impact-breakdown {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 28px; margin-bottom: 64px;
+    }
+    .impact-breakdown-card {
+      background: white; border-radius: 20px; padding: 32px;
+      border: 1px solid var(--pale);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .impact-breakdown-card:hover { box-shadow: 0 16px 40px rgba(28,22,12,0.1); transform: translateY(-4px); }
+    .ibc-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .ibc-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; color: var(--terracotta); margin-bottom: 6px; }
+    .ibc-label { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .ibc-desc { font-size: 0.86rem; color: var(--warm-mid); line-height: 1.75; }
+    .impact-regions { background: white; border-radius: 20px; padding: 40px; border: 1px solid var(--pale); margin-bottom: 48px; }
+    .impact-regions h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--ink); margin-bottom: 8px; }
+    .impact-regions .sub { font-size: 0.88rem; color: var(--warm-mid); margin-bottom: 28px; }
+    .regions-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .region-pill {
+      background: var(--cream); border: 1.5px solid var(--pale);
+      border-radius: 10px; padding: 12px 10px; text-align: center;
+      font-size: 0.78rem; font-weight: 600; color: var(--ink);
+      transition: all 0.2s;
+    }
+    .region-pill.active { background: rgba(192,82,42,0.08); border-color: var(--terracotta); color: var(--terracotta); }
+    .region-pill .region-flag { font-size: 1.2rem; display: block; margin-bottom: 4px; }
+    .impact-source-box {
+      background: rgba(43,94,63,0.07); border-left: 3px solid var(--forest);
+      border-radius: 0 10px 10px 0; padding: 16px 20px;
+      font-size: 0.82rem; color: var(--warm-mid); line-height: 1.7;
+    }
+    .impact-cta-row {
+      text-align: center; padding: 60px 8%;
+      background: var(--parchment);
+    }
+    .impact-cta-row h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--ink); margin-bottom: 12px; }
+    .impact-cta-row p { font-size: 0.95rem; color: var(--warm-mid); margin-bottom: 28px; }
+
+    /* Gallery sub-page */
+    .gallery-page-body { padding: 48px 8%; }
+
+    @media (max-width: 960px) {
+      .subpage-stats-bar { grid-template-columns: repeat(2,1fr); }
+      .subpage-stat:nth-child(2) { border-right: none; }
+      .subpage-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.08); }
+      .impact-breakdown { grid-template-columns: 1fr; }
+      .regions-grid { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 600px) {
+      .subpage-hero { padding: 56px 5% 48px; }
+      .subpage-stats-bar { grid-template-columns: 1fr 1fr; }
+      .impact-page-body { padding: 48px 5%; }
+      .impact-regions { padding: 24px 20px; }
+      .regions-grid { grid-template-columns: repeat(2,1fr); }
+      .impact-cta-row { padding: 48px 5%; }
+      .gallery-page-body { padding: 32px 5%; }
+    }
+  </style>
+</head>
+<body id="top">
+
+<!-- LANGUAGE STRIP -->
+<div class="lang-strip">
+  <span class="lang-label">Language / Langue</span>
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">🇬🇧 English</button>
+  <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">🇫🇷 Français</button>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#top" class="nav-logo">
+    <div class="nav-emblem">🌍</div>
+    <div class="nav-logo-name">Forward Africa Foundation</div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#mission" data-i18n="nav.mission">Mission</a></li>
+    <li><a href="#programs" data-i18n="nav.programs">Programs</a></li>
+    <li><a href="#impact" data-i18n="nav.impact">Impact</a></li>
+    <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="#donate" class="nav-donate" data-i18n="nav.donate">♥ Donate</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenu(event)">
+  <div class="mobile-menu-drawer">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-logo">🌍 Forward Africa Foundation</span>
+      <button class="mobile-menu-close" onclick="toggleNav()">✕</button>
+    </div>
+    <ul class="mobile-menu-links" id="mobileLinks">
+      <li><a href="#mission" data-i18n="nav.mission" onclick="toggleNav()">Mission</a></li>
+      <li><a href="#programs" data-i18n="nav.programs" onclick="toggleNav()">Programs</a></li>
+      <li><a href="#impact" data-i18n="nav.impact" onclick="toggleNav()">Impact</a></li>
+      <li><a href="#gallery" data-i18n="nav.gallery" onclick="toggleNav()">Gallery</a></li>
+      <li><a href="#contact" data-i18n="nav.contact" onclick="toggleNav()">Contact</a></li>
+      <li><a href="#donate" class="mob-donate" data-i18n="nav.donate" onclick="toggleNav()">♥ Donate</a></li>
+    </ul>
+    <div class="mobile-menu-lang">
+      <button class="mob-lang-btn active" id="mob-btn-en" onclick="setLang('en')">🇬🇧 English</button>
+      <button class="mob-lang-btn" id="mob-btn-fr" onclick="setLang('fr')">🇫🇷 Français</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN PAGE
+============================================================ -->
+
+<!-- ============================================================
+     MAIN PAGE
+============================================================ -->
+<div id="page-main" class="page active">
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="flag-stripe"><span></span><span></span><span></span></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow" data-i18n="hero.eyebrow">🇨🇲 Rooted in Cameroon</div>
+    <h1 data-i18n-html="hero.h1">Building <em>Futures</em><br/>in the Heart<br/>of Cameroon</h1>
+    <p class="hero-desc" data-i18n="hero.desc">In a country where 44% of children live below the poverty line and 72% face learning poverty, Forward Africa Foundation is changing lives — one classroom, one orphanage, one community at a time.</p>
+    <div class="hero-ctas">
+      <a href="#donate" class="btn-primary" data-i18n="hero.cta1">♥ Donate Now</a>
+      <a href="#programs" class="btn-outline" data-i18n="hero.cta2">Our Programs →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1594708767771-a5e9d3012f31?w=1200&q=80" alt="Cameroon children" />
+    <div class="hero-right-overlay"></div>
+    <div class="hero-stat-bar">
+      <div class="hero-stat-item"><div class="hero-stat-num">30M+</div><div class="hero-stat-label" data-i18n="hero.stat1">People in Cameroon</div></div>
+      <div class="hero-stat-item"><div class="hero-stat-num">44%</div><div class="hero-stat-label" data-i18n="hero.stat2">Children in poverty</div></div>
+      <div class="hero-stat-item"><div class="hero-stat-num">14%</div><div class="hero-stat-label" data-i18n="hero.stat3">Children out of school</div></div>
+      <div class="hero-stat-item"><div class="hero-stat-num">72%</div><div class="hero-stat-label" data-i18n="hero.stat4">Learning poverty</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<!-- CAMEROON CONTEXT -->
+<div class="context-banner" id="cameroon">
+  <div class="context-map reveal">
+    <svg viewBox="0 0 180 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px;display:block;margin:0 auto">
+      <path d="M90 8 C118 8 148 28 158 56 C168 82 163 108 158 128 C153 152 148 168 138 188 C128 208 112 228 90 246 C68 228 52 208 42 188 C32 168 27 152 22 128 C17 108 12 82 22 56 C32 28 62 8 90 8Z" fill="rgba(192,82,42,0.1)" stroke="rgba(192,82,42,0.3)" stroke-width="2"/>
+      <circle cx="82" cy="128" r="4" fill="#c0522a" opacity="0.7"/>
+      <text x="74" y="119" font-family="sans-serif" font-size="8" fill="#c0522a" opacity="0.9">Yaoundé</text>
+      <circle cx="54" cy="100" r="3" fill="#2b5e3f" opacity="0.7"/>
+      <text x="16" y="98" font-family="sans-serif" font-size="7.5" fill="#2b5e3f" opacity="0.9">Douala</text>
+      <circle cx="75" cy="78" r="2.5" fill="#d4a029" opacity="0.7"/>
+      <text x="78" y="79" font-family="sans-serif" font-size="6.5" fill="#8a6600" opacity="0.9">Bafoussam</text>
+    </svg>
+    <div class="cam-flag-bar"><span></span><span></span><span></span></div>
+    <div class="cam-map-label" data-i18n="ctx.mapLabel">🇨🇲 Cameroon</div>
+  </div>
+  <div class="reveal d1">
+    <div class="section-tag" data-i18n="ctx.tag">Why Cameroon?</div>
+    <h2 class="section-title" data-i18n-html="ctx.title">The Need is<br/><em>Real &amp; Urgent</em></h2>
+    <p class="section-body" data-i18n="ctx.body">Cameroon is a resilient, bilingual nation of over 30 million people — rich in culture and potential. Yet deep inequalities persist, especially for children in rural areas, displaced families, and conflict-affected regions. The statistics below come from UNICEF, the World Bank, and UNESCO.</p>
+    <div class="context-stats">
+      <div class="ctx-stat"><div class="ctx-num">72%</div><div class="ctx-label" data-i18n="ctx.s1">Learning poverty — unable to read by age 10</div><div class="ctx-source">World Bank / UNESCO 2024</div></div>
+      <div class="ctx-stat"><div class="ctx-num">44%</div><div class="ctx-label" data-i18n="ctx.s2">Children (5 million) below national poverty line</div><div class="ctx-source">UNICEF / ECAM4</div></div>
+      <div class="ctx-stat"><div class="ctx-num">14%</div><div class="ctx-label" data-i18n="ctx.s3">Children ages 6–14 not enrolled in school</div><div class="ctx-source">UNICEF Cameroon 2025</div></div>
+      <div class="ctx-stat"><div class="ctx-num">56%</div><div class="ctx-label" data-i18n="ctx.s4">Rural poverty rate — Far North &amp; North regions</div><div class="ctx-source">World Bank 2022</div></div>
+      <div class="ctx-stat"><div class="ctx-num">69%</div><div class="ctx-label" data-i18n="ctx.s5">Poverty rate in the Far North region</div><div class="ctx-source">UNICEF Cameroon 2025</div></div>
+      <div class="ctx-stat"><div class="ctx-num">1M+</div><div class="ctx-label" data-i18n="ctx.s6">Children internally displaced by conflict</div><div class="ctx-source">UNHCR / UNICEF 2024</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+  <div class="mission-visual reveal">
+    <img class="mission-img" src="https://images.unsplash.com/photo-1518398046578-8cca57782e17?w=800&q=80" alt="Cameroon children in classroom" />
+    <div class="mission-badge">
+      <div class="mission-badge-num">10+</div>
+      <div class="mission-badge-text" data-i18n="mission.badge">Years of Impact</div>
+    </div>
+  </div>
+  <div class="reveal d1">
+    <div class="section-tag" data-i18n="mission.tag">Our Mission</div>
+    <h2 class="section-title" data-i18n-html="mission.title">Every Cameroonian Child<br/><em>Deserves</em> a Future</h2>
+    <p class="section-body" data-i18n="mission.body">We work across all ten regions of Cameroon — with special focus on the North-West, Far North, and rural communities — delivering quality education and compassionate care for orphaned children. We partner with local schools, orphanages, and community leaders to create lasting change from within.</p>
+    <div class="pillars">
+      <div class="pillar"><div class="pillar-icon">📚</div><h4 data-i18n="mission.p1h">Education First</h4><p data-i18n="mission.p1b">Schools, teachers, textbooks and technology in underserved regions of Cameroon.</p></div>
+      <div class="pillar"><div class="pillar-icon">🏠</div><h4 data-i18n="mission.p2h">Orphan Care</h4><p data-i18n="mission.p2b">Safe, nurturing homes with nutrition, counseling and full school enrollment.</p></div>
+      <div class="pillar"><div class="pillar-icon">🌱</div><h4 data-i18n="mission.p3h">Community Growth</h4><p data-i18n="mission.p3b">Empowering local leaders in both Francophone and Anglophone regions.</p></div>
+      <div class="pillar"><div class="pillar-icon">💚</div><h4 data-i18n="mission.p4h">Child Welfare</h4><p data-i18n="mission.p4b">Health, nutrition &amp; emotional wellbeing for every child we serve in Cameroon.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact" id="impact">
+  <div class="impact-inner">
+    <div class="section-tag reveal" data-i18n="impact.tag">Our Impact in Cameroon</div>
+    <h2 class="section-title reveal" data-i18n-html="impact.title">Numbers Behind<br/>Every Child We Serve</h2>
+    <p class="section-body reveal" data-i18n="impact.body">Every figure represents a real Cameroonian child with a real future ahead of them.</p>
+    <div class="impact-grid">
+      <div class="impact-card reveal"><div class="impact-num">3,800+</div><div class="impact-label" data-i18n="impact.i1">Children supported<br/>across Cameroon annually</div></div>
+      <div class="impact-card reveal d1"><div class="impact-num">47</div><div class="impact-label" data-i18n="impact.i2">Partner schools<br/>equipped &amp; staffed</div></div>
+      <div class="impact-card reveal d2"><div class="impact-num">22</div><div class="impact-label" data-i18n="impact.i3">Orphanages supported<br/>in 8 of Cameroon's 10 regions</div></div>
+      <div class="impact-card reveal d3"><div class="impact-num">$2.1M</div><div class="impact-label" data-i18n="impact.i4">Invested in Cameroonian<br/>education &amp; child welfare</div></div>
+    </div>
+    <p class="impact-source" data-i18n="impact.source">Country statistics: UNICEF Cameroon (2025), World Bank, UNESCO Institute for Statistics</p>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="progs-header">
+    <div>
+      <div class="section-tag reveal" data-i18n="progs.tag">What We Do</div>
+      <h2 class="section-title reveal" data-i18n-html="progs.title">Our Programs<br/>in Cameroon</h2>
+    </div>
+    <p class="section-body reveal" style="max-width:300px" data-i18n="progs.sub">Three pillars of action designed for Cameroonian communities and their unique needs.</p>
+  </div>
+  <div class="progs-grid">
+    <div class="prog-card reveal">
+      <img class="prog-img" src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&q=80" alt="Education Cameroon" />
+      <div class="prog-body">
+        <span class="prog-tag edu" data-i18n="progs.t1">Education</span>
+        <h3 data-i18n="progs.h1">Schools for Cameroon</h3>
+        <p data-i18n="progs.b1">With 14% of children ages 6–14 out of school and 72% facing learning poverty (UNESCO/World Bank), we fund school construction, teacher training, and textbooks — prioritizing the Far North, North-West, and rural communities where the gap is greatest.</p>
+        <a href="#donate" class="prog-link" data-i18n="progs.link">Support this program →</a>
+      </div>
+    </div>
+    <div class="prog-card reveal d1">
+      <img class="prog-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Orphanage support" />
+      <div class="prog-body">
+        <span class="prog-tag care" data-i18n="progs.t2">Orphan Care</span>
+        <h3 data-i18n="progs.h2">Safe Homes Cameroon</h3>
+        <p data-i18n="progs.b2">Almost half of Cameroon's children live in poverty (UNICEF), and the ongoing Anglophone crisis has displaced over 1 million children. We partner with orphanages across 8 of Cameroon's regions — providing beds, nutritious meals, counseling and school enrollment for every child.</p>
+        <a href="#donate" class="prog-link" data-i18n="progs.link">Support this program →</a>
+      </div>
+    </div>
+    <div class="prog-card reveal d2">
+      <img class="prog-img" src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=80" alt="Community development" />
+      <div class="prog-body">
+        <span class="prog-tag comm" data-i18n="progs.t3">Community</span>
+        <h3 data-i18n="progs.h3">Roots &amp; Wings</h3>
+        <p data-i18n="progs.b3">Cameroon's bilingual, multicultural identity is its greatest strength. We invest in local leaders, women's literacy, youth vocational training, and sustainable agriculture — with programs in both Francophone and Anglophone regions of Cameroon.</p>
+        <a href="#donate" class="prog-link" data-i18n="progs.link">Support this program →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-section" id="gallery">
+  <div class="gallery-public" id="galleryPublic">
+    <div class="gallery-header-wrap">
+      <div>
+        <div class="section-tag reveal" data-i18n="gal.tag">Our Work in Action</div>
+        <h2 class="section-title reveal" data-i18n-html="gal.title">Project <em>Gallery</em></h2>
+        <p class="section-body reveal" data-i18n="gal.sub">Real photos from our work across Cameroon — schools, orphanages, and communities we serve.</p>
+      </div>
+      <button class="admin-access-btn" onclick="showAdminLogin()">⚙ <span data-i18n="gal.admin">Admin</span></button>
+    </div>
+    <div class="gallery-filters" id="galleryFilters"></div>
+    <div class="gal-grid" id="galGrid"></div>
+    <div class="gal-empty" id="galEmpty" style="display:none">
+      <div class="gal-empty-icon">📸</div>
+      <p data-i18n="gal.empty">No project photos yet. Check back soon — we're documenting our work in Cameroon!</p>
+    </div>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button class="lb-close" onclick="closeLightbox()">✕</button>
+      <button class="lb-prev" onclick="lbNav(-1,event)">‹</button>
+      <button class="lb-next" onclick="lbNav(1,event)">›</button>
+      <div class="lb-inner" onclick="event.stopPropagation()">
+        <img id="lbImg" src="" alt="" />
+        <div class="lb-info">
+          <div class="lb-caption" id="lbCaption"></div>
+          <div class="lb-meta"><span class="lb-tag" id="lbTag"></span><span class="lb-date" id="lbDate"></span><span class="lb-location" id="lbLocation"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN LOGIN -->
+  <div class="admin-login-overlay" id="adminLoginOverlay">
+    <div class="admin-login-box">
+      <button class="modal-close" onclick="hideAdminLogin()">✕</button>
+      <div style="font-size:2rem;text-align:center;margin-bottom:12px">🔐</div>
+      <h3 class="admin-login-title" data-i18n="adm.loginTitle">Admin Access</h3>
+      <p class="admin-login-sub" data-i18n="adm.loginSub">Enter your admin password to manage gallery photos.</p>
+      <input type="password" class="form-input" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter') checkAdminPw()" style="margin:16px 0 10px" />
+      <div class="admin-login-err" id="adminLoginErr" data-i18n="adm.loginErr">Incorrect password. Try again.</div>
+      <button class="btn-primary" style="width:100%;justify-content:center;margin-top:4px" onclick="checkAdminPw()"><span data-i18n="adm.loginBtn">Enter Admin Panel →</span></button>
+      <p class="admin-hint" data-i18n-html="adm.loginHint">Default password: <strong>faf2025</strong> — change it in Settings after logging in.</p>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div class="admin-panel" id="adminPanel">
+    <div class="admin-topbar">
+      <div class="admin-topbar-left">
+        <span class="admin-logo">🌍 <strong>FAF Admin</strong></span>
+        <span class="admin-badge" data-i18n="adm.badge">Gallery Manager</span>
+      </div>
+      <div class="admin-topbar-right">
+        <button class="admin-nav-btn" onclick="adminTab('upload',this)" data-i18n="adm.tabUpload">📤 Upload Photos</button>
+        <button class="admin-nav-btn" onclick="adminTab('manage',this)" data-i18n="adm.tabManage">🗂 Manage Gallery</button>
+        <button class="admin-nav-btn" onclick="adminTab('settings',this)" data-i18n="adm.tabSettings">⚙ Settings</button>
+        <button class="admin-logout-btn" onclick="logoutAdmin()" data-i18n="adm.logout">Log Out</button>
+      </div>
+    </div>
+    <div class="admin-tab-content" id="tabUpload">
+      <div class="admin-section-title" data-i18n="adm.upTitle">Upload Project Photos</div>
+      <p class="admin-section-sub" data-i18n="adm.upSub">Select one or multiple photos from your device. Add captions, location, date and category. Photos are stored in your browser and displayed on the public gallery immediately.</p>
+      <div class="upload-dropzone" id="uploadDropzone" ondragover="dzDragOver(event)" ondragleave="dzDragLeave(event)" ondrop="dzDrop(event)" onclick="document.getElementById('fileInput').click()">
+        <div class="dz-icon">📷</div>
+        <div class="dz-title" data-i18n="adm.dzTitle">Drop photos here or click to browse</div>
+        <div class="dz-sub" data-i18n="adm.dzSub">JPG, PNG, WebP — multiple files supported — max 5MB each</div>
+        <input type="file" id="fileInput" accept="image/*" multiple style="display:none" onchange="handleFileSelect(event)" />
+      </div>
+      <div class="upload-queue" id="uploadQueue" style="display:none">
+        <div class="uq-header">
+          <div class="uq-title"><span data-i18n="adm.qTitle">Photos to Upload</span> (<span id="qCount">0</span>)</div>
+          <button class="uq-clear" onclick="clearQueue()" data-i18n="adm.qClear">Clear All</button>
+        </div>
+        <div class="uq-items" id="uqItems"></div>
+        <button class="upload-save-btn" id="uploadSaveBtn" onclick="saveAllPhotos()" data-i18n="adm.saveBtn">💾 Save All to Gallery</button>
+        <div class="upload-progress" id="uploadProgress" style="display:none"><div class="upload-progress-bar" id="uploadProgressBar"></div></div>
+      </div>
+    </div>
+    <div class="admin-tab-content" id="tabManage" style="display:none">
+      <div class="admin-section-title" data-i18n="adm.manTitle">Manage Gallery Photos</div>
+      <div class="manage-toolbar">
+        <input class="form-input" id="manageSearch" placeholder="Search photos..." oninput="renderManageGrid()" style="max-width:260px;font-size:0.85rem" />
+        <select class="form-input" id="manageFilter" onchange="renderManageGrid()" style="max-width:180px;font-size:0.85rem">
+          <option value="all" data-i18n="adm.catAll">All Categories</option>
+          <option value="education" data-i18n="cat.education">Education</option>
+          <option value="orphanage" data-i18n="cat.orphanage">Orphanages</option>
+          <option value="community" data-i18n="cat.community">Community</option>
+          <option value="events" data-i18n="cat.events">Events</option>
+        </select>
+        <span class="manage-count" id="manageCount"></span>
+      </div>
+      <div class="manage-grid" id="manageGrid"></div>
+      <div class="manage-empty" id="manageEmpty" style="display:none"><p data-i18n="adm.manEmpty">No photos in gallery yet. Upload some above!</p></div>
+    </div>
+    <div class="admin-tab-content" id="tabSettings" style="display:none">
+      <div class="admin-section-title" data-i18n="adm.setTitle">Admin Settings</div>
+      <div class="settings-card">
+        <h4 data-i18n="adm.pwTitle">🔑 Change Admin Password</h4>
+        <p data-i18n="adm.pwSub">Update your admin password. Make sure to remember it — there is no recovery option.</p>
+        <div class="form-group" style="margin-top:16px;max-width:340px">
+          <label class="form-label" data-i18n="adm.pw1">New Password</label>
+          <input class="form-input" type="password" id="newPw1" />
+        </div>
+        <div class="form-group" style="max-width:340px">
+          <label class="form-label" data-i18n="adm.pw2">Confirm Password</label>
+          <input class="form-input" type="password" id="newPw2" />
+        </div>
+        <button class="btn-primary" onclick="changePassword()" style="margin-top:8px" data-i18n="adm.pwBtn">Update Password</button>
+        <div id="pwMsg" style="margin-top:10px;font-size:0.82rem;display:none"></div>
+      </div>
+      <div class="settings-card" style="margin-top:20px">
+        <h4 data-i18n="adm.delTitle">🗑 Clear All Gallery Photos</h4>
+        <p data-i18n="adm.delSub">Permanently delete all photos from the gallery. This cannot be undone.</p>
+        <button class="btn-danger" onclick="clearAllPhotos()" style="margin-top:14px" data-i18n="adm.delBtn">⚠ Delete All Photos</button>
+      </div>
+      <div class="settings-card" style="margin-top:20px">
+        <h4 data-i18n="adm.infoTitle">ℹ About This Gallery System</h4>
+        <p data-i18n="adm.infoBody">Photos are stored in your browser's local storage as base64. This means photos are tied to the browser/device you upload from. For a production site: connect a cloud storage service like Cloudinary or AWS S3, or use a CMS like Netlify CMS.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT PHOTO MODAL -->
+<div class="modal-overlay" id="editPhotoModal">
+  <div class="modal" style="max-width:520px;text-align:left">
+    <button class="modal-close" onclick="closeModal('editPhotoModal')">✕</button>
+    <div style="font-size:1.4rem;margin-bottom:4px">✏️ <span data-i18n="adm.editTitle">Edit Photo</span></div>
+    <input type="hidden" id="editPhotoId" />
+    <div style="margin:14px 0 10px;border-radius:10px;overflow:hidden;max-height:180px"><img id="editThumb" src="" style="width:100%;object-fit:cover;max-height:180px" /></div>
+    <div class="form-group"><label class="form-label" data-i18n="adm.editCap">Caption</label><input class="form-input" type="text" id="editCaption" /></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label" data-i18n="adm.editLoc">Location</label><input class="form-input" type="text" id="editLocation" placeholder="e.g. Yaoundé" /></div>
+      <div class="form-group"><label class="form-label" data-i18n="adm.editDate">Date</label><input class="form-input" type="date" id="editDate" /></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" data-i18n="adm.editCat">Category</label>
+      <select class="form-input" id="editCategory">
+        <option value="education" data-i18n="cat.education">Education</option>
+        <option value="orphanage" data-i18n="cat.orphanage">Orphanages</option>
+        <option value="community" data-i18n="cat.community">Community</option>
+        <option value="events" data-i18n="cat.events">Events</option>
+      </select>
+    </div>
+    <button class="btn-primary" onclick="saveEdit()" style="width:100%;justify-content:center;margin-top:6px" data-i18n="adm.editSave">Save Changes</button>
+  </div>
+</div>
+
+<!-- DONATE -->
+<section class="donate" id="donate">
+  <div class="reveal">
+    <div class="section-tag" data-i18n="don.tag">Make a Difference</div>
+    <h2 class="section-title" data-i18n-html="don.title">Your Gift<br/>Changes a Life<br/>in Cameroon</h2>
+    <p class="section-body" data-i18n="don.body">With 5 million children living below the poverty line in Cameroon, every dollar makes a measurable difference on the ground. Here's what your gift can do:</p>
+    <div class="donate-reasons">
+      <div class="donate-reason" data-i18n="don.r1">$25 buys a full set of school supplies for one child</div>
+      <div class="donate-reason" data-i18n="don.r2">$50 feeds an orphaned child in Cameroon for one month</div>
+      <div class="donate-reason" data-i18n="don.r3">$100 sponsors a child's education for a full school term</div>
+      <div class="donate-reason" data-i18n="don.r4">100% of donations go directly to programs in Cameroon</div>
+      <div class="donate-reason" data-i18n="don.r5">Tax-deductible · Secure SSL · Transparent annual reports</div>
+    </div>
+  </div>
+  <div class="reveal d1">
+    <div class="form-wrap">
+      <div class="form-title" data-i18n="don.formTitle">Make a Donation</div>
+      <div class="form-sub" data-i18n="don.formSub">Choose an amount or enter your own</div>
+      <div class="freq-tabs" id="freqTabs">
+        <button class="freq-tab active" onclick="setFreq(this)" data-i18n="don.freq1">One-Time</button>
+        <button class="freq-tab" onclick="setFreq(this)" data-i18n="don.freq2">Monthly</button>
+        <button class="freq-tab" onclick="setFreq(this)" data-i18n="don.freq3">Annually</button>
+      </div>
+      <div class="amount-grid">
+        <button class="amount-btn" onclick="setAmt(this,'25')">$25</button>
+        <button class="amount-btn active" onclick="setAmt(this,'50')">$50</button>
+        <button class="amount-btn" onclick="setAmt(this,'100')">$100</button>
+        <button class="amount-btn" onclick="setAmt(this,'250')">$250</button>
+        <button class="amount-btn" onclick="setAmt(this,'500')">$500</button>
+        <button class="amount-btn" onclick="setAmt(this,'')" data-i18n="don.custom">Custom</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="don.amtLabel">Amount (USD)</label>
+        <input class="form-input" type="number" id="donationAmt" value="50" min="1" oninput="updateAmt(this.value)" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="don.designate">Designate (optional)</label>
+        <select class="form-input" id="donDesignate">
+          <option data-i18n="don.des1">Where it's needed most in Cameroon</option>
+          <option data-i18n="don.des2">Education Programs</option>
+          <option data-i18n="don.des3">Orphanage Support</option>
+          <option data-i18n="don.des4">Community Development</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label" data-i18n="don.fname">First Name</label><input class="form-input" type="text" /></div>
+        <div class="form-group"><label class="form-label" data-i18n="don.lname">Last Name</label><input class="form-input" type="text" /></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" /></div>
+      <button class="donate-submit" onclick="handleDonate()"><span data-i18n="don.submitPre">♥ Donate — $</span><span id="amtDisplay">50</span></button>
+      <div class="secure-note" data-i18n="don.secure">🔒 Secure &amp; Encrypted · SSL · PCI Compliant</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORIES -->
+<section class="stories" id="stories">
+  <div class="stories-header">
+    <div class="section-tag reveal" data-i18n="stories.tag">Voices of Change</div>
+    <h2 class="section-title reveal" data-i18n-html="stories.title">Stories from<br/><em>Cameroon</em></h2>
+    <p class="section-body reveal" data-i18n="stories.sub">Hear from the children, caregivers and communities whose lives are being transformed across Cameroon.</p>
+  </div>
+  <div class="stories-grid">
+    <div class="story-card reveal">
+      <div class="story-qmark">"</div>
+      <p class="story-text" data-i18n="stories.q1">Before Forward Africa Foundation came to our village in the North-West, I had no books and no teacher for two years. Now I attend school every day. I want to become an engineer and build bridges in Cameroon.</p>
+      <div class="story-author">
+        <img class="story-avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=80" alt="Ngozi" />
+        <div><div class="story-name">Ngozi, 14</div><div class="story-role" data-i18n="stories.r1">Student — North-West Region, Cameroon</div></div>
+      </div>
+    </div>
+    <div class="story-card reveal d1">
+      <div class="story-qmark">"</div>
+      <p class="story-text" data-i18n="stories.q2">Our orphanage in Bafoussam used to struggle with food and space. The Foundation helped us renovate, provided beds for 40 children and arranged school enrollment for every single child. The transformation has been extraordinary.</p>
+      <div class="story-author">
+        <img class="story-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Emmanuel" />
+        <div><div class="story-name">Emmanuel Nkeng</div><div class="story-role" data-i18n="stories.r2">Orphanage Director — Bafoussam, Cameroon</div></div>
+      </div>
+    </div>
+    <div class="story-card reveal d2">
+      <div class="story-qmark">"</div>
+      <p class="story-text" data-i18n="stories.q3">When I learned about the crisis in Cameroon's Anglophone regions, I knew I had to help. Forward Africa Foundation showed me exactly where my donations were going — with field photos and reports. I trust them completely.</p>
+      <div class="story-author">
+        <img class="story-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Sarah" />
+        <div><div class="story-name">Sarah Mitchell</div><div class="story-role" data-i18n="stories.r3">Monthly Donor — Austin, TX, USA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="reveal">
+    <div class="section-tag" data-i18n="con.tag">Get In Touch</div>
+    <h2 class="section-title" data-i18n-html="con.title">Let's Work<br/><em>Together</em></h2>
+    <p class="section-body" data-i18n="con.body">Whether you want to partner, volunteer in Cameroon, ask questions, or share your story — we'd love to hear from you. Just like Cameroon, we communicate in both English and French.</p>
+    <div class="contact-cards">
+      <div class="contact-card"><div class="contact-icon">📧</div><div><div class="contact-label" data-i18n="con.c1l">Email Us</div><div class="contact-value"><a href="/cdn-cgi/l/email-protection#1a73747c755a7c75686d7b687e7b7c6873797b7c756f747e7b6e7375743475687d"><span class="__cf_email__" data-cfemail="d3babdb5bc93b5bca1a4b2a1b7b2b5a1bab0b2b5bca6bdb7b2a7babcbdfdbca1b4">[email&#160;protected]</span></a></div></div></div>
+      <div class="contact-card"><div class="contact-icon">📱</div><div><div class="contact-label" data-i18n="con.c2l">Call Us</div><div class="contact-value">+1 (555) 000-0000</div></div></div>
+      <div class="contact-card"><div class="contact-icon">🇨🇲</div><div><div class="contact-label" data-i18n="con.c3l">Cameroon Office</div><div class="contact-value" data-i18n="con.c3v">Yaoundé &amp; Bafoussam, Cameroon</div></div></div>
+      <div class="contact-card"><div class="contact-icon">🌐</div><div><div class="contact-label" data-i18n="con.c4l">Languages</div><div class="contact-value" data-i18n="con.c4v">English &amp; Français — just like Cameroon</div></div></div>
+    </div>
+  </div>
+  <div class="reveal d1">
+    <div class="contact-form-box">
+      <div class="form-title" data-i18n="con.formTitle">Send a Message</div><br/>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label" data-i18n="con.fname">First Name</label><input class="form-input" type="text" /></div>
+        <div class="form-group"><label class="form-label" data-i18n="con.lname">Last Name</label><input class="form-input" type="text" /></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" /></div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="con.subject">Subject</label>
+        <select class="form-input" id="contactSubject">
+          <option data-i18n="con.sub1">General Inquiry</option>
+          <option data-i18n="con.sub2">Partnership Opportunities</option>
+          <option data-i18n="con.sub3">Volunteer in Cameroon</option>
+          <option data-i18n="con.sub4">Media &amp; Press</option>
+          <option data-i18n="con.sub5">Donation Question</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label" data-i18n="con.msg">Message</label><textarea class="form-textarea" id="contactMsg" data-i18n-placeholder="con.msgPh"></textarea></div>
+      <button class="contact-submit" onclick="handleContact()" data-i18n="con.submit">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-flag"><span></span><span></span><span></span></div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="font-size:1.8rem">🌍</div>
+      <div class="footer-brand-name">Forward Africa Foundation</div>
+      <p data-i18n="footer.about">A nonprofit dedicated to uplifting lives across Cameroon through quality education and compassionate care for orphaned children. Rooted in Cameroon's ten regions — bilingual and proud.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link">𝕏</a><a href="#" class="social-link">f</a><a href="#" class="social-link">in</a><a href="#" class="social-link">📸</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-head" data-i18n="footer.h1">Programs</div>
+      <ul class="footer-links">
+        <li><a href="#programs" data-i18n="footer.p1">Schools for Cameroon</a></li>
+        <li><a href="#programs" data-i18n="footer.p2">Safe Homes</a></li>
+        <li><a href="#programs" data-i18n="footer.p3">Roots &amp; Wings</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head" data-i18n="footer.h2">Get Involved</div>
+      <ul class="footer-links">
+        <li><a href="#donate" data-i18n="footer.g1">Donate</a></li>
+        <li><a href="#contact" data-i18n="footer.g2">Volunteer</a></li>
+        <li><a href="#contact" data-i18n="footer.g3">Partner With Us</a></li>
+        <li><a href="#contact" data-i18n="footer.g4">Corporate Giving</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-head" data-i18n="footer.h3">Organization</div>
+      <ul class="footer-links">
+        <li><a href="#mission" data-i18n="footer.o1">Our Mission</a></li>
+        <li><a href="#cameroon" data-i18n="footer.o2">Cameroon Context</a></li>
+        <li><a href="#impact" data-i18n="footer.o3">Impact</a></li>
+        <li><a href="#contact" data-i18n="footer.o4">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="footer.copy">© 2025 Forward Africa Foundation · forwardafricafoundation.org · All rights reserved.</p>
+    <p data-i18n="footer.legal">501(c)(3) Nonprofit · EIN: 00-0000000 · Donations tax-deductible as permitted by law.</p>
+  </div>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="donateModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('donateModal')">✕</button>
+    <div class="modal-icon">🎉</div>
+    <h3 data-i18n="mod.donTitle">Thank You!</h3>
+    <p data-i18n="mod.donBody">Your donation is making a real difference for children in Cameroon. A confirmation email will be sent shortly. Together, we move Cameroon forward.</p>
+    <br/><button class="btn-primary" style="margin:0 auto" onclick="closeModal('donateModal')" data-i18n="mod.donBtn">♥ Continue</button>
+  </div>
+</div>
+<div class="modal-overlay" id="contactModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('contactModal')">✕</button>
+    <div class="modal-icon">✉️</div>
+    <h3 data-i18n="mod.conTitle">Message Sent!</h3>
+    <p data-i18n="mod.conBody">Thank you for reaching out. Our team responds within 2 business days — in English or French.</p>
+    <br/><button class="btn-primary" style="margin:0 auto" onclick="closeModal('contactModal')" data-i18n="mod.conBtn">Close</button>
+  </div>
+</div>
+
+</div><!-- /page-main -->
+
+<!-- ============================================================
+     IMPACT SUB-PAGE
+============================================================ -->
+<div id="page-impact" class="page">
+  <div class="subpage-hero">
+    <div class="subpage-flag"><span></span><span></span><span></span></div>
+    <button class="subpage-back" onclick="navigateTo('home')">← <span data-i18n="sub.backHome">Back to Home</span></button>
+    <div class="subpage-eyebrow" data-i18n="sub.impactEyebrow">🇨🇲 Our Impact in Cameroon</div>
+    <h1 data-i18n-html="sub.impactH1">Measuring Every <em>Life Changed</em></h1>
+    <p data-i18n="sub.impactDesc">Since our founding, every dollar donated has been tracked, reported and put to work in Cameroon's communities. Here is the full picture of what we've accomplished together.</p>
+    <div class="subpage-stats-bar">
+      <div class="subpage-stat"><div class="subpage-stat-num">3,800+</div><div class="subpage-stat-label" data-i18n="impact.i1">Children supported<br/>across Cameroon annually</div></div>
+      <div class="subpage-stat"><div class="subpage-stat-num">47</div><div class="subpage-stat-label" data-i18n="impact.i2">Partner schools<br/>equipped &amp; staffed</div></div>
+      <div class="subpage-stat"><div class="subpage-stat-num">22</div><div class="subpage-stat-label" data-i18n="impact.i3">Orphanages supported<br/>in 8 of 10 regions</div></div>
+      <div class="subpage-stat"><div class="subpage-stat-num">$2.1M</div><div class="subpage-stat-label" data-i18n="impact.i4">Invested in education<br/>&amp; child welfare</div></div>
+    </div>
+  </div>
+  <div class="subpage-body">
+    <div class="impact-page-body">
+      <div class="section-tag" data-i18n="sub.impactBreakTag">Program Breakdown</div>
+      <h2 class="section-title" style="margin-bottom:36px" data-i18n-html="sub.impactBreakTitle">Where Every Dollar <em>Goes</em></h2>
+      <div class="impact-breakdown">
+        <div class="impact-breakdown-card">
+          <div class="ibc-icon">📚</div>
+          <div class="ibc-num">47</div>
+          <div class="ibc-label" data-i18n="sub.ibc1l">Partner Schools Equipped</div>
+          <div class="ibc-desc" data-i18n="sub.ibc1d">We have partnered with 47 schools across Cameroon's most underserved regions — providing desks, textbooks, trained teachers, and in many cases, the buildings themselves. Priority regions include the Far North, North-West, and rural Adamawa.</div>
+        </div>
+        <div class="impact-breakdown-card">
+          <div class="ibc-icon">🏠</div>
+          <div class="ibc-num">22</div>
+          <div class="ibc-label" data-i18n="sub.ibc2l">Orphanages Supported</div>
+          <div class="ibc-desc" data-i18n="sub.ibc2d">From Yaoundé to Maroua, we support 22 orphanages across 8 of Cameroon's 10 regions — funding renovation, beds, nutritious meals, counseling services, and guaranteed school enrollment for every child in our care.</div>
+        </div>
+        <div class="impact-breakdown-card">
+          <div class="ibc-icon">👩‍🏫</div>
+          <div class="ibc-num">320+</div>
+          <div class="ibc-label" data-i18n="sub.ibc3l">Teachers Trained</div>
+          <div class="ibc-desc" data-i18n="sub.ibc3d">Quality education begins with quality teachers. We have trained over 320 educators across Cameroon in modern pedagogy, trauma-informed teaching, and bilingual instruction methods.</div>
+        </div>
+        <div class="impact-breakdown-card">
+          <div class="ibc-icon">🌱</div>
+          <div class="ibc-num">180+</div>
+          <div class="ibc-label" data-i18n="sub.ibc4l">Community Leaders Empowered</div>
+          <div class="ibc-desc" data-i18n="sub.ibc4d">Through our Roots &amp; Wings program, we have supported over 180 local leaders, women's groups, and youth cooperatives — providing vocational training, micro-grants, and sustainable agriculture support.</div>
+        </div>
+      </div>
+      <div class="impact-regions">
+        <h3 data-i18n="sub.regionsTitle">Coverage Across Cameroon's 10 Regions</h3>
+        <p class="sub" style="font-size:0.88rem;color:var(--warm-mid);margin-bottom:24px" data-i18n="sub.regionsSub">We are active in 8 of Cameroon's 10 administrative regions, with the deepest presence in conflict-affected and rural areas.</p>
+        <div class="regions-grid">
+          <div class="region-pill active"><span class="region-flag">🏫</span><span data-i18n="sub.reg1">Centre</span></div>
+          <div class="region-pill active"><span class="region-flag">🏫</span><span data-i18n="sub.reg2">Littoral</span></div>
+          <div class="region-pill active"><span class="region-flag">🏫</span><span data-i18n="sub.reg3">West</span></div>
+          <div class="region-pill active"><span class="region-flag">🏫</span><span data-i18n="sub.reg4">North-West</span></div>
+          <div class="region-pill active"><span class="region-flag">🏫</span><span data-i18n="sub.reg5">South-West</span></div>
+          <div class="region-pill active"><span class="region-flag">🏫</span><span data-i18n="sub.reg6">Far North</span></div>
+          <div class="region-pill active"><span class="region-flag">🏫</span><span data-i18n="sub.reg7">North</span></div>
+          <div class="region-pill active"><span class="region-flag">🏫</span><span data-i18n="sub.reg8">Adamawa</span></div>
+          <div class="region-pill"><span class="region-flag">⏳</span><span data-i18n="sub.reg9">East</span></div>
+          <div class="region-pill"><span class="region-flag">⏳</span><span data-i18n="sub.reg10">South</span></div>
+        </div>
+      </div>
+      <div class="impact-source-box">
+        <strong data-i18n="sub.sourceLabel">Data Sources:</strong> <span data-i18n="impact.source">Country statistics: UNICEF Cameroon (2025), World Bank, UNESCO Institute for Statistics</span>
+      </div>
+    </div>
+    <div class="impact-cta-row">
+      <h3 data-i18n="sub.impactCtaH">Help Us Reach Every Region</h3>
+      <p data-i18n="sub.impactCtaP">Two regions remain. With your support, we can achieve full national coverage by 2026.</p>
+      <a href="#" onclick="navigateTo('home');setTimeout(()=>document.getElementById('donate').scrollIntoView({behavior:'smooth'}),400);return false;" class="btn-primary" style="display:inline-flex" data-i18n="hero.cta1">♥ Donate Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     GALLERY SUB-PAGE
+============================================================ -->
+<div id="page-gallery" class="page">
+  <div class="subpage-hero">
+    <div class="subpage-flag"><span></span><span></span><span></span></div>
+    <button class="subpage-back" onclick="navigateTo('home')">← <span data-i18n="sub.backHome">Back to Home</span></button>
+    <div class="subpage-eyebrow" data-i18n="sub.galEyebrow">📸 Our Work in Action</div>
+    <h1 data-i18n-html="sub.galH1">Project <em>Gallery</em></h1>
+    <p data-i18n="sub.galDesc">Real photos from our schools, orphanages, and communities across Cameroon. Every image tells a story of a life being changed.</p>
+  </div>
+  <div class="subpage-body">
+    <div class="gallery-page-body">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+        <div class="gallery-filters" id="galleryFiltersSub"></div>
+        <button class="admin-access-btn" onclick="showAdminLogin()">⚙ <span data-i18n="gal.admin">Admin</span></button>
+      </div>
+      <div class="gal-grid" id="galGridSub"></div>
+      <div class="gal-empty" id="galEmptySub" style="display:none">
+        <div class="gal-empty-icon">📸</div>
+        <p data-i18n="gal.empty">No project photos yet. Check back soon!</p>
+      </div>
+    </div>
+  </div>
+  <!-- Lightbox (shared with main, re-declared here so it works on this page) -->
+  <div class="lightbox" id="lightboxSub" onclick="closeLightboxSub()">
+    <button class="lb-close" onclick="closeLightboxSub()">✕</button>
+    <button class="lb-prev" onclick="lbNavSub(-1,event)">‹</button>
+    <button class="lb-next" onclick="lbNavSub(1,event)">›</button>
+    <div class="lb-inner" onclick="event.stopPropagation()">
+      <img id="lbImgSub" src="" alt="" />
+      <div class="lb-info">
+        <div class="lb-caption" id="lbCaptionSub"></div>
+        <div class="lb-meta"><span class="lb-tag" id="lbTagSub"></span><span class="lb-date" id="lbDateSub"></span><span class="lb-location" id="lbLocationSub"></span></div>
+      </div>
+    </div>
+  </div>
+  <!-- Admin login / panel live here too via shared overlays -->
+</div>
+
+<script>
+// ================================================================
+//  TRANSLATION DICTIONARIES
+// ================================================================
+const TRANSLATIONS = {
+  en: {
+    'nav.mission': 'Mission', 'nav.programs': 'Programs', 'nav.impact': 'Impact',
+    'nav.gallery': 'Gallery', 'nav.contact': 'Contact', 'nav.donate': '♥ Donate',
+    'hero.eyebrow': '🇨🇲 Rooted in Cameroon',
+    'hero.h1': 'Building <em>Futures</em><br/>in the Heart<br/>of Cameroon',
+    'hero.desc': 'In a country where 44% of children live below the poverty line and 72% face learning poverty, Forward Africa Foundation is changing lives — one classroom, one orphanage, one community at a time.',
+    'hero.cta1': '♥ Donate Now', 'hero.cta2': 'Our Programs →',
+    'hero.stat1': 'People in Cameroon', 'hero.stat2': 'Children in poverty',
+    'hero.stat3': 'Children out of school', 'hero.stat4': 'Learning poverty',
+    'ticker': ['Education Access','Orphan Support','School Supplies','Yaoundé · Douala · Bafoussam','Teacher Training','Safe Homes','North-West Region','Far North Cameroon'],
+    'ctx.mapLabel': '🇨🇲 Cameroon', 'ctx.tag': 'Why Cameroon?',
+    'ctx.title': 'The Need is<br/><em>Real &amp; Urgent</em>',
+    'ctx.body': 'Cameroon is a resilient, bilingual nation of over 30 million people — rich in culture and potential. Yet deep inequalities persist, especially for children in rural areas, displaced families, and conflict-affected regions. The statistics below come from UNICEF, the World Bank, and UNESCO.',
+    'ctx.s1': 'Learning poverty — unable to read by age 10',
+    'ctx.s2': 'Children (5 million) below national poverty line',
+    'ctx.s3': 'Children ages 6–14 not enrolled in school',
+    'ctx.s4': 'Rural poverty rate — Far North &amp; North regions',
+    'ctx.s5': 'Poverty rate in the Far North region',
+    'ctx.s6': 'Children internally displaced by conflict',
+    'mission.badge': 'Years of Impact', 'mission.tag': 'Our Mission',
+    'mission.title': 'Every Cameroonian Child<br/><em>Deserves</em> a Future',
+    'mission.body': 'We work across all ten regions of Cameroon — with special focus on the North-West, Far North, and rural communities — delivering quality education and compassionate care for orphaned children. We partner with local schools, orphanages, and community leaders to create lasting change from within.',
+    'mission.p1h': 'Education First', 'mission.p1b': 'Schools, teachers, textbooks and technology in underserved regions of Cameroon.',
+    'mission.p2h': 'Orphan Care', 'mission.p2b': 'Safe, nurturing homes with nutrition, counseling and full school enrollment.',
+    'mission.p3h': 'Community Growth', 'mission.p3b': 'Empowering local leaders in both Francophone and Anglophone regions.',
+    'mission.p4h': 'Child Welfare', 'mission.p4b': 'Health, nutrition &amp; emotional wellbeing for every child we serve in Cameroon.',
+    'impact.tag': 'Our Impact in Cameroon',
+    'impact.title': 'Numbers Behind<br/>Every Child We Serve',
+    'impact.body': 'Every figure represents a real Cameroonian child with a real future ahead of them.',
+    'impact.i1': 'Children supported<br/>across Cameroon annually',
+    'impact.i2': 'Partner schools<br/>equipped &amp; staffed',
+    'impact.i3': 'Orphanages supported<br/>in 8 of Cameroon\'s 10 regions',
+    'impact.i4': 'Invested in Cameroonian<br/>education &amp; child welfare',
+    'impact.source': 'Country statistics: UNICEF Cameroon (2025), World Bank, UNESCO Institute for Statistics',
+    'progs.tag': 'What We Do',
+    'progs.title': 'Our Programs<br/>in Cameroon',
+    'progs.sub': 'Three pillars of action designed for Cameroonian communities and their unique needs.',
+    'progs.t1': 'Education', 'progs.h1': 'Schools for Cameroon',
+    'progs.b1': 'With 14% of children ages 6–14 out of school and 72% facing learning poverty (UNESCO/World Bank), we fund school construction, teacher training, and textbooks — prioritizing the Far North, North-West, and rural communities where the gap is greatest.',
+    'progs.t2': 'Orphan Care', 'progs.h2': 'Safe Homes Cameroon',
+    'progs.b2': 'Almost half of Cameroon\'s children live in poverty (UNICEF), and the ongoing Anglophone crisis has displaced over 1 million children. We partner with orphanages across 8 of Cameroon\'s regions — providing beds, nutritious meals, counseling and school enrollment for every child.',
+    'progs.t3': 'Community', 'progs.h3': 'Roots &amp; Wings',
+    'progs.b3': 'Cameroon\'s bilingual, multicultural identity is its greatest strength. We invest in local leaders, women\'s literacy, youth vocational training, and sustainable agriculture — with programs in both Francophone and Anglophone regions of Cameroon.',
+    'progs.link': 'Support this program →',
+    'gal.tag': 'Our Work in Action',
+    'gal.title': 'Project <em>Gallery</em>',
+    'gal.sub': 'Real photos from our work across Cameroon — schools, orphanages, and communities we serve.',
+    'gal.admin': 'Admin',
+    'gal.empty': 'No project photos yet. Check back soon — we\'re documenting our work in Cameroon!',
+    'gal.filterAll': 'All Projects', 'gal.filterEdu': 'Education', 'gal.filterOrph': 'Orphanages', 'gal.filterCom': 'Community', 'gal.filterEv': 'Events',
+    'cat.education': 'Education', 'cat.orphanage': 'Orphanages', 'cat.community': 'Community', 'cat.events': 'Events',
+    'adm.loginTitle': 'Admin Access',
+    'adm.loginSub': 'Enter your admin password to manage gallery photos.',
+    'adm.loginErr': 'Incorrect password. Try again.',
+    'adm.loginBtn': 'Enter Admin Panel →',
+    'adm.loginHint': 'Default password: <strong>faf2025</strong> — change it in Settings after logging in.',
+    'adm.badge': 'Gallery Manager',
+    'adm.tabUpload': '📤 Upload Photos', 'adm.tabManage': '🗂 Manage Gallery', 'adm.tabSettings': '⚙ Settings',
+    'adm.logout': 'Log Out',
+    'adm.upTitle': 'Upload Project Photos',
+    'adm.upSub': 'Select one or multiple photos from your device. Add captions, location, date and category. Photos are stored in your browser and displayed on the public gallery immediately.',
+    'adm.dzTitle': 'Drop photos here or click to browse',
+    'adm.dzSub': 'JPG, PNG, WebP — multiple files supported — max 5MB each',
+    'adm.qTitle': 'Photos to Upload', 'adm.qClear': 'Clear All',
+    'adm.saveBtn': '💾 Save All to Gallery',
+    'adm.manTitle': 'Manage Gallery Photos',
+    'adm.catAll': 'All Categories',
+    'adm.manEmpty': 'No photos in gallery yet. Upload some above!',
+    'adm.setTitle': 'Admin Settings',
+    'adm.pwTitle': '🔑 Change Admin Password',
+    'adm.pwSub': 'Update your admin password. Make sure to remember it — there is no recovery option.',
+    'adm.pw1': 'New Password', 'adm.pw2': 'Confirm Password', 'adm.pwBtn': 'Update Password',
+    'adm.delTitle': '🗑 Clear All Gallery Photos',
+    'adm.delSub': 'Permanently delete all photos from the gallery. This cannot be undone.',
+    'adm.delBtn': '⚠ Delete All Photos',
+    'adm.infoTitle': 'ℹ About This Gallery System',
+    'adm.infoBody': 'Photos are stored in your browser\'s local storage as base64. This means photos are tied to the browser/device you upload from. For a production site: connect a cloud storage service like Cloudinary or AWS S3, or use a CMS like Netlify CMS.',
+    'adm.editTitle': 'Edit Photo', 'adm.editCap': 'Caption', 'adm.editLoc': 'Location',
+    'adm.editDate': 'Date', 'adm.editCat': 'Category', 'adm.editSave': 'Save Changes',
+    'don.tag': 'Make a Difference',
+    'don.title': 'Your Gift<br/>Changes a Life<br/>in Cameroon',
+    'don.body': 'With 5 million children living below the poverty line in Cameroon, every dollar makes a measurable difference on the ground. Here\'s what your gift can do:',
+    'don.r1': '$25 buys a full set of school supplies for one child',
+    'don.r2': '$50 feeds an orphaned child in Cameroon for one month',
+    'don.r3': '$100 sponsors a child\'s education for a full school term',
+    'don.r4': '100% of donations go directly to programs in Cameroon',
+    'don.r5': 'Tax-deductible · Secure SSL · Transparent annual reports',
+    'don.formTitle': 'Make a Donation', 'don.formSub': 'Choose an amount or enter your own',
+    'don.freq1': 'One-Time', 'don.freq2': 'Monthly', 'don.freq3': 'Annually',
+    'don.custom': 'Custom', 'don.amtLabel': 'Amount (USD)', 'don.designate': 'Designate (optional)',
+    'don.des1': 'Where it\'s needed most in Cameroon', 'don.des2': 'Education Programs',
+    'don.des3': 'Orphanage Support', 'don.des4': 'Community Development',
+    'don.fname': 'First Name', 'don.lname': 'Last Name',
+    'don.submitPre': '♥ Donate — $', 'don.secure': '🔒 Secure &amp; Encrypted · SSL · PCI Compliant',
+    'stories.tag': 'Voices of Change',
+    'stories.title': 'Stories from<br/><em>Cameroon</em>',
+    'stories.sub': 'Hear from the children, caregivers and communities whose lives are being transformed across Cameroon.',
+    'stories.q1': 'Before Forward Africa Foundation came to our village in the North-West, I had no books and no teacher for two years. Now I attend school every day. I want to become an engineer and build bridges in Cameroon.',
+    'stories.r1': 'Student — North-West Region, Cameroon',
+    'stories.q2': 'Our orphanage in Bafoussam used to struggle with food and space. The Foundation helped us renovate, provided beds for 40 children and arranged school enrollment for every single child. The transformation has been extraordinary.',
+    'stories.r2': 'Orphanage Director — Bafoussam, Cameroon',
+    'stories.q3': 'When I learned about the crisis in Cameroon\'s Anglophone regions, I knew I had to help. Forward Africa Foundation showed me exactly where my donations were going — with field photos and reports. I trust them completely.',
+    'stories.r3': 'Monthly Donor — Austin, TX, USA',
+    'con.tag': 'Get In Touch', 'con.title': 'Let\'s Work<br/><em>Together</em>',
+    'con.body': 'Whether you want to partner, volunteer in Cameroon, ask questions, or share your story — we\'d love to hear from you. Just like Cameroon, we communicate in both English and French.',
+    'con.c1l': 'Email Us', 'con.c2l': 'Call Us', 'con.c3l': 'Cameroon Office',
+    'con.c3v': 'Yaoundé &amp; Bafoussam, Cameroon', 'con.c4l': 'Languages',
+    'con.c4v': 'English &amp; Français — just like Cameroon',
+    'con.formTitle': 'Send a Message', 'con.fname': 'First Name', 'con.lname': 'Last Name',
+    'con.subject': 'Subject', 'con.msg': 'Message',
+    'con.msgPh': 'Tell us how you\'d like to get involved in Cameroon...',
+    'con.sub1': 'General Inquiry', 'con.sub2': 'Partnership Opportunities',
+    'con.sub3': 'Volunteer in Cameroon', 'con.sub4': 'Media &amp; Press', 'con.sub5': 'Donation Question',
+    'con.submit': 'Send Message →',
+    'footer.about': 'A nonprofit dedicated to uplifting lives across Cameroon through quality education and compassionate care for orphaned children. Rooted in Cameroon\'s ten regions — bilingual and proud.',
+    'footer.h1': 'Programs', 'footer.h2': 'Get Involved', 'footer.h3': 'Organization',
+    'footer.p1': 'Schools for Cameroon', 'footer.p2': 'Safe Homes', 'footer.p3': 'Roots &amp; Wings',
+    'footer.g1': 'Donate', 'footer.g2': 'Volunteer', 'footer.g3': 'Partner With Us', 'footer.g4': 'Corporate Giving',
+    'footer.o1': 'Our Mission', 'footer.o2': 'Cameroon Context', 'footer.o3': 'Impact', 'footer.o4': 'Contact',
+    'footer.copy': '© 2025 Forward Africa Foundation · forwardafricafoundation.org · All rights reserved.',
+    'footer.legal': '501(c)(3) Nonprofit · EIN: 00-0000000 · Donations tax-deductible as permitted by law.',
+    'mod.donTitle': 'Thank You!',
+    'mod.donBody': 'Your donation is making a real difference for children in Cameroon. A confirmation email will be sent shortly. Together, we move Cameroon forward.',
+    'mod.donBtn': '♥ Continue',
+    'mod.conTitle': 'Message Sent!',
+    'mod.conBody': 'Thank you for reaching out. Our team responds within 2 business days — in English or French.',
+    'mod.conBtn': 'Close',
+  },
+  fr: {
+    'nav.mission': 'Mission', 'nav.programs': 'Programmes', 'nav.impact': 'Impact',
+    'nav.gallery': 'Galerie', 'nav.contact': 'Contact', 'nav.donate': '♥ Donner',
+    'hero.eyebrow': '🇨🇲 Enracinés au Cameroun',
+    'hero.h1': 'Construire des<br/><em>Avenirs</em> au Cœur<br/>du Cameroun',
+    'hero.desc': 'Dans un pays où 44% des enfants vivent sous le seuil de pauvreté et 72% font face à la pauvreté d\'apprentissage, Forward Africa Foundation transforme des vies — une salle de classe, un orphelinat, une communauté à la fois.',
+    'hero.cta1': '♥ Faire un Don', 'hero.cta2': 'Nos Programmes →',
+    'hero.stat1': 'Habitants', 'hero.stat2': 'Enfants pauvres',
+    'hero.stat3': 'Non scolarisés', 'hero.stat4': 'Pauvreté d\'apprentissage',
+    'ticker': ['Accès à l\'Éducation','Soutien aux Orphelins','Fournitures Scolaires','Yaoundé · Douala · Bafoussam','Formation des Enseignants','Foyers Sécurisés','Région Nord-Ouest','Extrême-Nord Cameroun'],
+    'ctx.mapLabel': '🇨🇲 Le Cameroun', 'ctx.tag': 'Pourquoi le Cameroun ?',
+    'ctx.title': 'Le Besoin est<br/><em>Réel &amp; Urgent</em>',
+    'ctx.body': 'Le Cameroun est une nation bilingue et résiliente de plus de 30 millions d\'habitants — riche en culture et en potentiel. Pourtant, de profondes inégalités persistent, notamment pour les enfants en zones rurales, les familles déplacées et les régions touchées par les conflits. Les statistiques ci-dessous proviennent de l\'UNICEF, de la Banque mondiale et de l\'UNESCO.',
+    'ctx.s1': 'Pauvreté d\'apprentissage — ne savent pas lire à 10 ans',
+    'ctx.s2': 'Enfants (5 millions) sous le seuil de pauvreté',
+    'ctx.s3': 'Enfants de 6–14 ans non scolarisés',
+    'ctx.s4': 'Pauvreté rurale — régions Nord et Extrême-Nord',
+    'ctx.s5': 'Taux de pauvreté — région Extrême-Nord',
+    'ctx.s6': 'Enfants déplacés à cause des conflits',
+    'mission.badge': 'Années d\'Impact', 'mission.tag': 'Notre Mission',
+    'mission.title': 'Chaque Enfant Camerounais<br/><em>Mérite</em> un Avenir',
+    'mission.body': 'Nous intervenons dans les dix régions du Cameroun — avec une attention particulière sur le Nord-Ouest, l\'Extrême-Nord et les communautés rurales — pour offrir une éducation de qualité et une prise en charge bienveillante des enfants orphelins. Nous collaborons avec les écoles, orphelinats et leaders communautaires pour créer un changement durable de l\'intérieur.',
+    'mission.p1h': 'Priorité à l\'Éducation', 'mission.p1b': 'Écoles, enseignants, manuels et technologie dans les régions sous-desservies du Cameroun.',
+    'mission.p2h': 'Soin aux Orphelins', 'mission.p2b': 'Foyers sécurisés avec nutrition, accompagnement psychologique et scolarisation complète.',
+    'mission.p3h': 'Croissance Communautaire', 'mission.p3b': 'Renforcement des leaders locaux dans les régions francophones et anglophones.',
+    'mission.p4h': 'Bien-être de l\'Enfant', 'mission.p4b': 'Santé, nutrition et bien-être émotionnel pour chaque enfant que nous servons au Cameroun.',
+    'impact.tag': 'Notre Impact au Cameroun',
+    'impact.title': 'Les Chiffres Derrière<br/>Chaque Enfant que Nous Servons',
+    'impact.body': 'Chaque chiffre représente un véritable enfant camerounais avec un avenir devant lui.',
+    'impact.i1': 'Enfants soutenus<br/>au Cameroun chaque année',
+    'impact.i2': 'Écoles partenaires<br/>équipées et dotées en personnel',
+    'impact.i3': 'Orphelinats soutenus<br/>dans 8 régions sur 10',
+    'impact.i4': 'Investis dans l\'éducation<br/>et la protection de l\'enfance',
+    'impact.source': 'Statistiques nationales : UNICEF Cameroun (2025), Banque mondiale, Institut de Statistiques de l\'UNESCO',
+    'progs.tag': 'Ce Que Nous Faisons',
+    'progs.title': 'Nos Programmes<br/>au Cameroun',
+    'progs.sub': 'Trois piliers d\'action conçus pour les communautés camerounaises et leurs besoins spécifiques.',
+    'progs.t1': 'Éducation', 'progs.h1': 'Des Écoles pour le Cameroun',
+    'progs.b1': 'Avec 14% des enfants de 6–14 ans non scolarisés et 72% face à la pauvreté d\'apprentissage (UNESCO/Banque mondiale), nous finançons la construction d\'écoles, la formation des enseignants et les manuels scolaires — en priorité dans l\'Extrême-Nord, le Nord-Ouest et les zones rurales.',
+    'progs.t2': 'Soin aux Orphelins', 'progs.h2': 'Foyers Sécurisés au Cameroun',
+    'progs.b2': 'Près de la moitié des enfants camerounais vivent dans la pauvreté (UNICEF), et la crise anglophone a déplacé plus d\'un million d\'enfants. Nous collaborons avec des orphelinats dans 8 régions — offrant hébergement, repas nutritifs, accompagnement et scolarisation à chaque enfant.',
+    'progs.t3': 'Communauté', 'progs.h3': 'Racines &amp; Envol',
+    'progs.b3': 'L\'identité bilingue et multiculturelle du Cameroun est sa plus grande force. Nous investissons dans les leaders locaux, l\'alphabétisation des femmes, la formation professionnelle et l\'agriculture durable — avec des programmes dans les régions francophones et anglophones.',
+    'progs.link': 'Soutenir ce programme →',
+    'gal.tag': 'Notre Travail sur le Terrain',
+    'gal.title': '<em>Galerie</em> de Projets',
+    'gal.sub': 'Photos réelles de notre travail à travers le Cameroun — écoles, orphelinats et communautés que nous servons.',
+    'gal.admin': 'Admin',
+    'gal.empty': 'Pas encore de photos de projets. Revenez bientôt — nous documentons notre travail au Cameroun !',
+    'gal.filterAll': 'Tous les Projets', 'gal.filterEdu': 'Éducation', 'gal.filterOrph': 'Orphelinats', 'gal.filterCom': 'Communauté', 'gal.filterEv': 'Événements',
+    'cat.education': 'Éducation', 'cat.orphanage': 'Orphelinats', 'cat.community': 'Communauté', 'cat.events': 'Événements',
+    'adm.loginTitle': 'Accès Administrateur',
+    'adm.loginSub': 'Entrez votre mot de passe administrateur pour gérer les photos.',
+    'adm.loginErr': 'Mot de passe incorrect. Réessayez.',
+    'adm.loginBtn': 'Accéder au panneau →',
+    'adm.loginHint': 'Mot de passe par défaut : <strong>faf2025</strong> — changez-le dans les paramètres après connexion.',
+    'adm.badge': 'Gestionnaire de Galerie',
+    'adm.tabUpload': '📤 Téléverser', 'adm.tabManage': '🗂 Gérer la Galerie', 'adm.tabSettings': '⚙ Paramètres',
+    'adm.logout': 'Déconnexion',
+    'adm.upTitle': 'Téléverser des Photos de Projets',
+    'adm.upSub': 'Sélectionnez une ou plusieurs photos depuis votre appareil. Ajoutez des légendes, un lieu, une date et une catégorie. Les photos sont stockées dans votre navigateur et affichées immédiatement dans la galerie publique.',
+    'adm.dzTitle': 'Déposez des photos ici ou cliquez pour parcourir',
+    'adm.dzSub': 'JPG, PNG, WebP — plusieurs fichiers supportés — max 5 Mo chacun',
+    'adm.qTitle': 'Photos à téléverser', 'adm.qClear': 'Tout effacer',
+    'adm.saveBtn': '💾 Enregistrer dans la Galerie',
+    'adm.manTitle': 'Gérer les Photos de la Galerie',
+    'adm.catAll': 'Toutes les catégories',
+    'adm.manEmpty': 'Pas encore de photos dans la galerie. Téléversez-en ci-dessus !',
+    'adm.setTitle': 'Paramètres Administrateur',
+    'adm.pwTitle': '🔑 Changer le mot de passe',
+    'adm.pwSub': 'Mettez à jour votre mot de passe administrateur. Assurez-vous de vous en souvenir — il n\'y a pas d\'option de récupération.',
+    'adm.pw1': 'Nouveau mot de passe', 'adm.pw2': 'Confirmer le mot de passe', 'adm.pwBtn': 'Mettre à jour',
+    'adm.delTitle': '🗑 Effacer toutes les photos',
+    'adm.delSub': 'Supprimez définitivement toutes les photos de la galerie. Cette action est irréversible.',
+    'adm.delBtn': '⚠ Supprimer toutes les photos',
+    'adm.infoTitle': 'ℹ À propos de ce système',
+    'adm.infoBody': 'Les photos sont stockées dans le stockage local de votre navigateur en base64. Cela signifie que les photos sont liées au navigateur/appareil depuis lequel vous les téléversez. Pour un site en production : connectez un service de stockage cloud comme Cloudinary ou AWS S3, ou utilisez un CMS comme Netlify CMS.',
+    'adm.editTitle': 'Modifier la Photo', 'adm.editCap': 'Légende', 'adm.editLoc': 'Lieu',
+    'adm.editDate': 'Date', 'adm.editCat': 'Catégorie', 'adm.editSave': 'Enregistrer',
+    'don.tag': 'Faites la Différence',
+    'don.title': 'Votre Don Change<br/>une Vie<br/>au Cameroun',
+    'don.body': 'Avec 5 millions d\'enfants sous le seuil de pauvreté au Cameroun, chaque dollar fait une différence mesurable. Voici ce que votre don peut accomplir :',
+    'don.r1': '25$ offre une trousse complète à un enfant',
+    'don.r2': '50$ nourrit un enfant orphelin pendant un mois',
+    'don.r3': '100$ sponsorise l\'éducation d\'un enfant pour un trimestre',
+    'don.r4': '100% des dons vont directement aux programmes au Cameroun',
+    'don.r5': 'Déductible des impôts · SSL sécurisé · Rapports annuels transparents',
+    'don.formTitle': 'Faire un Don', 'don.formSub': 'Choisissez un montant ou entrez le vôtre',
+    'don.freq1': 'Unique', 'don.freq2': 'Mensuel', 'don.freq3': 'Annuel',
+    'don.custom': 'Autre', 'don.amtLabel': 'Montant (USD)', 'don.designate': 'Désigner (optionnel)',
+    'don.des1': 'Là où c\'est le plus nécessaire au Cameroun', 'don.des2': 'Programmes d\'éducation',
+    'don.des3': 'Soutien aux orphelinats', 'don.des4': 'Développement communautaire',
+    'don.fname': 'Prénom', 'don.lname': 'Nom',
+    'don.submitPre': '♥ Donner — $', 'don.secure': '🔒 Sécurisé &amp; Chiffré · SSL · Conforme PCI',
+    'stories.tag': 'Voix du Changement',
+    'stories.title': 'Témoignages du<br/><em>Cameroun</em>',
+    'stories.sub': 'Écoutez les enfants, les soignants et les communautés dont les vies se transforment à travers le Cameroun.',
+    'stories.q1': 'Avant l\'arrivée de la Fondation dans notre village du Nord-Ouest, je n\'avais ni livres ni enseignant pendant deux ans. Maintenant je vais à l\'école chaque jour. Je veux devenir ingénieur et construire des ponts au Cameroun.',
+    'stories.r1': 'Élève — Région Nord-Ouest, Cameroun',
+    'stories.q2': 'Notre orphelinat de Bafoussam manquait de nourriture et d\'espace. La Fondation nous a aidés à rénover, fourni des lits pour 40 enfants et organisé la scolarisation de chaque enfant. La transformation a été extraordinaire.',
+    'stories.r2': 'Directeur d\'orphelinat — Bafoussam, Cameroun',
+    'stories.q3': 'Quand j\'ai appris la crise dans les régions anglophones du Cameroun, j\'ai su que je devais aider. La Fondation m\'a montré exactement où allaient mes dons — avec des photos et rapports du terrain. Je leur fais entièrement confiance.',
+    'stories.r3': 'Donateur mensuel — Austin, TX, États-Unis',
+    'con.tag': 'Contactez-Nous', 'con.title': 'Travaillons<br/><em>Ensemble</em>',
+    'con.body': 'Que vous souhaitiez collaborer, faire du bénévolat au Cameroun, poser des questions ou partager votre histoire — nous serions ravis d\'avoir de vos nouvelles. Tout comme le Cameroun, nous communiquons en anglais et en français.',
+    'con.c1l': 'Écrivez-Nous', 'con.c2l': 'Appelez-Nous', 'con.c3l': 'Bureau au Cameroun',
+    'con.c3v': 'Yaoundé &amp; Bafoussam, Cameroun', 'con.c4l': 'Langues',
+    'con.c4v': 'Anglais &amp; Français — tout comme le Cameroun',
+    'con.formTitle': 'Envoyer un Message', 'con.fname': 'Prénom', 'con.lname': 'Nom',
+    'con.subject': 'Sujet', 'con.msg': 'Message',
+    'con.msgPh': 'Dites-nous comment vous souhaitez vous impliquer au Cameroun...',
+    'con.sub1': 'Renseignements généraux', 'con.sub2': 'Opportunités de partenariat',
+    'con.sub3': 'Bénévolat au Cameroun', 'con.sub4': 'Médias &amp; Presse', 'con.sub5': 'Question sur les dons',
+    'con.submit': 'Envoyer le Message →',
+    'footer.about': 'Une organisation à but non lucratif dédiée à l\'amélioration des vies au Cameroun grâce à une éducation de qualité et à la prise en charge bienveillante des enfants orphelins. Enracinée dans les dix régions du Cameroun — bilingue et fière.',
+    'footer.h1': 'Programmes', 'footer.h2': 'S\'Impliquer', 'footer.h3': 'Organisation',
+    'footer.p1': 'Écoles pour le Cameroun', 'footer.p2': 'Foyers Sécurisés', 'footer.p3': 'Racines &amp; Envol',
+    'footer.g1': 'Faire un Don', 'footer.g2': 'Bénévolat', 'footer.g3': 'Partenariat', 'footer.g4': 'Dons d\'Entreprise',
+    'footer.o1': 'Notre Mission', 'footer.o2': 'Contexte Cameroun', 'footer.o3': 'Impact', 'footer.o4': 'Contact',
+    'footer.copy': '© 2025 Forward Africa Foundation · forwardafricafoundation.org · Tous droits réservés.',
+    'footer.legal': 'Organisation à but non lucratif 501(c)(3) · EIN : 00-0000000 · Dons déductibles des impôts.',
+    'mod.donTitle': 'Merci !',
+    'mod.donBody': 'Votre don fait une vraie différence pour les enfants au Cameroun. Un email de confirmation vous sera envoyé sous peu. Ensemble, nous faisons avancer le Cameroun.',
+    'mod.donBtn': '♥ Continuer',
+    'mod.conTitle': 'Message Envoyé !',
+    'mod.conBody': 'Merci de nous avoir contactés. Notre équipe répondra dans les 2 jours ouvrables — en français ou en anglais.',
+    'mod.conBtn': 'Fermer',
+  }
+};
+
+// ================================================================
+//  LANGUAGE ENGINE — walks DOM and swaps text from dictionary
+// ================================================================
+let lang = 'en';
+
+function applyTranslations(l) {
+  const T = TRANSLATIONS[l];
+  if (!T) return;
+  // data-i18n: sets textContent
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (T[key] !== undefined) el.textContent = T[key];
+  });
+  // data-i18n-html: sets innerHTML (for keys with <em>, <br/> etc)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (T[key] !== undefined) el.innerHTML = T[key];
+  });
+  // data-i18n-placeholder: sets placeholder attribute
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (T[key] !== undefined) el.placeholder = T[key];
+  });
+  // Ticker
+  buildTicker(l);
+  // Gallery filters
+  buildGalleryFilters(l);
+}
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+  const mEn = document.getElementById('mob-btn-en');
+  const mFr = document.getElementById('mob-btn-fr');
+  if (mEn) { mEn.classList.toggle('active', l === 'en'); mFr.classList.toggle('active', l === 'fr'); }
+  applyTranslations(l);
+  renderPublicGallery();
+  try { localStorage.setItem('faf_lang', l); } catch(e) {}
+}
+
+// ================================================================
+//  TICKER
+// ================================================================
+function buildTicker(l) {
+  const items = TRANSLATIONS[l]['ticker'] || TRANSLATIONS.en['ticker'];
+  const track = document.getElementById('tickerTrack');
+  const doubled = [...items, ...items];
+  track.innerHTML = doubled.map(t => `<span class="ticker-item">${t}</span>`).join('');
+}
+
+// ================================================================
+//  GALLERY FILTERS
+// ================================================================
+function buildGalleryFilters(l) {
+  const T = TRANSLATIONS[l];
+  const filters = [
+    { cat: 'all', label: T['gal.filterAll'] },
+    { cat: 'education', label: T['gal.filterEdu'] },
+    { cat: 'orphanage', label: T['gal.filterOrph'] },
+    { cat: 'community', label: T['gal.filterCom'] },
+    { cat: 'events', label: T['gal.filterEv'] },
+  ];
+  const container = document.getElementById('galleryFilters');
+  container.innerHTML = filters.map(f =>
+    `<button class="gal-filter${currentFilter === f.cat ? ' active' : ''}" data-cat="${f.cat}" onclick="filterGallery('${f.cat}',this)">${f.label}</button>`
+  ).join('');
+}
+
+// ================================================================
+//  NAV
+// ================================================================
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+let navOpen = false;
+function toggleNav() {
+  navOpen = !navOpen;
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('hamburger');
+  if (navOpen) {
+    menu.style.display = 'block';
+    requestAnimationFrame(() => menu.classList.add('open'));
+    burger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  } else {
+    menu.classList.remove('open');
+    burger.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { if (!navOpen) menu.style.display = 'none'; }, 350);
+  }
+}
+function closeMobileMenu(e) {
+  // Close when clicking the backdrop (not the drawer itself)
+  if (e.target === document.getElementById('mobileMenu')) toggleNav();
+}
+
+// ================================================================
+//  DONATION FORM
+// ================================================================
+function setAmt(btn, val) {
+  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const inp = document.getElementById('donationAmt');
+  if (val) { inp.value = val; updateAmt(val); } else { inp.value = ''; inp.focus(); }
+}
+function updateAmt(v) { document.getElementById('amtDisplay').textContent = v || '—'; }
+function setFreq(btn) {
+  btn.parentElement.querySelectorAll('.freq-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function handleDonate() {
+  const v = document.getElementById('donationAmt').value;
+  if (!v || parseFloat(v) < 1) { alert(lang === 'fr' ? 'Veuillez entrer un montant valide.' : 'Please enter a valid amount.'); return; }
+  document.getElementById('donateModal').classList.add('open');
+}
+function handleContact() { document.getElementById('contactModal').classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); }));
+
+// ================================================================
+//  SCROLL REVEAL
+// ================================================================
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ================================================================
+//  PHOTO STORAGE
+// ================================================================
+const STORE_KEY = 'faf_gallery_photos';
+const PW_KEY    = 'faf_admin_pw';
+function loadPhotos() { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); } catch(e) { return []; } }
+function savePhotos(arr) { try { localStorage.setItem(STORE_KEY, JSON.stringify(arr)); } catch(e) { alert('Storage full! Try deleting old photos or use smaller files.'); } }
+function getAdminPw() { return localStorage.getItem(PW_KEY) || 'faf2025'; }
+
+// ================================================================
+//  PUBLIC GALLERY
+// ================================================================
+let currentFilter = 'all';
+let lightboxPhotos = [];
+let lightboxIndex  = 0;
+
+const CAT_LABELS = {
+  education: { en: 'Education', fr: 'Éducation' },
+  orphanage:  { en: 'Orphanage', fr: 'Orphelinat' },
+  community:  { en: 'Community', fr: 'Communauté' },
+  events:     { en: 'Events', fr: 'Événements' },
+};
+
+function formatDate(d) {
+  if (!d) return '';
+  try { return new Date(d + 'T00:00:00').toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-GB', { year:'numeric', month:'short', day:'numeric' }); }
+  catch(e) { return d; }
+}
+
+function renderPublicGallery() {
+  const photos = loadPhotos();
+  const grid = document.getElementById('galGrid');
+  const empty = document.getElementById('galEmpty');
+  const filtered = currentFilter === 'all' ? photos : photos.filter(p => p.category === currentFilter);
+  lightboxPhotos = filtered;
+  grid.innerHTML = '';
+  if (filtered.length === 0) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  filtered.forEach((photo, idx) => {
+    const card = document.createElement('div');
+    card.className = 'gal-card reveal';
+    const catLabel = (CAT_LABELS[photo.category] || {})[lang] || photo.category || '';
+    const dateStr = formatDate(photo.date);
+    card.innerHTML = `
+      <div class="gal-card-img-wrap">
+        <img src="${photo.dataUrl}" alt="${escHtml(photo.caption)}" loading="lazy" />
+        ${photo.category ? `<span class="gal-card-tag ${photo.category}">${catLabel}</span>` : ''}
+      </div>
+      <div class="gal-card-body">
+        <div class="gal-card-caption">${escHtml(photo.caption) || '&nbsp;'}</div>
+        <div class="gal-card-meta">
+          ${photo.location ? `<span>📍 ${escHtml(photo.location)}</span>` : ''}
+          ${dateStr ? `<span>🗓 ${dateStr}</span>` : ''}
+        </div>
+      </div>`;
+    card.addEventListener('click', () => openLightbox(idx));
+    grid.appendChild(card);
+    setTimeout(() => obs.observe(card), 10);
+  });
+}
+
+function filterGallery(cat) {
+  currentFilter = cat;
+  buildGalleryFilters(lang);
+  renderPublicGallery();
+}
+
+function openLightbox(idx) {
+  lightboxIndex = idx; showLightboxPhoto();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
+function showLightboxPhoto() {
+  const p = lightboxPhotos[lightboxIndex]; if (!p) return;
+  document.getElementById('lbImg').src = p.dataUrl;
+  document.getElementById('lbCaption').textContent = p.caption || '';
+  document.getElementById('lbTag').textContent = (CAT_LABELS[p.category] || {})[lang] || '';
+  document.getElementById('lbDate').textContent = formatDate(p.date) ? '🗓 ' + formatDate(p.date) : '';
+  document.getElementById('lbLocation').textContent = p.location ? '📍 ' + p.location : '';
+}
+function lbNav(dir, e) { e && e.stopPropagation(); lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length; showLightboxPhoto(); }
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNav(1); if (e.key === 'ArrowLeft') lbNav(-1); if (e.key === 'Escape') closeLightbox();
+});
+
+// ================================================================
+//  ADMIN
+// ================================================================
+let adminLoggedIn = false;
+
+function showAdminLogin() { document.getElementById('adminLoginOverlay').classList.add('open'); setTimeout(() => document.getElementById('adminPwInput').focus(), 200); }
+function hideAdminLogin() { document.getElementById('adminLoginOverlay').classList.remove('open'); document.getElementById('adminPwInput').value = ''; document.getElementById('adminLoginErr').style.display = 'none'; }
+function checkAdminPw() {
+  const entered = document.getElementById('adminPwInput').value;
+  if (entered === getAdminPw()) {
+    adminLoggedIn = true; hideAdminLogin();
+    document.getElementById('galleryPublic').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    adminTab('upload', document.querySelector('.admin-nav-btn'));
+    renderManageGrid();
+  } else {
+    document.getElementById('adminLoginErr').style.display = 'block';
+    document.getElementById('adminPwInput').value = ''; document.getElementById('adminPwInput').focus();
+  }
+}
+function logoutAdmin() {
+  adminLoggedIn = false;
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('galleryPublic').style.display = 'block';
+  renderPublicGallery();
+}
+function adminTab(tab, btn) {
+  ['upload','manage','settings'].forEach(t => {
+    document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1)).style.display = t === tab ? 'block' : 'none';
+  });
+  document.querySelectorAll('.admin-nav-btn').forEach(b => b.classList.remove('active-tab'));
+  if (btn) btn.classList.add('active-tab');
+  if (tab === 'manage') renderManageGrid();
+}
+
+// ================================================================
+//  FILE UPLOAD QUEUE
+// ================================================================
+let uploadQueue = [];
+function handleFileSelect(e) { addFilesToQueue(Array.from(e.target.files)); e.target.value = ''; }
+function dzDragOver(e) { e.preventDefault(); document.getElementById('uploadDropzone').classList.add('drag-over'); }
+function dzDragLeave() { document.getElementById('uploadDropzone').classList.remove('drag-over'); }
+function dzDrop(e) { e.preventDefault(); document.getElementById('uploadDropzone').classList.remove('drag-over'); addFilesToQueue(Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'))); }
+
+function addFilesToQueue(files) {
+  files.forEach(file => {
+    if (!file.type.startsWith('image/')) return;
+    if (file.size > 5 * 1024 * 1024) { alert(`${file.name} is too large (max 5MB)`); return; }
+    const reader = new FileReader();
+    reader.onload = ev => {
+      uploadQueue.push({ id: Date.now() + Math.random(), file, dataUrl: ev.target.result, caption: file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '), location: '', date: new Date().toISOString().slice(0,10), category: 'education' });
+      renderQueue();
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function renderQueue() {
+  const qLen = uploadQueue.length;
+  document.getElementById('qCount').textContent = qLen;
+  const qEl = document.getElementById('uploadQueue');
+  const items = document.getElementById('uqItems');
+  qEl.style.display = qLen > 0 ? 'block' : 'none';
+  items.innerHTML = uploadQueue.map((item, idx) => `
+    <div class="uq-item">
+      <img class="uq-thumb" src="${item.dataUrl}" alt="" />
+      <div class="form-group" style="margin:0">
+        <label class="form-label" style="margin-bottom:3px">Caption</label>
+        <input class="form-input" style="font-size:0.82rem;padding:8px 10px" value="${escHtml(item.caption)}" oninput="uploadQueue[${idx}].caption=this.value" />
+      </div>
+      <div class="form-group" style="margin:0">
+        <label class="form-label" style="margin-bottom:3px">Location</label>
+        <input class="form-input" style="font-size:0.82rem;padding:8px 10px" value="${escHtml(item.location)}" placeholder="e.g. Yaoundé" oninput="uploadQueue[${idx}].location=this.value" />
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="form-group" style="margin:0">
+          <label class="form-label" style="margin-bottom:3px">Date</label>
+          <input type="date" class="form-input" style="font-size:0.82rem;padding:8px 10px" value="${item.date}" oninput="uploadQueue[${idx}].date=this.value" />
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label" style="margin-bottom:3px">Category</label>
+          <select class="form-input" style="font-size:0.82rem;padding:8px 10px" onchange="uploadQueue[${idx}].category=this.value">
+            <option value="education" ${item.category==='education'?'selected':''}>Education</option>
+            <option value="orphanage" ${item.category==='orphanage'?'selected':''}>Orphanage</option>
+            <option value="community" ${item.category==='community'?'selected':''}>Community</option>
+            <option value="events"    ${item.category==='events'?'selected':''}>Events</option>
+          </select>
+        </div>
+      </div>
+      <button class="uq-remove" onclick="removeFromQueue(${idx})">✕</button>
+    </div>`).join('');
+}
+function removeFromQueue(idx) { uploadQueue.splice(idx, 1); renderQueue(); }
+function clearQueue() { uploadQueue = []; renderQueue(); }
+function saveAllPhotos() {
+  if (uploadQueue.length === 0) return;
+  const btn = document.getElementById('uploadSaveBtn');
+  const prog = document.getElementById('uploadProgress');
+  const bar  = document.getElementById('uploadProgressBar');
+  btn.disabled = true; prog.style.display = 'block';
+  const existing = loadPhotos();
+  const toSave = uploadQueue.map(item => ({ id: item.id, dataUrl: item.dataUrl, caption: item.caption, location: item.location, date: item.date, category: item.category, uploadedAt: new Date().toISOString() }));
+  let done = 0;
+  function processNext() {
+    if (done >= toSave.length) {
+      existing.unshift(...toSave); savePhotos(existing); bar.style.width = '100%';
+      setTimeout(() => {
+        btn.disabled = false; prog.style.display = 'none'; bar.style.width = '0';
+        clearQueue(); renderManageGrid();
+        const n = toSave.length;
+        btn.textContent = lang === 'fr' ? `✅ ${n} photo${n>1?'s':''} enregistrée${n>1?'s':''}!` : `✅ ${n} photo${n>1?'s':''} saved!`;
+        setTimeout(() => { btn.setAttribute('data-i18n','adm.saveBtn'); applyTranslations(lang); }, 2500);
+      }, 300);
+      return;
+    }
+    done++; bar.style.width = (done / toSave.length * 100) + '%';
+    setTimeout(processNext, 60);
+  }
+  processNext();
+}
+
+// ================================================================
+//  MANAGE GRID
+// ================================================================
+function renderManageGrid() {
+  const photos = loadPhotos();
+  const search = (document.getElementById('manageSearch')?.value || '').toLowerCase();
+  const filter = document.getElementById('manageFilter')?.value || 'all';
+  const grid = document.getElementById('manageGrid');
+  const empty = document.getElementById('manageEmpty');
+  const countEl = document.getElementById('manageCount');
+  let filtered = photos;
+  if (filter !== 'all') filtered = filtered.filter(p => p.category === filter);
+  if (search) filtered = filtered.filter(p => (p.caption+p.location+p.category).toLowerCase().includes(search));
+  if (countEl) countEl.textContent = filtered.length + ' photo' + (filtered.length !== 1 ? 's' : '');
+  grid.innerHTML = '';
+  if (filtered.length === 0) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  filtered.forEach(photo => {
+    const card = document.createElement('div');
+    card.className = 'manage-card';
+    const catLabel = (CAT_LABELS[photo.category] || {})[lang] || photo.category || '';
+    card.innerHTML = `
+      <img class="manage-card-img" src="${photo.dataUrl}" alt="${escHtml(photo.caption)}" loading="lazy" />
+      <div class="manage-card-info">
+        <div class="manage-card-cap">${escHtml(photo.caption) || '(no caption)'}</div>
+        <div class="manage-card-meta">${catLabel}${photo.date ? ' · ' + formatDate(photo.date) : ''}${photo.location ? ' · ' + escHtml(photo.location) : ''}</div>
+        <div class="manage-card-actions">
+          <button class="manage-btn edit" onclick="editPhoto('${photo.id}')">✏ Edit</button>
+          <button class="manage-btn del" onclick="deletePhoto('${photo.id}')">🗑 Delete</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+function deletePhoto(id) {
+  if (!confirm(lang === 'fr' ? 'Supprimer cette photo définitivement ?' : 'Delete this photo permanently?')) return;
+  savePhotos(loadPhotos().filter(p => String(p.id) !== String(id)));
+  renderManageGrid();
+}
+function editPhoto(id) {
+  const photo = loadPhotos().find(p => String(p.id) === String(id)); if (!photo) return;
+  document.getElementById('editPhotoId').value = id;
+  document.getElementById('editThumb').src = photo.dataUrl;
+  document.getElementById('editCaption').value = photo.caption || '';
+  document.getElementById('editLocation').value = photo.location || '';
+  document.getElementById('editDate').value = photo.date || '';
+  document.getElementById('editCategory').value = photo.category || 'education';
+  document.getElementById('editPhotoModal').classList.add('open');
+}
+function saveEdit() {
+  const id = document.getElementById('editPhotoId').value;
+  const photos = loadPhotos();
+  const idx = photos.findIndex(p => String(p.id) === String(id)); if (idx === -1) return;
+  photos[idx].caption = document.getElementById('editCaption').value;
+  photos[idx].location = document.getElementById('editLocation').value;
+  photos[idx].date = document.getElementById('editDate').value;
+  photos[idx].category = document.getElementById('editCategory').value;
+  savePhotos(photos); closeModal('editPhotoModal'); renderManageGrid();
+}
+
+// ================================================================
+//  SETTINGS
+// ================================================================
+function changePassword() {
+  const p1 = document.getElementById('newPw1').value;
+  const p2 = document.getElementById('newPw2').value;
+  const msg = document.getElementById('pwMsg');
+  msg.style.display = 'block';
+  if (!p1) { msg.style.color = '#c0182a'; msg.textContent = lang === 'fr' ? 'Entrez un mot de passe.' : 'Enter a password.'; return; }
+  if (p1 !== p2) { msg.style.color = '#c0182a'; msg.textContent = lang === 'fr' ? 'Les mots de passe ne correspondent pas.' : 'Passwords do not match.'; return; }
+  localStorage.setItem(PW_KEY, p1);
+  document.getElementById('newPw1').value = ''; document.getElementById('newPw2').value = '';
+  msg.style.color = 'var(--forest)';
+  msg.textContent = lang === 'fr' ? '✅ Mot de passe mis à jour !' : '✅ Password updated!';
+  setTimeout(() => { msg.style.display = 'none'; }, 3000);
+}
+function clearAllPhotos() {
+  if (!confirm(lang === 'fr' ? 'Supprimer TOUTES les photos définitivement ?' : 'Delete ALL photos permanently? This cannot be undone.')) return;
+  savePhotos([]); renderManageGrid();
+  alert(lang === 'fr' ? 'Toutes les photos ont été supprimées.' : 'All photos deleted.');
+}
+
+// ================================================================
+//  UTILITIES
+function escHtml(str) { if (!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ================================================================
+//  PAGE ROUTER
+// ================================================================
+const PAGES = ['home','impact','gallery'];
+let currentPage = 'home';
+
+function navigateTo(page) {
+  if (!PAGES.includes(page)) page = 'home';
+
+  // Hide all pages
+  document.getElementById('page-main').classList.remove('active');
+  document.getElementById('page-impact').classList.remove('active');
+  document.getElementById('page-gallery').classList.remove('active');
+
+  // Show target
+  if (page === 'home') {
+    document.getElementById('page-main').classList.add('active');
+    window.scrollTo(0,0);
+    history.pushState(null,'',window.location.pathname);
+  } else if (page === 'impact') {
+    document.getElementById('page-impact').classList.add('active');
+    window.scrollTo(0,0);
+    history.pushState(null,'','#impact');
+    applyTranslations(lang); // re-apply translations to sub-page elements
+  } else if (page === 'gallery') {
+    document.getElementById('page-gallery').classList.add('active');
+    window.scrollTo(0,0);
+    history.pushState(null,'','#gallery');
+    renderGallerySub();
+    buildGalleryFiltersSub(lang);
+    applyTranslations(lang);
+  }
+
+  currentPage = page;
+
+  // Close mobile menu if open
+  if (navOpen) toggleNav();
+}
+
+// Handle browser back button
+window.addEventListener('popstate', () => {
+  const hash = window.location.hash;
+  if (hash === '#impact') navigateTo('impact');
+  else if (hash === '#gallery') navigateTo('gallery');
+  else navigateTo('home');
+});
+
+// ================================================================
+//  GALLERY SUB-PAGE RENDERER
+// ================================================================
+let lightboxPhotosSub = [];
+let lightboxIndexSub  = 0;
+
+function buildGalleryFiltersSub(l) {
+  const T = TRANSLATIONS[l];
+  const filters = [
+    { cat: 'all', label: T['gal.filterAll'] },
+    { cat: 'education', label: T['gal.filterEdu'] },
+    { cat: 'orphanage', label: T['gal.filterOrph'] },
+    { cat: 'community', label: T['gal.filterCom'] },
+    { cat: 'events', label: T['gal.filterEv'] },
+  ];
+  const container = document.getElementById('galleryFiltersSub');
+  if (!container) return;
+  container.innerHTML = filters.map(f =>
+    `<button class="gal-filter${currentFilterSub === f.cat ? ' active' : ''}" data-cat="${f.cat}" onclick="filterGallerySub('${f.cat}',this)">${f.label}</button>`
+  ).join('');
+}
+
+let currentFilterSub = 'all';
+
+function filterGallerySub(cat) {
+  currentFilterSub = cat;
+  buildGalleryFiltersSub(lang);
+  renderGallerySub();
+}
+
+function renderGallerySub() {
+  const photos = loadPhotos();
+  const grid  = document.getElementById('galGridSub');
+  const empty = document.getElementById('galEmptySub');
+  if (!grid) return;
+
+  const filtered = currentFilterSub === 'all' ? photos : photos.filter(p => p.category === currentFilterSub);
+  lightboxPhotosSub = filtered;
+
+  grid.innerHTML = '';
+  if (filtered.length === 0) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+
+  filtered.forEach((photo, idx) => {
+    const card = document.createElement('div');
+    card.className = 'gal-card';
+    const catLabel = (CAT_LABELS[photo.category] || {})[lang] || photo.category || '';
+    const dateStr  = formatDate(photo.date);
+    card.innerHTML = `
+      <div class="gal-card-img-wrap">
+        <img src="${photo.dataUrl}" alt="${escHtml(photo.caption)}" loading="lazy" />
+        ${photo.category ? `<span class="gal-card-tag ${photo.category}">${catLabel}</span>` : ''}
+      </div>
+      <div class="gal-card-body">
+        <div class="gal-card-caption">${escHtml(photo.caption) || '&nbsp;'}</div>
+        <div class="gal-card-meta">
+          ${photo.location ? `<span>📍 ${escHtml(photo.location)}</span>` : ''}
+          ${dateStr ? `<span>🗓 ${dateStr}</span>` : ''}
+        </div>
+      </div>`;
+    card.addEventListener('click', () => openLightboxSub(idx));
+    grid.appendChild(card);
+  });
+}
+
+function openLightboxSub(idx) {
+  lightboxIndexSub = idx; showLightboxPhotoSub();
+  document.getElementById('lightboxSub').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightboxSub() {
+  document.getElementById('lightboxSub').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function showLightboxPhotoSub() {
+  const p = lightboxPhotosSub[lightboxIndexSub]; if (!p) return;
+  document.getElementById('lbImgSub').src = p.dataUrl;
+  document.getElementById('lbCaptionSub').textContent = p.caption || '';
+  document.getElementById('lbTagSub').textContent = (CAT_LABELS[p.category] || {})[lang] || '';
+  document.getElementById('lbDateSub').textContent = formatDate(p.date) ? '🗓 ' + formatDate(p.date) : '';
+  document.getElementById('lbLocationSub').textContent = p.location ? '📍 ' + p.location : '';
+}
+function lbNavSub(dir, e) {
+  e && e.stopPropagation();
+  lightboxIndexSub = (lightboxIndexSub + dir + lightboxPhotosSub.length) % lightboxPhotosSub.length;
+  showLightboxPhotoSub();
+}
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightboxSub').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNavSub(1);
+  if (e.key === 'ArrowLeft')  lbNavSub(-1);
+  if (e.key === 'Escape')     closeLightboxSub();
+});
+
+// ================================================================
+//  NAV LINK INTERCEPTS — make Impact & Gallery use router
+// ================================================================
+function interceptNavLinks() {
+  document.querySelectorAll('a[href="#impact"]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); navigateTo('impact'); });
+  });
+  document.querySelectorAll('a[href="#gallery"]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); navigateTo('gallery'); });
+  });
+}
+
+// ================================================================
+//  TRANSLATION ADDITIONS FOR SUB-PAGES
+// ================================================================
+TRANSLATIONS.en = Object.assign(TRANSLATIONS.en, {
+  'sub.backHome': 'Back to Home',
+  'sub.impactEyebrow': '🇨🇲 Our Impact in Cameroon',
+  'sub.impactH1': 'Measuring Every <em>Life Changed</em>',
+  'sub.impactDesc': 'Since our founding, every dollar donated has been tracked, reported and put to work in Cameroon\'s communities. Here is the full picture of what we\'ve accomplished together.',
+  'sub.impactBreakTag': 'Program Breakdown',
+  'sub.impactBreakTitle': 'Where Every Dollar <em>Goes</em>',
+  'sub.ibc1l': 'Partner Schools Equipped',
+  'sub.ibc1d': 'We have partnered with 47 schools across Cameroon\'s most underserved regions — providing desks, textbooks, trained teachers, and in many cases the buildings themselves. Priority regions include the Far North, North-West, and rural Adamawa.',
+  'sub.ibc2l': 'Orphanages Supported',
+  'sub.ibc2d': 'From Yaoundé to Maroua, we support 22 orphanages across 8 of Cameroon\'s 10 regions — funding renovation, beds, nutritious meals, counseling services, and guaranteed school enrollment for every child in our care.',
+  'sub.ibc3l': 'Teachers Trained',
+  'sub.ibc3d': 'Quality education begins with quality teachers. We have trained over 320 educators across Cameroon in modern pedagogy, trauma-informed teaching, and bilingual instruction methods.',
+  'sub.ibc4l': 'Community Leaders Empowered',
+  'sub.ibc4d': 'Through our Roots & Wings program, we have supported over 180 local leaders, women\'s groups, and youth cooperatives — providing vocational training, micro-grants, and sustainable agriculture support.',
+  'sub.regionsTitle': 'Coverage Across Cameroon\'s 10 Regions',
+  'sub.regionsSub': 'We are active in 8 of Cameroon\'s 10 administrative regions, with the deepest presence in conflict-affected and rural areas.',
+  'sub.reg1':'Centre','sub.reg2':'Littoral','sub.reg3':'West','sub.reg4':'North-West','sub.reg5':'South-West',
+  'sub.reg6':'Far North','sub.reg7':'North','sub.reg8':'Adamawa','sub.reg9':'East (coming soon)','sub.reg10':'South (coming soon)',
+  'sub.sourceLabel': 'Data Sources:',
+  'sub.impactCtaH': 'Help Us Reach Every Region',
+  'sub.impactCtaP': 'Two regions remain. With your support, we can achieve full national coverage by 2026.',
+  'sub.galEyebrow': '📸 Our Work in Action',
+  'sub.galH1': 'Project <em>Gallery</em>',
+  'sub.galDesc': 'Real photos from our schools, orphanages, and communities across Cameroon. Every image tells a story of a life being changed.',
+});
+TRANSLATIONS.fr = Object.assign(TRANSLATIONS.fr, {
+  'sub.backHome': 'Retour à l\'accueil',
+  'sub.impactEyebrow': '🇨🇲 Notre Impact au Cameroun',
+  'sub.impactH1': 'Mesurer Chaque <em>Vie Transformée</em>',
+  'sub.impactDesc': 'Depuis notre création, chaque dollar donné a été suivi, rapporté et mis au travail dans les communautés camerounaises. Voici le tableau complet de ce que nous avons accompli ensemble.',
+  'sub.impactBreakTag': 'Répartition des Programmes',
+  'sub.impactBreakTitle': 'Où Va Chaque <em>Dollar</em>',
+  'sub.ibc1l': 'Écoles Partenaires Équipées',
+  'sub.ibc1d': 'Nous avons collaboré avec 47 écoles dans les régions les plus défavorisées du Cameroun — en fournissant des bureaux, des manuels, des enseignants formés et, dans de nombreux cas, les bâtiments eux-mêmes.',
+  'sub.ibc2l': 'Orphelinats Soutenus',
+  'sub.ibc2d': 'De Yaoundé à Maroua, nous soutenons 22 orphelinats dans 8 des 10 régions du Cameroun — finançant rénovation, lits, repas nutritifs, services de conseil et scolarisation garantie.',
+  'sub.ibc3l': 'Enseignants Formés',
+  'sub.ibc3d': 'Une éducation de qualité commence par des enseignants de qualité. Nous avons formé plus de 320 éducateurs à travers le Cameroun en pédagogie moderne et méthodes d\'enseignement bilingues.',
+  'sub.ibc4l': 'Leaders Communautaires Accompagnés',
+  'sub.ibc4d': 'Grâce à notre programme Racines & Envol, nous avons soutenu plus de 180 leaders locaux, groupes de femmes et coopératives de jeunes — formation professionnelle, micro-subventions et agriculture durable.',
+  'sub.regionsTitle': 'Couverture dans les 10 Régions du Cameroun',
+  'sub.regionsSub': 'Nous sommes actifs dans 8 des 10 régions administratives du Cameroun, avec la présence la plus forte dans les zones rurales et touchées par les conflits.',
+  'sub.reg1':'Centre','sub.reg2':'Littoral','sub.reg3':'Ouest','sub.reg4':'Nord-Ouest','sub.reg5':'Sud-Ouest',
+  'sub.reg6':'Extrême-Nord','sub.reg7':'Nord','sub.reg8':'Adamaoua','sub.reg9':'Est (bientôt)','sub.reg10':'Sud (bientôt)',
+  'sub.sourceLabel': 'Sources :',
+  'sub.impactCtaH': 'Aidez-Nous à Couvrir Toutes les Régions',
+  'sub.impactCtaP': 'Deux régions restent. Avec votre soutien, nous pouvons atteindre une couverture nationale complète d\'ici 2026.',
+  'sub.galEyebrow': '📸 Notre Travail sur le Terrain',
+  'sub.galH1': '<em>Galerie</em> de Projets',
+  'sub.galDesc': 'Photos réelles de nos écoles, orphelinats et communautés à travers le Cameroun. Chaque image raconte l\'histoire d\'une vie en train de changer.',
+});
+
+// ================================================================
+//  INIT
+// ================================================================
+try {
+  const sl = localStorage.getItem('faf_lang');
+  if (sl === 'fr') {
+    lang = 'fr';
+    document.getElementById('btn-en').classList.remove('active');
+    document.getElementById('btn-fr').classList.add('active');
+    const mEn = document.getElementById('mob-btn-en');
+    const mFr = document.getElementById('mob-btn-fr');
+    if (mEn) { mEn.classList.remove('active'); mFr.classList.add('active'); }
+  }
+} catch(e) {}
+
+applyTranslations(lang);
+renderPublicGallery();
+interceptNavLinks();
+
+// Handle deep-link on load
+(function() {
+  const hash = window.location.hash;
+  if (hash === '#impact') navigateTo('impact');
+  else if (hash === '#gallery') navigateTo('gallery');
+})();
+
+</script>
+</body>
+</html>
