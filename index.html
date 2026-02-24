@@ -60,7 +60,7 @@
     .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,82,42,0.35); }
     .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.8); padding: 13px 28px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.3); font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.25s; }
     .btn-outline:hover { border-color: white; color: white; background: rgba(255,255,255,0.08); }
-    .hero-right { position: relative; overflow: hidden; }
+    .hero-right { position: relative; overflow: hidden; background: #2b3a2e; }
     .hero-right img { width: 100%; height: 100%; object-fit: cover; }
     .hero-right-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(28,22,12,0.3) 0%, transparent 60%); }
     .hero-stat-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(28,22,12,0.82); backdrop-filter: blur(12px); display: flex; }
@@ -280,6 +280,7 @@
     .story-text { font-size: 0.9rem; color: var(--ink); line-height: 1.8; margin-bottom: 24px; position: relative; z-index: 1; }
     .story-author { display: flex; align-items: center; gap: 14px; }
     .story-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .story-avatar-init { display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.03em; flex-shrink: 0; }
     .story-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); }
     .story-role { font-size: 0.76rem; color: var(--warm-mid); margin-top: 2px; }
 
@@ -715,7 +716,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="https://images.unsplash.com/photo-1594708767771-a5e9d3012f31?w=1200&q=80" alt="Cameroon children" />
+    <img src="https://source.unsplash.com/1200x800/?africa,children,cameroon" alt="Children in Cameroon" />
     <div class="hero-right-overlay"></div>
     <div class="hero-stat-bar">
       <div class="hero-stat-item"><div class="hero-stat-num">30M+</div><div class="hero-stat-label" data-i18n="hero.stat1">People in Cameroon</div></div>
@@ -762,7 +763,7 @@
 <!-- MISSION -->
 <section class="mission" id="mission">
   <div class="mission-visual reveal">
-    <img class="mission-img" src="https://images.unsplash.com/photo-1518398046578-8cca57782e17?w=800&q=80" alt="Cameroon children in classroom" />
+    <img class="mission-img" src="https://source.unsplash.com/800x600/?africa,classroom,school" alt="Cameroon children in classroom" />
     <div class="mission-badge">
       <div class="mission-badge-num">10+</div>
       <div class="mission-badge-text" data-i18n="mission.badge">Years of Impact</div>
@@ -808,7 +809,7 @@
   </div>
   <div class="progs-grid">
     <div class="prog-card reveal">
-      <img class="prog-img" src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&q=80" alt="Education Cameroon" />
+      <img class="prog-img" src="https://source.unsplash.com/600x400/?africa,education,school,children" alt="Education Cameroon" />
       <div class="prog-body">
         <span class="prog-tag edu" data-i18n="progs.t1">Education</span>
         <h3 data-i18n="progs.h1">Schools for Cameroon</h3>
@@ -817,7 +818,7 @@
       </div>
     </div>
     <div class="prog-card reveal d1">
-      <img class="prog-img" src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Orphanage support" />
+      <img class="prog-img" src="https://source.unsplash.com/600x400/?africa,children,orphanage,care" alt="Orphanage support Africa" />
       <div class="prog-body">
         <span class="prog-tag care" data-i18n="progs.t2">Orphan Care</span>
         <h3 data-i18n="progs.h2">Safe Homes Cameroon</h3>
@@ -826,10 +827,10 @@
       </div>
     </div>
     <div class="prog-card reveal d2">
-      <img class="prog-img" src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&q=80" alt="Community development" />
+      <img class="prog-img" src="https://source.unsplash.com/600x400/?africa,community,village,women" alt="Community development Africa" />
       <div class="prog-body">
         <span class="prog-tag comm" data-i18n="progs.t3">Community</span>
-        <h3 data-i18n="progs.h3">Roots &amp; Wings</h3>
+        <h3 data-i18n="progs.h3">Community Uplift Program</h3>
         <p data-i18n="progs.b3">Cameroon's bilingual, multicultural identity is its greatest strength. We invest in local leaders, women's literacy, youth vocational training, and sustainable agriculture — with programs in both Francophone and Anglophone regions of Cameroon.</p>
         <a href="#donate" class="prog-link" data-i18n="progs.link">Support this program →</a>
       </div>
@@ -1052,23 +1053,23 @@
       <div class="story-qmark">"</div>
       <p class="story-text" data-i18n="stories.q1">Before Forward Africa Foundation came to our village in the North-West, I had no books and no teacher for two years. Now I attend school every day. I want to become an engineer and build bridges in Cameroon.</p>
       <div class="story-author">
-        <img class="story-avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=80" alt="Ngozi" />
-        <div><div class="story-name">Ngozi, 14</div><div class="story-role" data-i18n="stories.r1">Student — North-West Region, Cameroon</div></div>
+        <div class="story-avatar story-avatar-init" style="background:linear-gradient(135deg,#c0522a,#d4a029)">A</div>
+        <div><div class="story-name">Adja, 14</div><div class="story-role" data-i18n="stories.r1">Student — North-West Region, Cameroon</div></div>
       </div>
     </div>
     <div class="story-card reveal d1">
       <div class="story-qmark">"</div>
       <p class="story-text" data-i18n="stories.q2">Our orphanage in Bafoussam used to struggle with food and space. The Foundation helped us renovate, provided beds for 40 children and arranged school enrollment for every single child. The transformation has been extraordinary.</p>
       <div class="story-author">
-        <img class="story-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Emmanuel" />
-        <div><div class="story-name">Emmanuel Nkeng</div><div class="story-role" data-i18n="stories.r2">Orphanage Director — Bafoussam, Cameroon</div></div>
+        <div class="story-avatar story-avatar-init" style="background:linear-gradient(135deg,#2b5e3f,#3a7a53)">JF</div>
+        <div><div class="story-name">Jean-Pierre Fomekong</div><div class="story-role" data-i18n="stories.r2">Orphanage Director — Bafoussam, Cameroon</div></div>
       </div>
     </div>
     <div class="story-card reveal d2">
       <div class="story-qmark">"</div>
       <p class="story-text" data-i18n="stories.q3">When I learned about the crisis in Cameroon's Anglophone regions, I knew I had to help. Forward Africa Foundation showed me exactly where my donations were going — with field photos and reports. I trust them completely.</p>
       <div class="story-author">
-        <img class="story-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Sarah" />
+        <div class="story-avatar story-avatar-init" style="background:linear-gradient(135deg,#1c160c,#6b6050)">SM</div>
         <div><div class="story-name">Sarah Mitchell</div><div class="story-role" data-i18n="stories.r3">Monthly Donor — Austin, TX, USA</div></div>
       </div>
     </div>
@@ -1129,7 +1130,7 @@
       <ul class="footer-links">
         <li><a href="#programs" data-i18n="footer.p1">Schools for Cameroon</a></li>
         <li><a href="#programs" data-i18n="footer.p2">Safe Homes</a></li>
-        <li><a href="#programs" data-i18n="footer.p3">Roots &amp; Wings</a></li>
+        <li><a href="#programs" data-i18n="footer.p3">Community Uplift</a></li>
       </ul>
     </div>
     <div>
@@ -1223,7 +1224,7 @@
           <div class="ibc-icon">🌱</div>
           <div class="ibc-num">180+</div>
           <div class="ibc-label" data-i18n="sub.ibc4l">Community Leaders Empowered</div>
-          <div class="ibc-desc" data-i18n="sub.ibc4d">Through our Roots &amp; Wings program, we have supported over 180 local leaders, women's groups, and youth cooperatives — providing vocational training, micro-grants, and sustainable agriculture support.</div>
+          <div class="ibc-desc" data-i18n="sub.ibc4d">Through our Community Uplift Program, we have supported over 180 local leaders, women's groups, and youth cooperatives — providing vocational training, micro-grants, and sustainable agriculture support.</div>
         </div>
       </div>
       <div class="impact-regions">
@@ -1340,7 +1341,7 @@ const TRANSLATIONS = {
     'progs.b1': 'With 14% of children ages 6–14 out of school and 72% facing learning poverty (UNESCO/World Bank), we fund school construction, teacher training, and textbooks — prioritizing the Far North, North-West, and rural communities where the gap is greatest.',
     'progs.t2': 'Orphan Care', 'progs.h2': 'Safe Homes Cameroon',
     'progs.b2': 'Almost half of Cameroon\'s children live in poverty (UNICEF), and the ongoing Anglophone crisis has displaced over 1 million children. We partner with orphanages across 8 of Cameroon\'s regions — providing beds, nutritious meals, counseling and school enrollment for every child.',
-    'progs.t3': 'Community', 'progs.h3': 'Roots &amp; Wings',
+    'progs.t3': 'Community', 'progs.h3': 'Community Uplift Program',
     'progs.b3': 'Cameroon\'s bilingual, multicultural identity is its greatest strength. We invest in local leaders, women\'s literacy, youth vocational training, and sustainable agriculture — with programs in both Francophone and Anglophone regions of Cameroon.',
     'progs.link': 'Support this program →',
     'gal.tag': 'Our Work in Action',
@@ -1415,7 +1416,7 @@ const TRANSLATIONS = {
     'con.submit': 'Send Message →',
     'footer.about': 'A nonprofit dedicated to uplifting lives across Cameroon through quality education and compassionate care for orphaned children. Rooted in Cameroon\'s ten regions — bilingual and proud.',
     'footer.h1': 'Programs', 'footer.h2': 'Get Involved', 'footer.h3': 'Organization',
-    'footer.p1': 'Schools for Cameroon', 'footer.p2': 'Safe Homes', 'footer.p3': 'Roots &amp; Wings',
+    'footer.p1': 'Schools for Cameroon', 'footer.p2': 'Safe Homes', 'footer.p3': 'Community Uplift',
     'footer.g1': 'Donate', 'footer.g2': 'Volunteer', 'footer.g3': 'Partner With Us', 'footer.g4': 'Corporate Giving',
     'footer.o1': 'Our Mission', 'footer.o2': 'Cameroon Context', 'footer.o3': 'Impact', 'footer.o4': 'Contact',
     'footer.copy': '© 2025 Forward Africa Foundation · forwardafricafoundation.org · All rights reserved.',
@@ -1468,7 +1469,7 @@ const TRANSLATIONS = {
     'progs.b1': 'Avec 14% des enfants de 6–14 ans non scolarisés et 72% face à la pauvreté d\'apprentissage (UNESCO/Banque mondiale), nous finançons la construction d\'écoles, la formation des enseignants et les manuels scolaires — en priorité dans l\'Extrême-Nord, le Nord-Ouest et les zones rurales.',
     'progs.t2': 'Soin aux Orphelins', 'progs.h2': 'Foyers Sécurisés au Cameroun',
     'progs.b2': 'Près de la moitié des enfants camerounais vivent dans la pauvreté (UNICEF), et la crise anglophone a déplacé plus d\'un million d\'enfants. Nous collaborons avec des orphelinats dans 8 régions — offrant hébergement, repas nutritifs, accompagnement et scolarisation à chaque enfant.',
-    'progs.t3': 'Communauté', 'progs.h3': 'Racines &amp; Envol',
+    'progs.t3': 'Communauté', 'progs.h3': 'Programme d\'Épanouissement Communautaire',
     'progs.b3': 'L\'identité bilingue et multiculturelle du Cameroun est sa plus grande force. Nous investissons dans les leaders locaux, l\'alphabétisation des femmes, la formation professionnelle et l\'agriculture durable — avec des programmes dans les régions francophones et anglophones.',
     'progs.link': 'Soutenir ce programme →',
     'gal.tag': 'Notre Travail sur le Terrain',
@@ -1543,7 +1544,7 @@ const TRANSLATIONS = {
     'con.submit': 'Envoyer le Message →',
     'footer.about': 'Une organisation à but non lucratif dédiée à l\'amélioration des vies au Cameroun grâce à une éducation de qualité et à la prise en charge bienveillante des enfants orphelins. Enracinée dans les dix régions du Cameroun — bilingue et fière.',
     'footer.h1': 'Programmes', 'footer.h2': 'S\'Impliquer', 'footer.h3': 'Organisation',
-    'footer.p1': 'Écoles pour le Cameroun', 'footer.p2': 'Foyers Sécurisés', 'footer.p3': 'Racines &amp; Envol',
+    'footer.p1': 'Écoles pour le Cameroun', 'footer.p2': 'Foyers Sécurisés', 'footer.p3': 'Épanouissement Communautaire',
     'footer.g1': 'Faire un Don', 'footer.g2': 'Bénévolat', 'footer.g3': 'Partenariat', 'footer.g4': 'Dons d\'Entreprise',
     'footer.o1': 'Notre Mission', 'footer.o2': 'Contexte Cameroun', 'footer.o3': 'Impact', 'footer.o4': 'Contact',
     'footer.copy': '© 2025 Forward Africa Foundation · forwardafricafoundation.org · Tous droits réservés.',
@@ -2149,7 +2150,7 @@ TRANSLATIONS.en = Object.assign(TRANSLATIONS.en, {
   'sub.ibc3l': 'Teachers Trained',
   'sub.ibc3d': 'Quality education begins with quality teachers. We have trained over 320 educators across Cameroon in modern pedagogy, trauma-informed teaching, and bilingual instruction methods.',
   'sub.ibc4l': 'Community Leaders Empowered',
-  'sub.ibc4d': 'Through our Roots & Wings program, we have supported over 180 local leaders, women\'s groups, and youth cooperatives — providing vocational training, micro-grants, and sustainable agriculture support.',
+  'sub.ibc4d': 'Through our Community Uplift Program, we have supported over 180 local leaders, women\'s groups, and youth cooperatives — providing vocational training, micro-grants, and sustainable agriculture support.',
   'sub.regionsTitle': 'Coverage Across Cameroon\'s 10 Regions',
   'sub.regionsSub': 'We are active in 8 of Cameroon\'s 10 administrative regions, with the deepest presence in conflict-affected and rural areas.',
   'sub.reg1':'Centre','sub.reg2':'Littoral','sub.reg3':'West','sub.reg4':'North-West','sub.reg5':'South-West',
@@ -2175,7 +2176,7 @@ TRANSLATIONS.fr = Object.assign(TRANSLATIONS.fr, {
   'sub.ibc3l': 'Enseignants Formés',
   'sub.ibc3d': 'Une éducation de qualité commence par des enseignants de qualité. Nous avons formé plus de 320 éducateurs à travers le Cameroun en pédagogie moderne et méthodes d\'enseignement bilingues.',
   'sub.ibc4l': 'Leaders Communautaires Accompagnés',
-  'sub.ibc4d': 'Grâce à notre programme Racines & Envol, nous avons soutenu plus de 180 leaders locaux, groupes de femmes et coopératives de jeunes — formation professionnelle, micro-subventions et agriculture durable.',
+  'sub.ibc4d': 'Grâce à notre Programme d\'Épanouissement Communautaire, nous avons soutenu plus de 180 leaders locaux, groupes de femmes et coopératives de jeunes — formation professionnelle, micro-subventions et agriculture durable.',
   'sub.regionsTitle': 'Couverture dans les 10 Régions du Cameroun',
   'sub.regionsSub': 'Nous sommes actifs dans 8 des 10 régions administratives du Cameroun, avec la présence la plus forte dans les zones rurales et touchées par les conflits.',
   'sub.reg1':'Centre','sub.reg2':'Littoral','sub.reg3':'Ouest','sub.reg4':'Nord-Ouest','sub.reg5':'Sud-Ouest',
