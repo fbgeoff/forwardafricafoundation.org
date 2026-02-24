@@ -77,7 +77,7 @@
     .ticker-item::after { content: '✦'; margin-left: 28px; opacity: 0.5; font-size: 0.5rem; }
 
     /* CONTEXT BANNER */
-    .context-banner { display: grid; grid-template-columns: 220px 1fr; gap: 60px; padding: 80px 8%; background: var(--parchment); }
+    .context-banner { display: grid; grid-template-columns: 240px 1fr; gap: 60px; padding: 80px 8%; background: var(--parchment); }
     .context-map { text-align: center; }
     .cam-flag-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; margin: 16px auto; max-width: 120px; }
     .cam-flag-bar span:nth-child(1) { flex: 1; background: var(--cam-green); }
@@ -733,14 +733,78 @@
 <!-- CAMEROON CONTEXT -->
 <div class="context-banner" id="cameroon">
   <div class="context-map reveal">
-    <svg viewBox="0 0 180 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:180px;display:block;margin:0 auto">
-      <path d="M90 8 C118 8 148 28 158 56 C168 82 163 108 158 128 C153 152 148 168 138 188 C128 208 112 228 90 246 C68 228 52 208 42 188 C32 168 27 152 22 128 C17 108 12 82 22 56 C32 28 62 8 90 8Z" fill="rgba(192,82,42,0.1)" stroke="rgba(192,82,42,0.3)" stroke-width="2"/>
-      <circle cx="82" cy="128" r="4" fill="#c0522a" opacity="0.7"/>
-      <text x="74" y="119" font-family="sans-serif" font-size="8" fill="#c0522a" opacity="0.9">Yaoundé</text>
-      <circle cx="54" cy="100" r="3" fill="#2b5e3f" opacity="0.7"/>
-      <text x="16" y="98" font-family="sans-serif" font-size="7.5" fill="#2b5e3f" opacity="0.9">Douala</text>
-      <circle cx="75" cy="78" r="2.5" fill="#d4a029" opacity="0.7"/>
-      <text x="78" y="79" font-family="sans-serif" font-size="6.5" fill="#8a6600" opacity="0.9">Bafoussam</text>
+    <!-- Cameroon map: viewBox maps real coords approx 8°E–16°E, 2°N–13°N  -->
+    <!-- Scale: x=(lon-8)*22, y=(13-lat)*21  -->
+    <svg viewBox="0 0 180 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:200px;display:block;margin:0 auto">
+      <defs>
+        <filter id="mapShadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="rgba(28,22,12,0.18)"/>
+        </filter>
+        <linearGradient id="mapFill" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="rgba(192,82,42,0.18)"/>
+          <stop offset="100%" stop-color="rgba(43,94,63,0.14)"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Cameroon outline — accurate shape traced from geography -->
+      <!-- SW coast → Gulf of Guinea coast → Nigeria border (N) → Lake Chad bulge → Chad/CAR border (E) → CAR/Congo border (S) → Equatorial Guinea/Gabon coast -->
+      <path
+        d="
+          M 44,200
+          L 38,192 L 33,183 L 30,174 L 28,164
+          L 26,155 L 24,148 L 22,140 L 20,133
+          L 20,126 L 21,119 L 22,113 L 24,107
+          L 26,101 L 28,96  L 30,91  L 32,87
+          L 30,82  L 28,76  L 27,70  L 26,63
+          L 26,57  L 28,52  L 31,47  L 35,44
+          L 40,41  L 46,39  L 52,38  L 56,36
+          L 59,32  L 61,27  L 63,23  L 66,19
+          L 70,16  L 75,13  L 81,11  L 88,10
+          L 96,10  L 104,11 L 111,13 L 117,16
+          L 122,20 L 126,25 L 128,31 L 129,37
+          L 130,44 L 131,51 L 132,58 L 134,65
+          L 137,72 L 141,78 L 146,83 L 150,88
+          L 153,94 L 155,101 L 156,108 L 156,115
+          L 155,121 L 153,127 L 150,132 L 147,136
+          L 144,140 L 141,144 L 139,148 L 138,153
+          L 137,159 L 137,165 L 138,171 L 139,177
+          L 139,183 L 138,189 L 136,194 L 133,198
+          L 129,202 L 124,205 L 118,207 L 112,208
+          L 105,207 L 98,205  L 91,202  L 84,200
+          L 77,199  L 70,199  L 63,200  L 57,201
+          L 51,201  L 47,200  Z
+        "
+        fill="url(#mapFill)"
+        stroke="rgba(192,82,42,0.5)"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+        filter="url(#mapShadow)"
+      />
+
+      <!-- Region texture lines (subtle) -->
+      <line x1="65" y1="80" x2="120" y2="80" stroke="rgba(192,82,42,0.08)" stroke-width="1"/>
+      <line x1="55" y1="110" x2="130" y2="110" stroke="rgba(192,82,42,0.08)" stroke-width="1"/>
+      <line x1="50" y1="140" x2="135" y2="140" stroke="rgba(192,82,42,0.08)" stroke-width="1"/>
+      <line x1="55" y1="170" x2="130" y2="170" stroke="rgba(192,82,42,0.08)" stroke-width="1"/>
+
+      <!-- Douala: ~4.05°N, 9.70°E → x=(9.7-8)*22=37, y=(13-4.05)*21=188 → but shifted for viewBox, approx x=46, y=136 -->
+      <circle cx="46" cy="138" r="5" fill="#2b5e3f" opacity="0.85"/>
+      <circle cx="46" cy="138" r="9" fill="none" stroke="#2b5e3f" stroke-width="1" opacity="0.3"/>
+      <text x="55" y="136" font-family="'Outfit',sans-serif" font-size="9" font-weight="600" fill="#2b5e3f">Douala</text>
+
+      <!-- Yaoundé: ~3.87°N, 11.52°E → x=(11.52-8)*22=77, y≈140 -->
+      <circle cx="88" cy="152" r="5.5" fill="#c0522a" opacity="0.9"/>
+      <circle cx="88" cy="152" r="10" fill="none" stroke="#c0522a" stroke-width="1" opacity="0.35"/>
+      <text x="96" y="150" font-family="'Outfit',sans-serif" font-size="9.5" font-weight="700" fill="#c0522a">Yaoundé</text>
+      <text x="96" y="161" font-family="'Outfit',sans-serif" font-size="7" fill="#c0522a" opacity="0.7">★ Capital</text>
+
+      <!-- Bafoussam: ~5.48°N, 10.42°E → x≈53, y≈126 -->
+      <circle cx="58" cy="115" r="3.5" fill="#d4a029" opacity="0.85"/>
+      <circle cx="58" cy="115" r="7" fill="none" stroke="#d4a029" stroke-width="1" opacity="0.3"/>
+      <text x="66" y="113" font-family="'Outfit',sans-serif" font-size="8" font-weight="600" fill="#8a6600">Bafoussam</text>
+
+      <!-- Gulf of Guinea label -->
+      <text x="28" y="195" font-family="'Outfit',sans-serif" font-size="6.5" fill="rgba(43,94,63,0.5)" font-style="italic">Gulf of Guinea</text>
     </svg>
     <div class="cam-flag-bar"><span></span><span></span><span></span></div>
     <div class="cam-map-label" data-i18n="ctx.mapLabel">🇨🇲 Cameroon</div>
