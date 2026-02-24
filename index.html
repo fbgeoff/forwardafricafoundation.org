@@ -77,7 +77,7 @@
     .ticker-item::after { content: '✦'; margin-left: 28px; opacity: 0.5; font-size: 0.5rem; }
 
     /* CONTEXT BANNER */
-    .context-banner { display: grid; grid-template-columns: 250px 1fr; gap: 60px; padding: 80px 8%; background: var(--parchment); }
+    .context-banner { display: grid; grid-template-columns: 340px 1fr; gap: 60px; padding: 80px 8%; background: var(--parchment); }
     .context-map { text-align: center; }
     .cam-flag-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; margin: 16px auto; max-width: 120px; }
     .cam-flag-bar span:nth-child(1) { flex: 1; background: var(--cam-green); }
@@ -733,8 +733,8 @@
 <!-- CAMEROON CONTEXT -->
 <div class="context-banner" id="cameroon">
   <div class="context-map reveal">
-    <div id="africaMap" style="width:220px;margin:0 auto;position:relative;">
-      <svg id="africaMapSvg" width="220" height="280" style="display:block;filter:drop-shadow(1px 3px 6px rgba(28,22,12,0.18))"></svg>
+    <div id="africaMap" style="width:320px;margin:0 auto;position:relative;">
+      <svg id="africaMapSvg" width="320" height="400" style="display:block;filter:drop-shadow(1px 3px 6px rgba(28,22,12,0.18))"></svg>
     </div>
     <div class="cam-flag-bar"><span></span><span></span><span></span></div>
     <div class="cam-map-label" data-i18n="ctx.mapLabel">🇨🇲 Cameroon</div>
@@ -2135,7 +2135,7 @@ window.addEventListener('popstate', () => {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script>
 (function() {
-  const W = 220, H = 280;
+  const W = 320, H = 400;
   const svg = d3.select('#africaMapSvg')
     .attr('width', W).attr('height', H);
 
