@@ -60,8 +60,8 @@
     .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,82,42,0.35); }
     .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.8); padding: 13px 28px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.3); font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.25s; }
     .btn-outline:hover { border-color: white; color: white; background: rgba(255,255,255,0.08); }
-    .hero-right { position: relative; overflow: hidden; background: #2b3a2e; }
-    .hero-right img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-right { position: relative; overflow: hidden; background: #1a3a22; min-height: 400px; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
     .hero-right-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(28,22,12,0.3) 0%, transparent 60%); }
     .hero-stat-bar { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(28,22,12,0.82); backdrop-filter: blur(12px); display: flex; }
     .hero-stat-item { flex: 1; padding: 18px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); }
@@ -716,7 +716,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="https://source.unsplash.com/1200x800/?africa,children,cameroon" alt="Children in Cameroon" />
+    <img src="https://images.pexels.com/photos/28593055/pexels-photo-28593055.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Smiling children in African classroom" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0" />
     <div class="hero-right-overlay"></div>
     <div class="hero-stat-bar">
       <div class="hero-stat-item"><div class="hero-stat-num">30M+</div><div class="hero-stat-label" data-i18n="hero.stat1">People in Cameroon</div></div>
@@ -763,7 +763,7 @@
 <!-- MISSION -->
 <section class="mission" id="mission">
   <div class="mission-visual reveal">
-    <img class="mission-img" src="https://source.unsplash.com/800x600/?africa,classroom,school" alt="Cameroon children in classroom" />
+    <img class="mission-img" src="https://images.pexels.com/photos/28593054/pexels-photo-28593054.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Young African students in classroom" />
     <div class="mission-badge">
       <div class="mission-badge-num">10+</div>
       <div class="mission-badge-text" data-i18n="mission.badge">Years of Impact</div>
@@ -809,7 +809,7 @@
   </div>
   <div class="progs-grid">
     <div class="prog-card reveal">
-      <img class="prog-img" src="https://source.unsplash.com/600x400/?africa,education,school,children" alt="Education Cameroon" />
+      <img class="prog-img" src="https://images.pexels.com/photos/28593044/pexels-photo-28593044.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Joyful African children at school" />
       <div class="prog-body">
         <span class="prog-tag edu" data-i18n="progs.t1">Education</span>
         <h3 data-i18n="progs.h1">Schools for Cameroon</h3>
@@ -818,7 +818,7 @@
       </div>
     </div>
     <div class="prog-card reveal d1">
-      <img class="prog-img" src="https://source.unsplash.com/600x400/?africa,children,orphanage,care" alt="Orphanage support Africa" />
+      <img class="prog-img" src="https://images.pexels.com/photos/6572780/pexels-photo-6572780.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Large group of African school children" />
       <div class="prog-body">
         <span class="prog-tag care" data-i18n="progs.t2">Orphan Care</span>
         <h3 data-i18n="progs.h2">Safe Homes Cameroon</h3>
@@ -827,7 +827,7 @@
       </div>
     </div>
     <div class="prog-card reveal d2">
-      <img class="prog-img" src="https://source.unsplash.com/600x400/?africa,community,village,women" alt="Community development Africa" />
+      <img class="prog-img" src="https://images.pexels.com/photos/19301620/pexels-photo-19301620.jpeg?auto=compress&cs=tinysrgb&w=600" alt="African children and woman in village community" />
       <div class="prog-body">
         <span class="prog-tag comm" data-i18n="progs.t3">Community</span>
         <h3 data-i18n="progs.h3">Community Uplift Program</h3>
@@ -1053,7 +1053,7 @@
       <div class="story-qmark">"</div>
       <p class="story-text" data-i18n="stories.q1">Before Forward Africa Foundation came to our village in the North-West, I had no books and no teacher for two years. Now I attend school every day. I want to become an engineer and build bridges in Cameroon.</p>
       <div class="story-author">
-        <div class="story-avatar story-avatar-init" style="background:linear-gradient(135deg,#c0522a,#d4a029)">A</div>
+        <img class="story-avatar" src="https://images.pexels.com/photos/6569952/pexels-photo-6569952.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Adja" />
         <div><div class="story-name">Adja, 14</div><div class="story-role" data-i18n="stories.r1">Student — North-West Region, Cameroon</div></div>
       </div>
     </div>
@@ -1061,7 +1061,7 @@
       <div class="story-qmark">"</div>
       <p class="story-text" data-i18n="stories.q2">Our orphanage in Bafoussam used to struggle with food and space. The Foundation helped us renovate, provided beds for 40 children and arranged school enrollment for every single child. The transformation has been extraordinary.</p>
       <div class="story-author">
-        <div class="story-avatar story-avatar-init" style="background:linear-gradient(135deg,#2b5e3f,#3a7a53)">JF</div>
+        <img class="story-avatar" src="https://images.pexels.com/photos/12455720/pexels-photo-12455720.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Jean-Pierre Fomekong" />
         <div><div class="story-name">Jean-Pierre Fomekong</div><div class="story-role" data-i18n="stories.r2">Orphanage Director — Bafoussam, Cameroon</div></div>
       </div>
     </div>
@@ -1069,7 +1069,7 @@
       <div class="story-qmark">"</div>
       <p class="story-text" data-i18n="stories.q3">When I learned about the crisis in Cameroon's Anglophone regions, I knew I had to help. Forward Africa Foundation showed me exactly where my donations were going — with field photos and reports. I trust them completely.</p>
       <div class="story-author">
-        <div class="story-avatar story-avatar-init" style="background:linear-gradient(135deg,#1c160c,#6b6050)">SM</div>
+        <img class="story-avatar" src="https://images.pexels.com/photos/4568376/pexels-photo-4568376.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Sarah Mitchell" />
         <div><div class="story-name">Sarah Mitchell</div><div class="story-role" data-i18n="stories.r3">Monthly Donor — Austin, TX, USA</div></div>
       </div>
     </div>
