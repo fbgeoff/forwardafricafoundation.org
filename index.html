@@ -838,101 +838,6 @@
   </div>
 </section>
 
-<!-- GALLERY (moved to Gallery sub-page) -->
-<div class="gallery-section" id="gallery" style="display:none">
-  <div class="gallery-public" id="galleryPublic">
-
-  <!-- ADMIN LOGIN -->
-  <div class="admin-login-overlay" id="adminLoginOverlay">
-    <div class="admin-login-box">
-      <button class="modal-close" onclick="hideAdminLogin()">✕</button>
-      <div style="font-size:2rem;text-align:center;margin-bottom:12px">🔐</div>
-      <h3 class="admin-login-title" data-i18n="adm.loginTitle">Admin Access</h3>
-      <p class="admin-login-sub" data-i18n="adm.loginSub">Enter your admin password to manage gallery photos.</p>
-      <input type="password" class="form-input" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter') checkAdminPw()" style="margin:16px 0 10px" />
-      <div class="admin-login-err" id="adminLoginErr" data-i18n="adm.loginErr">Incorrect password. Try again.</div>
-      <button class="btn-primary" style="width:100%;justify-content:center;margin-top:4px" onclick="checkAdminPw()"><span data-i18n="adm.loginBtn">Enter Admin Panel →</span></button>
-      <p class="admin-hint" data-i18n-html="adm.loginHint">Default password: <strong>faf2025</strong> — change it in Settings after logging in.</p>
-    </div>
-  </div>
-
-  <!-- ADMIN PANEL -->
-  <div class="admin-panel" id="adminPanel">
-    <div class="admin-topbar">
-      <div class="admin-topbar-left">
-        <span class="admin-logo">🌍 <strong>FAF Admin</strong></span>
-        <span class="admin-badge" data-i18n="adm.badge">Gallery Manager</span>
-      </div>
-      <div class="admin-topbar-right">
-        <button class="admin-nav-btn" onclick="adminTab('upload',this)" data-i18n="adm.tabUpload">📤 Upload Photos</button>
-        <button class="admin-nav-btn" onclick="adminTab('manage',this)" data-i18n="adm.tabManage">🗂 Manage Gallery</button>
-        <button class="admin-nav-btn" onclick="adminTab('settings',this)" data-i18n="adm.tabSettings">⚙ Settings</button>
-        <button class="admin-logout-btn" onclick="logoutAdmin()" data-i18n="adm.logout">Log Out</button>
-      </div>
-    </div>
-    <div class="admin-tab-content" id="tabUpload">
-      <div class="admin-section-title" data-i18n="adm.upTitle">Upload Project Photos</div>
-      <p class="admin-section-sub" data-i18n="adm.upSub">Select one or multiple photos from your device. Add captions, location, date and category. Photos are stored in your browser and displayed on the public gallery immediately.</p>
-      <div class="upload-dropzone" id="uploadDropzone" ondragover="dzDragOver(event)" ondragleave="dzDragLeave(event)" ondrop="dzDrop(event)" onclick="document.getElementById('fileInput').click()">
-        <div class="dz-icon">📷</div>
-        <div class="dz-title" data-i18n="adm.dzTitle">Drop photos here or click to browse</div>
-        <div class="dz-sub" data-i18n="adm.dzSub">JPG, PNG, WebP — multiple files supported — max 5MB each</div>
-        <input type="file" id="fileInput" accept="image/*" multiple style="display:none" onchange="handleFileSelect(event)" />
-      </div>
-      <div class="upload-queue" id="uploadQueue" style="display:none">
-        <div class="uq-header">
-          <div class="uq-title"><span data-i18n="adm.qTitle">Photos to Upload</span> (<span id="qCount">0</span>)</div>
-          <button class="uq-clear" onclick="clearQueue()" data-i18n="adm.qClear">Clear All</button>
-        </div>
-        <div class="uq-items" id="uqItems"></div>
-        <button class="upload-save-btn" id="uploadSaveBtn" onclick="saveAllPhotos()" data-i18n="adm.saveBtn">💾 Save All to Gallery</button>
-        <div class="upload-progress" id="uploadProgress" style="display:none"><div class="upload-progress-bar" id="uploadProgressBar"></div></div>
-      </div>
-    </div>
-    <div class="admin-tab-content" id="tabManage" style="display:none">
-      <div class="admin-section-title" data-i18n="adm.manTitle">Manage Gallery Photos</div>
-      <div class="manage-toolbar">
-        <input class="form-input" id="manageSearch" placeholder="Search photos..." oninput="renderManageGrid()" style="max-width:260px;font-size:0.85rem" />
-        <select class="form-input" id="manageFilter" onchange="renderManageGrid()" style="max-width:180px;font-size:0.85rem">
-          <option value="all" data-i18n="adm.catAll">All Categories</option>
-          <option value="education" data-i18n="cat.education">Education</option>
-          <option value="orphanage" data-i18n="cat.orphanage">Orphanages</option>
-          <option value="community" data-i18n="cat.community">Community</option>
-          <option value="events" data-i18n="cat.events">Events</option>
-        </select>
-        <span class="manage-count" id="manageCount"></span>
-      </div>
-      <div class="manage-grid" id="manageGrid"></div>
-      <div class="manage-empty" id="manageEmpty" style="display:none"><p data-i18n="adm.manEmpty">No photos in gallery yet. Upload some above!</p></div>
-    </div>
-    <div class="admin-tab-content" id="tabSettings" style="display:none">
-      <div class="admin-section-title" data-i18n="adm.setTitle">Admin Settings</div>
-      <div class="settings-card">
-        <h4 data-i18n="adm.pwTitle">🔑 Change Admin Password</h4>
-        <p data-i18n="adm.pwSub">Update your admin password. Make sure to remember it — there is no recovery option.</p>
-        <div class="form-group" style="margin-top:16px;max-width:340px">
-          <label class="form-label" data-i18n="adm.pw1">New Password</label>
-          <input class="form-input" type="password" id="newPw1" />
-        </div>
-        <div class="form-group" style="max-width:340px">
-          <label class="form-label" data-i18n="adm.pw2">Confirm Password</label>
-          <input class="form-input" type="password" id="newPw2" />
-        </div>
-        <button class="btn-primary" onclick="changePassword()" style="margin-top:8px" data-i18n="adm.pwBtn">Update Password</button>
-        <div id="pwMsg" style="margin-top:10px;font-size:0.82rem;display:none"></div>
-      </div>
-      <div class="settings-card" style="margin-top:20px">
-        <h4 data-i18n="adm.delTitle">🗑 Clear All Gallery Photos</h4>
-        <p data-i18n="adm.delSub">Permanently delete all photos from the gallery. This cannot be undone.</p>
-        <button class="btn-danger" onclick="clearAllPhotos()" style="margin-top:14px" data-i18n="adm.delBtn">⚠ Delete All Photos</button>
-      </div>
-      <div class="settings-card" style="margin-top:20px">
-        <h4 data-i18n="adm.infoTitle">ℹ About This Gallery System</h4>
-        <p data-i18n="adm.infoBody">Photos are stored in your browser's local storage as base64. This means photos are tied to the browser/device you upload from. For a production site: connect a cloud storage service like Cloudinary or AWS S3, or use a CMS like Netlify CMS.</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- EDIT PHOTO MODAL -->
 <div class="modal-overlay" id="editPhotoModal">
@@ -1265,7 +1170,96 @@
       </div>
     </div>
   </div>
-  <!-- Admin login / panel live here too via shared overlays -->
+  <!-- Admin Login -->
+  <div class="admin-login-overlay" id="adminLoginOverlay">
+    <div class="admin-login-box">
+      <button class="modal-close" onclick="hideAdminLogin()">✕</button>
+      <div style="font-size:2rem;text-align:center;margin-bottom:12px">🔐</div>
+      <h3 class="admin-login-title" data-i18n="adm.loginTitle">Admin Access</h3>
+      <p class="admin-login-sub" data-i18n="adm.loginSub">Enter your admin password to manage gallery photos.</p>
+      <input type="password" class="form-input" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter') checkAdminPw()" style="margin:16px 0 10px" />
+      <div class="admin-login-err" id="adminLoginErr" data-i18n="adm.loginErr">Incorrect password. Try again.</div>
+      <button class="btn-primary" style="width:100%;justify-content:center;margin-top:4px" onclick="checkAdminPw()"><span data-i18n="adm.loginBtn">Enter Admin Panel →</span></button>
+      <p class="admin-hint" data-i18n-html="adm.loginHint">Default password: <strong>faf2025</strong> — change it in Settings after logging in.</p>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div class="admin-panel" id="adminPanel">
+    <div class="admin-topbar">
+      <div class="admin-topbar-left">
+        <span class="admin-logo">🌍 <strong>FAF Admin</strong></span>
+        <span class="admin-badge" data-i18n="adm.badge">Gallery Manager</span>
+      </div>
+      <div class="admin-topbar-right">
+        <button class="admin-nav-btn" onclick="adminTab('upload',this)" data-i18n="adm.tabUpload">📤 Upload Photos</button>
+        <button class="admin-nav-btn" onclick="adminTab('manage',this)" data-i18n="adm.tabManage">🗂 Manage Gallery</button>
+        <button class="admin-nav-btn" onclick="adminTab('settings',this)" data-i18n="adm.tabSettings">⚙ Settings</button>
+        <button class="admin-logout-btn" onclick="logoutAdmin()" data-i18n="adm.logout">Log Out</button>
+      </div>
+    </div>
+    <div class="admin-tab-content" id="tabUpload">
+      <div class="admin-section-title" data-i18n="adm.upTitle">Upload Project Photos</div>
+      <p class="admin-section-sub" data-i18n="adm.upSub">Select one or multiple photos from your device. Add captions, location, date and category. Photos are stored in your browser and displayed on the public gallery immediately.</p>
+      <div class="upload-dropzone" id="uploadDropzone" ondragover="dzDragOver(event)" ondragleave="dzDragLeave(event)" ondrop="dzDrop(event)" onclick="document.getElementById('fileInput').click()">
+        <div class="dz-icon">📷</div>
+        <div class="dz-title" data-i18n="adm.dzTitle">Drop photos here or click to browse</div>
+        <div class="dz-sub" data-i18n="adm.dzSub">JPG, PNG, WebP — multiple files supported — max 5MB each</div>
+        <input type="file" id="fileInput" accept="image/*" multiple style="display:none" onchange="handleFileSelect(event)" />
+      </div>
+      <div class="upload-queue" id="uploadQueue" style="display:none">
+        <div class="uq-header">
+          <div class="uq-title"><span data-i18n="adm.qTitle">Photos to Upload</span> (<span id="qCount">0</span>)</div>
+          <button class="uq-clear" onclick="clearQueue()" data-i18n="adm.qClear">Clear All</button>
+        </div>
+        <div class="uq-items" id="uqItems"></div>
+        <button class="upload-save-btn" id="uploadSaveBtn" onclick="saveAllPhotos()" data-i18n="adm.saveBtn">💾 Save All to Gallery</button>
+        <div class="upload-progress" id="uploadProgress" style="display:none"><div class="upload-progress-bar" id="uploadProgressBar"></div></div>
+      </div>
+    </div>
+    <div class="admin-tab-content" id="tabManage" style="display:none">
+      <div class="admin-section-title" data-i18n="adm.manTitle">Manage Gallery Photos</div>
+      <div class="manage-toolbar">
+        <input class="form-input" id="manageSearch" placeholder="Search photos..." oninput="renderManageGrid()" style="max-width:260px;font-size:0.85rem" />
+        <select class="form-input" id="manageFilter" onchange="renderManageGrid()" style="max-width:180px;font-size:0.85rem">
+          <option value="all" data-i18n="adm.catAll">All Categories</option>
+          <option value="education" data-i18n="cat.education">Education</option>
+          <option value="orphanage" data-i18n="cat.orphanage">Orphanages</option>
+          <option value="community" data-i18n="cat.community">Community</option>
+          <option value="events" data-i18n="cat.events">Events</option>
+        </select>
+        <span class="manage-count" id="manageCount"></span>
+      </div>
+      <div class="manage-grid" id="manageGrid"></div>
+      <div class="manage-empty" id="manageEmpty" style="display:none"><p data-i18n="adm.manEmpty">No photos in gallery yet. Upload some above!</p></div>
+    </div>
+    <div class="admin-tab-content" id="tabSettings" style="display:none">
+      <div class="admin-section-title" data-i18n="adm.setTitle">Admin Settings</div>
+      <div class="settings-card">
+        <h4 data-i18n="adm.pwTitle">🔑 Change Admin Password</h4>
+        <p data-i18n="adm.pwSub">Update your admin password. Make sure to remember it — there is no recovery option.</p>
+        <div class="form-group" style="margin-top:16px;max-width:340px">
+          <label class="form-label" data-i18n="adm.pw1">New Password</label>
+          <input class="form-input" type="password" id="newPw1" />
+        </div>
+        <div class="form-group" style="max-width:340px">
+          <label class="form-label" data-i18n="adm.pw2">Confirm Password</label>
+          <input class="form-input" type="password" id="newPw2" />
+        </div>
+        <button class="btn-primary" onclick="changePassword()" style="margin-top:8px" data-i18n="adm.pwBtn">Update Password</button>
+        <div id="pwMsg" style="margin-top:10px;font-size:0.82rem;display:none"></div>
+      </div>
+      <div class="settings-card" style="margin-top:20px">
+        <h4 data-i18n="adm.delTitle">🗑 Clear All Gallery Photos</h4>
+        <p data-i18n="adm.delSub">Permanently delete all photos from the gallery. This cannot be undone.</p>
+        <button class="btn-danger" onclick="clearAllPhotos()" style="margin-top:14px" data-i18n="adm.delBtn">⚠ Delete All Photos</button>
+      </div>
+      <div class="settings-card" style="margin-top:20px">
+        <h4 data-i18n="adm.infoTitle">ℹ About This Gallery System</h4>
+        <p data-i18n="adm.infoBody">Photos are stored in your browser's local storage as base64. This means photos are tied to the browser/device you upload from. For a production site: connect a cloud storage service like Cloudinary or AWS S3, or use a CMS like Netlify CMS.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -1587,18 +1581,8 @@ function buildTicker(l) {
 //  GALLERY FILTERS
 // ================================================================
 function buildGalleryFilters(l) {
-  const T = TRANSLATIONS[l];
-  const filters = [
-    { cat: 'all', label: T['gal.filterAll'] },
-    { cat: 'education', label: T['gal.filterEdu'] },
-    { cat: 'orphanage', label: T['gal.filterOrph'] },
-    { cat: 'community', label: T['gal.filterCom'] },
-    { cat: 'events', label: T['gal.filterEv'] },
-  ];
-  const container = document.getElementById('galleryFilters');
-  container.innerHTML = filters.map(f =>
-    `<button class="gal-filter${currentFilter === f.cat ? ' active' : ''}" data-cat="${f.cat}" onclick="filterGallery('${f.cat}',this)">${f.label}</button>`
-  ).join('');
+  // Filters now live only in the gallery sub-page — delegate to sub version
+  buildGalleryFiltersSub(l);
 }
 
 // ================================================================
@@ -1690,62 +1674,18 @@ function formatDate(d) {
 }
 
 function renderPublicGallery() {
-  const photos = loadPhotos();
-  const grid = document.getElementById('galGrid');
-  const empty = document.getElementById('galEmpty');
-  const filtered = currentFilter === 'all' ? photos : photos.filter(p => p.category === currentFilter);
-  lightboxPhotos = filtered;
-  grid.innerHTML = '';
-  if (filtered.length === 0) { empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
-  filtered.forEach((photo, idx) => {
-    const card = document.createElement('div');
-    card.className = 'gal-card reveal';
-    const catLabel = (CAT_LABELS[photo.category] || {})[lang] || photo.category || '';
-    const dateStr = formatDate(photo.date);
-    card.innerHTML = `
-      <div class="gal-card-img-wrap">
-        <img src="${photo.dataUrl}" alt="${escHtml(photo.caption)}" loading="lazy" />
-        ${photo.category ? `<span class="gal-card-tag ${photo.category}">${catLabel}</span>` : ''}
-      </div>
-      <div class="gal-card-body">
-        <div class="gal-card-caption">${escHtml(photo.caption) || '&nbsp;'}</div>
-        <div class="gal-card-meta">
-          ${photo.location ? `<span>📍 ${escHtml(photo.location)}</span>` : ''}
-          ${dateStr ? `<span>🗓 ${dateStr}</span>` : ''}
-        </div>
-      </div>`;
-    card.addEventListener('click', () => openLightbox(idx));
-    grid.appendChild(card);
-    setTimeout(() => obs.observe(card), 10);
-  });
+  // Gallery now lives only in the sub-page
+  renderGallerySub();
 }
 
-function filterGallery(cat) {
+function filterGallery(cat, btn) {
   currentFilter = cat;
-  buildGalleryFilters(lang);
-  renderPublicGallery();
+  filterGallerySub(cat, btn);
 }
 
-function openLightbox(idx) {
-  lightboxIndex = idx; showLightboxPhoto();
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
-function showLightboxPhoto() {
-  const p = lightboxPhotos[lightboxIndex]; if (!p) return;
-  document.getElementById('lbImg').src = p.dataUrl;
-  document.getElementById('lbCaption').textContent = p.caption || '';
-  document.getElementById('lbTag').textContent = (CAT_LABELS[p.category] || {})[lang] || '';
-  document.getElementById('lbDate').textContent = formatDate(p.date) ? '🗓 ' + formatDate(p.date) : '';
-  document.getElementById('lbLocation').textContent = p.location ? '📍 ' + p.location : '';
-}
-function lbNav(dir, e) { e && e.stopPropagation(); lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length; showLightboxPhoto(); }
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('open')) return;
-  if (e.key === 'ArrowRight') lbNav(1); if (e.key === 'ArrowLeft') lbNav(-1); if (e.key === 'Escape') closeLightbox();
-});
+function openLightbox(idx) { openLightboxSub(idx); }
+function closeLightbox() { closeLightboxSub(); }
+function lbNav(dir, e) { lbNavSub(dir, e); }
 
 // ================================================================
 //  ADMIN
@@ -1758,7 +1698,7 @@ function checkAdminPw() {
   const entered = document.getElementById('adminPwInput').value;
   if (entered === getAdminPw()) {
     adminLoggedIn = true; hideAdminLogin();
-    document.getElementById('galleryPublic').style.display = 'none';
+    document.querySelector('.gallery-page-body').style.display = 'none';
     document.getElementById('adminPanel').style.display = 'block';
     adminTab('upload', document.querySelector('.admin-nav-btn'));
     renderManageGrid();
@@ -1770,8 +1710,8 @@ function checkAdminPw() {
 function logoutAdmin() {
   adminLoggedIn = false;
   document.getElementById('adminPanel').style.display = 'none';
-  document.getElementById('galleryPublic').style.display = 'block';
-  renderPublicGallery();
+  document.querySelector('.gallery-page-body').style.display = 'block';
+  renderGallerySub();
 }
 function adminTab(tab, btn) {
   ['upload','manage','settings'].forEach(t => {
@@ -2177,4 +2117,23 @@ try {
   }
 } catch(e) {}
 
-applyTranslation
+applyTranslations(lang);
+renderPublicGallery();
+interceptNavLinks();
+buildTicker(lang);
+
+// Handle direct hash navigation on load
+const initHash = window.location.hash;
+if (initHash === '#impact') navigateTo('impact');
+else if (initHash === '#gallery') navigateTo('gallery');
+else navigateTo('home');
+
+window.addEventListener('popstate', () => {
+  const h = window.location.hash;
+  if (h === '#impact') navigateTo('impact');
+  else if (h === '#gallery') navigateTo('gallery');
+  else navigateTo('home');
+});
+</script>
+</body>
+</html>
