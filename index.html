@@ -77,7 +77,7 @@
     .ticker-item::after { content: '✦'; margin-left: 28px; opacity: 0.5; font-size: 0.5rem; }
 
     /* CONTEXT BANNER */
-    .context-banner { display: grid; grid-template-columns: 240px 1fr; gap: 60px; padding: 80px 8%; background: var(--parchment); }
+    .context-banner { display: grid; grid-template-columns: 260px 1fr; gap: 60px; padding: 80px 8%; background: var(--parchment); }
     .context-map { text-align: center; }
     .cam-flag-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; margin: 16px auto; max-width: 120px; }
     .cam-flag-bar span:nth-child(1) { flex: 1; background: var(--cam-green); }
@@ -733,78 +733,137 @@
 <!-- CAMEROON CONTEXT -->
 <div class="context-banner" id="cameroon">
   <div class="context-map reveal">
-    <!-- Cameroon map: viewBox maps real coords approx 8°E–16°E, 2°N–13°N  -->
-    <!-- Scale: x=(lon-8)*22, y=(13-lat)*21  -->
-    <svg viewBox="0 0 180 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:200px;display:block;margin:0 auto">
+    <!--
+      Africa locator map with Cameroon highlighted.
+      ViewBox: 0 0 260 300
+      Projection: simple equirectangular
+        x = (lon - (-20)) / 70 * 220 + 20   [lon range -20°W to 55°E → x 20–240]
+        y = (40 - lat) / 80 * 270 + 15      [lat range 40°N to -35°S → y 15–285]
+
+      Key reference points:
+        Morocco NW  (-6°W, 36°N)  → x≈ 69, y≈ 68
+        Horn       (50°E, 12°N)   → x≈ 219, y≈ 162
+        Cape Town  (18°E, -34°S)  → x≈ 150, y≈ 283
+        Dakar      (-17°W, 15°N)  → x≈  9, y≈ 153
+
+      Cameroon bbox: lon 8.5–16.2°E, lat 1.6–13.1°N
+        x: (8.5+20)/70*220+20 ≈ 119,  (16.2+20)/70*220+20 ≈ 143
+        y: (40-13.1)/80*270+15 ≈ 106, (40-1.6)/80*270+15 ≈ 144
+    -->
+    <svg viewBox="0 0 260 300" fill="none" xmlns="http://www.w3.org/2000/svg"
+         style="width:220px;display:block;margin:0 auto">
       <defs>
-        <filter id="mapShadow" x="-10%" y="-10%" width="120%" height="120%">
-          <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="rgba(28,22,12,0.18)"/>
+        <filter id="afShadow">
+          <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="rgba(28,22,12,0.15)"/>
         </filter>
-        <linearGradient id="mapFill" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="rgba(192,82,42,0.18)"/>
-          <stop offset="100%" stop-color="rgba(43,94,63,0.14)"/>
-        </linearGradient>
+        <filter id="camGlow">
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="rgba(192,82,42,0.5)"/>
+        </filter>
       </defs>
 
-      <!-- Cameroon outline — accurate shape traced from geography -->
-      <!-- SW coast → Gulf of Guinea coast → Nigeria border (N) → Lake Chad bulge → Chad/CAR border (E) → CAR/Congo border (S) → Equatorial Guinea/Gabon coast -->
-      <path
+      <!-- ═══════════════════════════════════════
+           AFRICA CONTINENT — simplified outline
+           ═══════════════════════════════════════ -->
+      <path filter="url(#afShadow)"
+        fill="#e8dfc8" stroke="#c8b896" stroke-width="1" stroke-linejoin="round"
         d="
-          M 44,200
-          L 38,192 L 33,183 L 30,174 L 28,164
-          L 26,155 L 24,148 L 22,140 L 20,133
-          L 20,126 L 21,119 L 22,113 L 24,107
-          L 26,101 L 28,96  L 30,91  L 32,87
-          L 30,82  L 28,76  L 27,70  L 26,63
-          L 26,57  L 28,52  L 31,47  L 35,44
-          L 40,41  L 46,39  L 52,38  L 56,36
-          L 59,32  L 61,27  L 63,23  L 66,19
-          L 70,16  L 75,13  L 81,11  L 88,10
-          L 96,10  L 104,11 L 111,13 L 117,16
-          L 122,20 L 126,25 L 128,31 L 129,37
-          L 130,44 L 131,51 L 132,58 L 134,65
-          L 137,72 L 141,78 L 146,83 L 150,88
-          L 153,94 L 155,101 L 156,108 L 156,115
-          L 155,121 L 153,127 L 150,132 L 147,136
-          L 144,140 L 141,144 L 139,148 L 138,153
-          L 137,159 L 137,165 L 138,171 L 139,177
-          L 139,183 L 138,189 L 136,194 L 133,198
-          L 129,202 L 124,205 L 118,207 L 112,208
-          L 105,207 L 98,205  L 91,202  L 84,200
-          L 77,199  L 70,199  L 63,200  L 57,201
-          L 51,201  L 47,200  Z
+          M 80,18
+          L 95,16  L 110,15 L 125,16 L 138,19
+          L 148,24 L 155,30 L 158,37 L 157,44
+          L 160,50 L 165,54 L 170,56 L 175,58
+          L 182,58 L 190,55 L 198,52 L 207,52
+          L 215,55 L 220,61 L 221,68 L 218,74
+          L 213,79 L 208,82 L 205,87 L 205,93
+          L 208,99 L 212,104 L 214,110 L 213,116
+          L 210,121 L 206,125 L 202,128 L 199,133
+          L 197,139 L 196,146 L 195,153 L 193,159
+          L 189,164 L 184,168 L 179,171 L 175,175
+          L 172,181 L 170,187 L 168,193 L 165,198
+          L 161,202 L 157,205 L 153,208 L 150,213
+          L 148,219 L 147,225 L 147,231 L 148,237
+          L 149,243 L 149,249 L 147,254 L 143,258
+          L 138,261 L 133,262 L 128,261 L 123,258
+          L 119,254 L 116,249 L 115,243 L 115,237
+          L 116,231 L 117,225 L 116,219 L 113,214
+          L 109,209 L 104,205 L 99,202  L 94,200
+          L 88,198  L 82,197  L 76,197  L 70,199
+          L 64,202  L 59,206  L 54,211  L 50,216
+          L 46,221  L 43,226  L 41,231  L 40,237
+          L 40,243  L 41,249  L 43,254  L 46,259
+          L 50,263  L 55,266  L 61,267  L 67,266
+          L 73,263  L 79,260  L 85,258  L 91,258
+          L 97,259  L 103,262 L 108,266 L 112,271
+          L 115,276 L 116,282 L 115,287 L 112,291
+          L 108,293 L 104,293 L 100,291 L 97,287
+          L 95,283  L 95,278  L 97,273  L 96,268
+          L 91,265  L 86,265  L 81,267  L 76,271
+          L 71,275  L 66,278  L 61,279  L 56,278
+          L 50,274  L 44,268  L 39,261  L 35,253
+          L 32,244  L 31,235  L 32,226  L 34,218
+          L 37,210  L 38,202  L 37,195  L 34,189
+          L 31,184  L 28,179  L 26,174  L 25,168
+          L 24,162  L 24,156  L 25,150  L 27,144
+          L 30,138  L 33,133  L 35,127  L 35,121
+          L 33,115  L 30,109  L 27,103  L 25,97
+          L 24,91   L 24,85   L 26,79   L 29,73
+          L 32,68   L 34,62   L 35,56   L 34,50
+          L 32,44   L 30,38   L 29,32   L 30,26
+          L 33,21   L 38,17   L 44,15   L 51,14
+          L 58,14   L 65,15   L 72,17   Z
         "
-        fill="url(#mapFill)"
-        stroke="rgba(192,82,42,0.5)"
-        stroke-width="1.5"
-        stroke-linejoin="round"
-        filter="url(#mapShadow)"
       />
 
-      <!-- Region texture lines (subtle) -->
-      <line x1="65" y1="80" x2="120" y2="80" stroke="rgba(192,82,42,0.08)" stroke-width="1"/>
-      <line x1="55" y1="110" x2="130" y2="110" stroke="rgba(192,82,42,0.08)" stroke-width="1"/>
-      <line x1="50" y1="140" x2="135" y2="140" stroke="rgba(192,82,42,0.08)" stroke-width="1"/>
-      <line x1="55" y1="170" x2="130" y2="170" stroke="rgba(192,82,42,0.08)" stroke-width="1"/>
+      <!-- Madagascar -->
+      <path fill="#e8dfc8" stroke="#c8b896" stroke-width="0.8"
+        d="M 208,168 L 213,165 L 218,163 L 222,163 L 225,165 L 226,169 L 225,174
+           L 223,179 L 220,184 L 217,189 L 214,193 L 211,196 L 208,197 L 206,195
+           L 205,191 L 205,186 L 206,181 L 207,176 L 207,171 Z"
+      />
 
-      <!-- Douala: ~4.05°N, 9.70°E → x=(9.7-8)*22=37, y=(13-4.05)*21=188 → but shifted for viewBox, approx x=46, y=136 -->
-      <circle cx="46" cy="138" r="5" fill="#2b5e3f" opacity="0.85"/>
-      <circle cx="46" cy="138" r="9" fill="none" stroke="#2b5e3f" stroke-width="1" opacity="0.3"/>
-      <text x="55" y="136" font-family="'Outfit',sans-serif" font-size="9" font-weight="600" fill="#2b5e3f">Douala</text>
+      <!-- ═══════════════════════════════════════
+           CAMEROON — highlighted in terracotta
+           Real shape, positioned within Africa
+           Cameroon: lon 8.5–16.2°E, lat 1.6–13.1°N
+           x≈119–143, y≈106–145
+           ═══════════════════════════════════════ -->
+      <path filter="url(#camGlow)"
+        fill="#c0522a" fill-opacity="0.85" stroke="#8a3a1c" stroke-width="1" stroke-linejoin="round"
+        d="
+          M 119,106
+          L 122,104 L 126,103 L 130,103 L 133,104
+          L 136,106 L 138,109 L 139,112 L 139,116
+          L 140,119 L 142,121 L 143,124 L 143,127
+          L 142,130 L 140,132 L 139,135 L 139,138
+          L 140,141 L 141,144 L 140,146
+          L 137,146 L 134,145 L 131,145 L 128,145
+          L 125,145 L 122,145 L 120,144
+          L 119,141 L 119,138 L 119,135
+          L 118,132 L 117,129 L 116,126
+          L 116,123 L 116,120 L 117,117
+          L 117,114 L 118,111 Z
+        "
+      />
 
-      <!-- Yaoundé: ~3.87°N, 11.52°E → x=(11.52-8)*22=77, y≈140 -->
-      <circle cx="88" cy="152" r="5.5" fill="#c0522a" opacity="0.9"/>
-      <circle cx="88" cy="152" r="10" fill="none" stroke="#c0522a" stroke-width="1" opacity="0.35"/>
-      <text x="96" y="150" font-family="'Outfit',sans-serif" font-size="9.5" font-weight="700" fill="#c0522a">Yaoundé</text>
-      <text x="96" y="161" font-family="'Outfit',sans-serif" font-size="7" fill="#c0522a" opacity="0.7">★ Capital</text>
+      <!-- Cameroon label line -->
+      <line x1="143" y1="125" x2="158" y2="118" stroke="#c0522a" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.7"/>
+      <text x="160" y="115" font-family="'Outfit',sans-serif" font-size="8.5" font-weight="700" fill="#c0522a">Cameroon</text>
 
-      <!-- Bafoussam: ~5.48°N, 10.42°E → x≈53, y≈126 -->
-      <circle cx="58" cy="115" r="3.5" fill="#d4a029" opacity="0.85"/>
-      <circle cx="58" cy="115" r="7" fill="none" stroke="#d4a029" stroke-width="1" opacity="0.3"/>
-      <text x="66" y="113" font-family="'Outfit',sans-serif" font-size="8" font-weight="600" fill="#8a6600">Bafoussam</text>
+      <!-- City dots on Cameroon -->
+      <!-- Douala ~4°N,10°E → x≈124, y≈141 -->
+      <circle cx="122" cy="141" r="2.2" fill="white" stroke="#2b5e3f" stroke-width="1.2"/>
+      <!-- Yaoundé ~3.9°N,11.5°E → x≈128, y≈142 -->
+      <circle cx="129" cy="142" r="2.8" fill="white" stroke="#8a3a1c" stroke-width="1.4"/>
+      <!-- Bafoussam ~5.5°N,10.4°E → x≈125, y≈137 -->
+      <circle cx="124" cy="136" r="2" fill="white" stroke="#8a6600" stroke-width="1"/>
 
-      <!-- Gulf of Guinea label -->
-      <text x="28" y="195" font-family="'Outfit',sans-serif" font-size="6.5" fill="rgba(43,94,63,0.5)" font-style="italic">Gulf of Guinea</text>
+      <!-- Equator line -->
+      <line x1="20" y1="148" x2="230" y2="148" stroke="rgba(43,94,63,0.2)" stroke-width="0.8" stroke-dasharray="4,4"/>
+      <text x="22" y="145" font-family="'Outfit',sans-serif" font-size="6" fill="rgba(43,94,63,0.45)" font-style="italic">Equator</text>
+
+      <!-- Compass rose -->
+      <text x="228" y="30" font-family="'Outfit',sans-serif" font-size="11" fill="rgba(28,22,12,0.25)" font-weight="700">N</text>
+      <line x1="233" y1="32" x2="233" y2="44" stroke="rgba(28,22,12,0.2)" stroke-width="1"/>
+      <polygon points="233,20 230,32 233,29 236,32" fill="rgba(28,22,12,0.25)"/>
     </svg>
     <div class="cam-flag-bar"><span></span><span></span><span></span></div>
     <div class="cam-map-label" data-i18n="ctx.mapLabel">🇨🇲 Cameroon</div>
