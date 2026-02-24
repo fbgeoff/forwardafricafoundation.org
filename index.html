@@ -1069,7 +1069,7 @@
       <div class="story-qmark">"</div>
       <p class="story-text" data-i18n="stories.q3">When I learned about the crisis in Cameroon's Anglophone regions, I knew I had to help. Forward Africa Foundation showed me exactly where my donations were going — with field photos and reports. I trust them completely.</p>
       <div class="story-author">
-        <img class="story-avatar" src="https://images.pexels.com/photos/4568376/pexels-photo-4568376.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Sarah Mitchell" />
+        <img class="story-avatar" src="https://images.pexels.com/photos/17842277/pexels-photo-17842277.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Sarah Mitchell" />
         <div><div class="story-name">Sarah Mitchell</div><div class="story-role" data-i18n="stories.r3">Monthly Donor — Austin, TX, USA</div></div>
       </div>
     </div>
@@ -1083,15 +1083,15 @@
     <h2 class="section-title" data-i18n-html="con.title">Let's Work<br/><em>Together</em></h2>
     <p class="section-body" data-i18n="con.body">Whether you want to partner, volunteer in Cameroon, ask questions, or share your story — we'd love to hear from you. Just like Cameroon, we communicate in both English and French.</p>
     <div class="contact-cards">
-      <div class="contact-card"><div class="contact-icon">📧</div><div><div class="contact-label" data-i18n="con.c1l">Email Us</div><div class="contact-value"><a href="/cdn-cgi/l/email-protection#1a73747c755a7c75686d7b687e7b7c6873797b7c756f747e7b6e7375743475687d"><span class="__cf_email__" data-cfemail="d3babdb5bc93b5bca1a4b2a1b7b2b5a1bab0b2b5bca6bdb7b2a7babcbdfdbca1b4">[email&#160;protected]</span></a></div></div></div>
-      <div class="contact-card"><div class="contact-icon">📱</div><div><div class="contact-label" data-i18n="con.c2l">Call Us</div><div class="contact-value">+1 (555) 000-0000</div></div></div>
+      <div class="contact-card"><div class="contact-icon">📧</div><div><div class="contact-label" data-i18n="con.c1l">Email Us</div><div class="contact-value"><a href="mailto:info@forwardafricafoundation.org">info@forwardafricafoundation.org</a></div></div></div>
+      <div class="contact-card"><div class="contact-icon">📱</div><div><div class="contact-label" data-i18n="con.c2l">Call Us</div><div class="contact-value"><a href="tel:+15123335428">512 333 5428</a></div></div></div>
       <div class="contact-card"><div class="contact-icon">🇨🇲</div><div><div class="contact-label" data-i18n="con.c3l">Cameroon Office</div><div class="contact-value" data-i18n="con.c3v">Yaoundé &amp; Bafoussam, Cameroon</div></div></div>
       <div class="contact-card"><div class="contact-icon">🌐</div><div><div class="contact-label" data-i18n="con.c4l">Languages</div><div class="contact-value" data-i18n="con.c4v">English &amp; Français — just like Cameroon</div></div></div>
     </div>
   </div>
   <div class="reveal d1">
     <div class="contact-form-box">
-      <div class="form-title" data-i18n="con.formTitle">Send a Message</div><br/>
+      <div class="form-title" data-i18n="con.formTitle">Send a Message</div>
       <div class="form-row">
         <div class="form-group"><label class="form-label" data-i18n="con.fname">First Name</label><input class="form-input" type="text" /></div>
         <div class="form-group"><label class="form-label" data-i18n="con.lname">Last Name</label><input class="form-input" type="text" /></div>
@@ -1165,7 +1165,7 @@
     <div class="modal-icon">🎉</div>
     <h3 data-i18n="mod.donTitle">Thank You!</h3>
     <p data-i18n="mod.donBody">Your donation is making a real difference for children in Cameroon. A confirmation email will be sent shortly. Together, we move Cameroon forward.</p>
-    <br/><button class="btn-primary" style="margin:0 auto" onclick="closeModal('donateModal')" data-i18n="mod.donBtn">♥ Continue</button>
+    <button class="btn-primary" style="margin:16px auto 0" onclick="closeModal('donateModal')" data-i18n="mod.donBtn">♥ Continue</button>
   </div>
 </div>
 <div class="modal-overlay" id="contactModal">
@@ -1174,7 +1174,7 @@
     <div class="modal-icon">✉️</div>
     <h3 data-i18n="mod.conTitle">Message Sent!</h3>
     <p data-i18n="mod.conBody">Thank you for reaching out. Our team responds within 2 business days — in English or French.</p>
-    <br/><button class="btn-primary" style="margin:0 auto" onclick="closeModal('contactModal')" data-i18n="mod.conBtn">Close</button>
+    <button class="btn-primary" style="margin:16px auto 0" onclick="closeModal('contactModal')" data-i18n="mod.conBtn">Close</button>
   </div>
 </div>
 
@@ -1566,10 +1566,10 @@ let lang = 'en';
 function applyTranslations(l) {
   const T = TRANSLATIONS[l];
   if (!T) return;
-  // data-i18n: sets textContent
+  // data-i18n: sets innerHTML (allows <br/> and <em> to render)
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (T[key] !== undefined) el.textContent = T[key];
+    if (T[key] !== undefined) el.innerHTML = T[key];
   });
   // data-i18n-html: sets innerHTML (for keys with <em>, <br/> etc)
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
