@@ -663,7 +663,7 @@
     <li><a href="#mission" data-i18n="nav.mission">Mission</a></li>
     <li><a href="#programs" data-i18n="nav.programs">Programs</a></li>
     <li><a href="#impact" data-i18n="nav.impact">Impact</a></li>
-    <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="#" onclick="navigateTo('gallery');return false;" data-i18n="nav.gallery">Gallery</a></li>
     <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     <li><a href="#donate" class="nav-donate" data-i18n="nav.donate">♥ Donate</a></li>
   </ul>
@@ -683,7 +683,7 @@
       <li><a href="#mission" data-i18n="nav.mission" onclick="toggleNav()">Mission</a></li>
       <li><a href="#programs" data-i18n="nav.programs" onclick="toggleNav()">Programs</a></li>
       <li><a href="#impact" data-i18n="nav.impact" onclick="toggleNav()">Impact</a></li>
-      <li><a href="#gallery" data-i18n="nav.gallery" onclick="toggleNav()">Gallery</a></li>
+      <li><a href="#" data-i18n="nav.gallery" onclick="navigateTo('gallery');toggleNav();return false;">Gallery</a></li>
       <li><a href="#contact" data-i18n="nav.contact" onclick="toggleNav()">Contact</a></li>
       <li><a href="#donate" class="mob-donate" data-i18n="nav.donate" onclick="toggleNav()">♥ Donate</a></li>
     </ul>
@@ -838,36 +838,9 @@
   </div>
 </section>
 
-<!-- GALLERY -->
-<div class="gallery-section" id="gallery">
+<!-- GALLERY (moved to Gallery sub-page) -->
+<div class="gallery-section" id="gallery" style="display:none">
   <div class="gallery-public" id="galleryPublic">
-    <div class="gallery-header-wrap">
-      <div>
-        <div class="section-tag reveal" data-i18n="gal.tag">Our Work in Action</div>
-        <h2 class="section-title reveal" data-i18n-html="gal.title">Project <em>Gallery</em></h2>
-        <p class="section-body reveal" data-i18n="gal.sub">Real photos from our work across Cameroon — schools, orphanages, and communities we serve.</p>
-      </div>
-      <button class="admin-access-btn" onclick="showAdminLogin()">⚙ <span data-i18n="gal.admin">Admin</span></button>
-    </div>
-    <div class="gallery-filters" id="galleryFilters"></div>
-    <div class="gal-grid" id="galGrid"></div>
-    <div class="gal-empty" id="galEmpty" style="display:none">
-      <div class="gal-empty-icon">📸</div>
-      <p data-i18n="gal.empty">No project photos yet. Check back soon — we're documenting our work in Cameroon!</p>
-    </div>
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-      <button class="lb-close" onclick="closeLightbox()">✕</button>
-      <button class="lb-prev" onclick="lbNav(-1,event)">‹</button>
-      <button class="lb-next" onclick="lbNav(1,event)">›</button>
-      <div class="lb-inner" onclick="event.stopPropagation()">
-        <img id="lbImg" src="" alt="" />
-        <div class="lb-info">
-          <div class="lb-caption" id="lbCaption"></div>
-          <div class="lb-meta"><span class="lb-tag" id="lbTag"></span><span class="lb-date" id="lbDate"></span><span class="lb-location" id="lbLocation"></span></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ADMIN LOGIN -->
   <div class="admin-login-overlay" id="adminLoginOverlay">
@@ -1083,7 +1056,7 @@
     <h2 class="section-title" data-i18n-html="con.title">Let's Work<br/><em>Together</em></h2>
     <p class="section-body" data-i18n="con.body">Whether you want to partner, volunteer in Cameroon, ask questions, or share your story — we'd love to hear from you. Just like Cameroon, we communicate in both English and French.</p>
     <div class="contact-cards">
-      <div class="contact-card"><div class="contact-icon">📧</div><div><div class="contact-label" data-i18n="con.c1l">Email Us</div><div class="contact-value"><a href="mailto:info@forwardafricafoundation.org">info@forwardafricafoundation.org</a></div></div></div>
+      <div class="contact-card"><div class="contact-icon">📧</div><div><div class="contact-label" data-i18n="con.c1l">Email Us</div><div class="contact-value"><a href="/cdn-cgi/l/email-protection#f990979f96b99f968b8e988b9d989f8b909a989f968c979d988d909697d7968b9e"><span class="__cf_email__" data-cfemail="c4adaaa2ab84a2abb6b3a5b6a0a5a2b6ada7a5a2abb1aaa0a5b0adabaaeaabb6a3">[email&#160;protected]</span></a></div></div></div>
       <div class="contact-card"><div class="contact-icon">📱</div><div><div class="contact-label" data-i18n="con.c2l">Call Us</div><div class="contact-value"><a href="tel:+15123335428">512 333 5428</a></div></div></div>
       <div class="contact-card"><div class="contact-icon">🇨🇲</div><div><div class="contact-label" data-i18n="con.c3l">Cameroon Office</div><div class="contact-value" data-i18n="con.c3v">Yaoundé &amp; Bafoussam, Cameroon</div></div></div>
       <div class="contact-card"><div class="contact-icon">🌐</div><div><div class="contact-label" data-i18n="con.c4l">Languages</div><div class="contact-value" data-i18n="con.c4v">English &amp; Français — just like Cameroon</div></div></div>
@@ -1295,7 +1268,7 @@
   <!-- Admin login / panel live here too via shared overlays -->
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ================================================================
 //  TRANSLATION DICTIONARIES
 // ================================================================
@@ -2204,17 +2177,4 @@ try {
   }
 } catch(e) {}
 
-applyTranslations(lang);
-renderPublicGallery();
-interceptNavLinks();
-
-// Handle deep-link on load
-(function() {
-  const hash = window.location.hash;
-  if (hash === '#impact') navigateTo('impact');
-  else if (hash === '#gallery') navigateTo('gallery');
-})();
-
-</script>
-</body>
-</html>
+applyTranslation
